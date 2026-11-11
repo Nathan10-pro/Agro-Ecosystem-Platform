@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-bright": "#e8ffef", "surface-container": "#dbf4e4", "on-secondary": "#ffffff", "primary-container": "#1b4332", "tertiary-container": "#00452c", "tertiary": "#002d1b", "on-tertiary-container": "#53b889", "on-error": "#ffffff", "inverse-primary": "#a5d0b9", "primary-fixed-dim": "#a5d0b9", "surface-dim": "#c7e0d0", "on-tertiary-fixed-variant": "#005235", "secondary-fixed-dim": "#ffb599", "on-secondary-container": "#7a442e", "primary": "#012d1d", "surface-container-low": "#e1fae9", "error-container": "#ffdad6", "outline-variant": "#c1c8c2", "surface-container-lowest": "#ffffff", "surface-container-highest": "#d0e8d8", "secondary": "#885039", "surface-container-high": "#d5eede", "background": "#e8ffef", "primary-fixed": "#c1ecd4", "on-primary-container": "#86af99", "inverse-on-surface": "#def7e6", "tertiary-fixed-dim": "#75daa8", "on-secondary-fixed-variant": "#6c3924", "on-background": "#0a1f16", "on-secondary-fixed": "#360f01", "surface-tint": "#3f6653", "on-error-container": "#93000a", "outline": "#717973", "tertiary-fixed": "#92f7c3", "on-primary-fixed-variant": "#274e3d", "surface": "#e8ffef", "inverse-surface": "#20352a", "on-primary": "#ffffff", "on-surface-variant": "#414844", "secondary-fixed": "#ffdbce", "on-tertiary": "#ffffff", "error": "#ba1a1a", "surface-variant": "#d0e8d8", "on-primary-fixed": "#002114", "on-surface": "#0a1f16", "on-tertiary-fixed": "#002113", "secondary-container": "#ffb599" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "margin": "1.5rem", "gutter-sm": "1rem", "space-sm": "0.5rem", "space-md": "1rem", "gutter": "1.5rem", "space-lg": "1.5rem", "space-xs": "0.25rem", "margin-lg": "4rem", "gutter-lg": "2rem", "margin-sm": "1rem", "space-xl": "2.5rem" }, "fontFamily": { "body-lg": ["Plus Jakarta Sans"], "display-lg-mobile": ["Newsreader"], "headline-sm": ["Newsreader"], "headline-lg": ["Newsreader"], "display-lg": ["Newsreader"], "headline-lg-mobile": ["Newsreader"], "label-md": ["Space Grotesk"], "body-md": ["Plus Jakarta Sans"], "label-sm": ["Space Grotesk"], "headline-md": ["Newsreader"], "body-sm": ["Plus Jakarta Sans"], "label-lg": ["Space Grotesk"] }, "fontSize": { "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }], "display-lg-mobile": ["38px", { "lineHeight": "46px", "letterSpacing": "-0.015em", "fontWeight": "500" }], "headline-sm": ["22px", { "lineHeight": "30px", "fontWeight": "600" }], "headline-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.015em", "fontWeight": "500" }], "display-lg": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "500" }], "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "500" }], "body-md": ["15px", { "lineHeight": "24px", "fontWeight": "400" }], "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "600" }], "headline-md": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "body-sm": ["13px", { "lineHeight": "20px", "fontWeight": "400" }], "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.04em", "fontWeight": "600" }] } } } }</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface antialiased flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-gutter-sm flex items-center justify-between"><div class="flex items-center gap-space-sm"><button aria-label="Open Menu" class="w-11 h-11 flex items-center justify-center rounded text-on-surface hover:bg-surface-container transition-colors" id="menuToggle"><span class="material-symbols-outlined text-[24px]">menu</span></button><a class="flex items-center gap-1.5 focus:outline-none" href="#"><span class="font-headline-sm text-headline-sm font-semibold tracking-tight text-primary">MAN3</span><span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-container/80">Bio-Agri</span></a></div><div class="flex items-center gap-space-xs"><a class="hidden sm:inline-flex items-center justify-center h-11 px-3.5 bg-primary-container text-on-primary rounded text-label-md font-label-md transition-all hover:bg-tertiary-container shadow-[0_2px_6px_-1px_rgba(27,67,50,0.04)]" data-path="partner-consultation" href="#">Consultation</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><div class="fixed inset-0 z-50 bg-inverse-surface/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300" id="drawerBackdrop"></div><aside class="fixed top-0 left-0 bottom-0 z-50 w-[84%] max-w-[320px] bg-surface-container-lowest shadow-[0_20px_48px_-8px_rgba(15,36,26,0.16)] -translate-x-full transition-transform duration-300 ease-out flex flex-col pt-safe pb-safe" id="mobileDrawer"><div class="h-16 px-gutter-sm flex items-center justify-between"><div class="flex items-center gap-1.5"><span class="font-headline-sm text-headline-sm font-semibold tracking-tight text-primary">MAN3</span><span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary">Ecosystem</span></div><button aria-label="Close Menu" class="w-11 h-11 flex items-center justify-center rounded text-on-surface hover:bg-surface-container transition-colors" id="drawerClose"><span class="material-symbols-outlined text-[22px]">close</span></button></div><div class="px-gutter-sm py-space-sm"><a class="w-full h-11 flex items-center justify-center gap-2 bg-secondary text-on-secondary rounded text-label-md font-label-md transition-all hover:opacity-95 shadow-[0_2px_6px_-1px_rgba(27,67,50,0.04)]" data-path="partner-consultation" href="#"><span class="material-symbols-outlined text-[18px]">handshake</span><span>Partner Consultation</span></a></div><div class="flex-1 overflow-y-auto px-gutter-sm py-space-md"><p class="font-label-sm text-label-sm uppercase tracking-wider text-outline mb-space-sm px-space-xs">Navigation</p><ul class="flex flex-col gap-1"><li class="h-11 flex items-center"><a class="flex items-center gap-space-md w-full px-3 py-2 text-on-surface rounded font-label-lg text-label-lg hover:bg-surface-container" data-path="home" href="#"><span class="material-symbols-outlined text-[20px] text-primary-container">home</span><span>Home Overview</span></a></li><li class="h-11 flex items-center"><a class="flex items-center gap-space-md w-full px-3 py-2 text-on-surface rounded font-label-lg text-label-lg hover:bg-surface-container" data-path="about-us" href="#"><span class="material-symbols-outlined text-[20px] text-primary-container">nest_eco_leaf</span><span>About Us</span></a></li><li class="h-11 flex items-center"><a class="flex items-center gap-space-md w-full px-3 py-2 text-on-surface rounded font-label-lg text-label-lg hover:bg-surface-container" data-path="ecosystem-conservation" href="#"><span class="material-symbols-outlined text-[20px] text-primary-container">forest</span><span>Ecosystem &amp; Conservation</span></a></li><li class="h-11 flex items-center"><a class="flex items-center gap-space-md w-full px-3 py-2 text-on-surface rounded font-label-lg text-label-lg hover:bg-surface-container" data-path="food-products" href="#"><span class="material-symbols-outlined text-[20px] text-primary-container">nutrition</span><span>Food Products</span></a></li><li class="h-11 flex items-center"><a class="flex items-center gap-space-md w-full px-3 py-2 text-on-surface rounded font-label-lg text-label-lg hover:bg-surface-container" data-path="why-choose-man3" href="#"><span class="material-symbols-outlined text-[20px] text-primary-container">verified</span><span>Why Choose MAN3</span></a></li><li class="h-11 flex items-center"><a class="flex items-center gap-space-md w-full px-3 py-2 text-on-surface rounded font-label-lg text-label-lg hover:bg-surface-container" data-path="b2b-partnership" href="#"><span class="material-symbols-outlined text-[20px] text-primary-container">domain</span><span>B2B Partnership</span></a></li></ul></div><div class="p-gutter-sm bg-surface-container-low rounded-t-xl"><div class="flex items-center gap-2 mb-1"><span class="inline-block w-2 h-2 rounded-full bg-tertiary-fixed-dim"></span><span class="font-label-sm text-label-sm uppercase tracking-wider text-primary">Pristine Terroir Certified</span></div><p class="font-body-sm text-body-sm text-on-surface-variant">Regenerative agronomy with zero-loss supply transparency.</p></div></aside><main class="flex flex-col relative w-full pt-16 bg-surface"><div class="flex flex-col w-full">
+<!-- 1. Hero Section -->
+<section class="flex flex-col px-margin-sm pt-space-md pb-space-lg gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary-container font-semibold">
+          Regenerative Agro-Ecology • Mount Gede-Pangrango
+        </span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary tracking-tight leading-tight">
+        Harmony with Nature, Premium-Quality Food.
+      </h1>
+<p class="font-body-md text-body-md text-on-surface-variant pt-1 leading-relaxed">
+        Protecting indigenous biodiversity and livestock ecosystems to yield pristine organic produce, farm-to-table harvests, and pasture-fed meat for families and commercial culinary partners.
+      </p>
+</div>
+<!-- Dual Touch CTA Stack -->
+<div class="flex flex-col gap-2.5 pt-1">
+<a class="w-full h-12 flex items-center justify-center gap-2 bg-primary-container text-on-primary rounded-xl font-label-lg text-label-lg shadow-sm active:opacity-90 transition-transform active:scale-[0.99]" href="#provisions">
+<span>Explore Products</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+<a class="w-full h-12 flex items-center justify-center gap-2 bg-surface-container text-primary font-label-lg text-label-lg rounded-xl active:bg-surface-container-high transition-colors" href="#stewardship">
+<span class="material-symbols-outlined text-[18px]">eco</span>
+<span>Conservation Programs</span>
+</a>
+</div>
+<!-- Terroir Provenance Stats -->
+<div class="grid grid-cols-2 gap-space-sm">
+<div class="p-3.5 bg-surface-container-lowest rounded-xl flex flex-col gap-0.5 shadow-sm">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Highland Terroir</span>
+<span class="font-headline-sm text-headline-sm font-semibold text-primary">1,400m</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Above mean sea level</span>
+</div>
+<div class="p-3.5 bg-surface-container-lowest rounded-xl flex flex-col gap-0.5 shadow-sm">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Single-Estate</span>
+<span class="font-headline-sm text-headline-sm font-semibold text-primary">100%</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Certified lot traceability</span>
+</div>
+</div>
+<!-- Hero Image Card -->
+<div class="relative w-full rounded-xl overflow-hidden shadow-sm bg-surface-container">
+<img class="w-full h-64 object-cover" data-alt="Black Angus cattle peacefully grazing on vibrant lush emerald terraced pastures along the volcanic foothills of Mount Gede-Pangrango in morning mist, soft golden dawn sunlight casting warm glow over dewy grasses and tropical trees, editorial agricultural photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRcdnFTJgz_AFuIS4hzASAfDxhaj_5w_KybechHWcn9MCmHO195lCz7UhkRSv7dodGwBF0uAow-iakHxgS0z7qO9DI_GJsX0SIy2rFvs4Vo5tMz1kwO6cY2_WDXrzKak2hBffvtWHugqhr8-u2NFlZ9Qj8zAZULNBC12FksUrw9SLeeeoFsyNmCPN2HEgCAkgDbzaKcpTjT4NPJMSbTcYJvn9Q8Z9XY6WCVGN9vGs"/>
+<div class="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-primary/90 via-primary/50 to-transparent flex items-center justify-between text-on-primary">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-[18px] text-tertiary-fixed shrink-0">location_on</span>
+<span class="font-label-sm text-label-sm truncate">Sub-terroir Paddock 04 • Cisarua, West Java</span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary-fixed shrink-0 pl-2">06:15 WIB</span>
+</div>
+</div>
+</section>
+<!-- 2. Ecological Foundation / Stewardship -->
+<section class="flex flex-col px-margin-sm py-space-md gap-space-md" id="stewardship">
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Ecological Foundation</span>
+<h2 class="font-headline-md text-headline-md text-primary">Regenerative Stewardship in Practice</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+        Zero synthetic fertilizers, prophylactic antibiotics, or chemical pesticides. Our agro-ecological envelope relies on cyclical nature-led biological balance.
+      </p>
+</div>
+<div class="flex flex-col gap-space-sm">
+<!-- Pillar 1 -->
+<div class="p-4 bg-surface-container-lowest rounded-xl shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="w-10 h-10 rounded-xl bg-surface-container-low flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[22px]">shield</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Pillar 01</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Bio-Security &amp; Pest Defense</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+          Refugia botanical plantings encircle our crop lots, hosting beneficial predator insects and indigenous microorganisms that deter infestations without synthetic chemical inputs.
+        </p>
+<div class="pt-1 flex items-center gap-1.5 text-primary-container font-label-md text-label-md">
+<span>Explore botanical perimeter logs</span>
+<span class="material-symbols-outlined text-[16px]">north_east</span>
+</div>
+</div>
+<!-- Pillar 2 -->
+<div class="p-4 bg-surface-container-lowest rounded-xl shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="w-10 h-10 rounded-xl bg-secondary-fixed/40 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]">cruelty_free</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Pillar 02</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Ethical, Threat-Free Husbandry</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+          Daily rotational grazing through twenty-four mountain paddocks provides lush volcanic greens, pristine herd socialization, natural calving, and zero synthetic hormone acceleration.
+        </p>
+<div class="pt-1 flex items-center gap-1.5 text-secondary font-label-md text-label-md">
+<span>Review livestock animal welfare indices</span>
+<span class="material-symbols-outlined text-[16px]">north_east</span>
+</div>
+</div>
+<!-- Pillar 3 -->
+<div class="p-4 bg-surface-container-lowest rounded-xl shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">compost</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Pillar 03</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Living Soil Restoration</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+          Zero-tillage agroforestry complemented by micro-aerated compost tea and bio-slurry. Restores organic carbon density, water retention, and mycelial fungal networks across all tiers.
+        </p>
+<div class="pt-1 flex items-center gap-1.5 text-primary-container font-label-md text-label-md">
+<span>Read subterranean humus analysis</span>
+<span class="material-symbols-outlined text-[16px]">north_east</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Estate Harvest & Allocation -->
+<section class="flex flex-col px-margin-sm py-space-md gap-space-md" id="provisions">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-semibold">Estate Allocation</span>
+<span class="text-secondary font-label-sm text-label-sm font-medium">Dispatched &lt;12h of cut</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary">Prism of Earth: Daily Provisions</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+        Selective reservations for private cellars, discerning home pantries, and Michelin-caliber commercial kitchens.
+      </p>
+</div>
+<!-- Product Stack -->
+<div class="flex flex-col gap-space-sm">
+<!-- Card 1 -->
+<div class="p-3.5 bg-surface-container-lowest rounded-xl shadow-sm flex flex-col gap-3">
+<div class="relative w-full h-44 rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Artisanal cut of deeply marbled grass-fed ribeye steak displayed on a dark slate board with freshly picked organic mountain rosemary and raw sea salt crystals, warm focused directional kitchen lighting, fine dining culinary still-life." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD49KbZQbh7KLWp8xR1mS4GsqHYGRlO3U6VGTX5gzz8ffcS6gx50swqXg8WVPeVsXE3RTEH9JLNZmaiMcudDFjk8ceF-GJOPHmkLTOCGjdobemOCtTRFP5-VCai9ZXV6iw_oJLV6YCtwRrWODJMQ7J0Zz0A3fhBUUK03YR8sJCMXkOo4fRFWGY2S8_orbjX3XpZ6TtUCxmMj-4pqhlADUL9licxIrl8EuDl7XYdipU"/>
+<div class="absolute top-2.5 left-2.5 px-2.5 py-1 rounded bg-primary-container/90 text-on-primary font-label-sm text-label-sm backdrop-blur-sm">
+            Cold-Chain Verified (2°C)
+          </div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-baseline">
+<h3 class="font-headline-sm text-headline-sm text-primary">Pasture-Fed Prime Beef</h3>
+<span class="font-label-md text-label-md text-secondary font-semibold">MOQ 10 kg / Cut</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Free-range grazing on mineral-rich volcanic highland flora. Hand-trimmed cuts, skin-vacuum VSP packaging, and strict 21-day dry aging protocols upon reservation.
+          </p>
+<div class="pt-2 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline">Batch: MAN3-BF-2940</span>
+<button class="h-9 px-4 rounded-lg bg-surface-container-high text-primary font-label-md text-label-md flex items-center gap-1 active:bg-surface-dim">
+<span>Reserve Lot</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="p-3.5 bg-surface-container-lowest rounded-xl shadow-sm flex flex-col gap-3">
+<div class="relative w-full h-44 rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Rustic wooden crate filled with dewy heirloom rainbow chard, crisp baby brassicas, and fresh Tuscan kale harvested at dawn, morning mountain sunlight glinting off water droplets on dark green leaves, organic farm harvest." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCj2yUVjHVKSMeNOfs3HX2fwzHlQG-dyKJrsZG_NJzv6YkFML8iOT0-xDOTd9Gb32fUGgKKoKIYck5lvSz_vnKkkBJOMpznVkOY9ToYuKNQEesLnhlTVO4_lJ9T0_c4Kg20Q-stZ0j88YzjQAONgPx9AGvJeZmtp41xaL4tnN-By1or8EiDKDnGeGCplKlhJov9gT-RvilAbTzUpNIAZf-G5MxqEdy8uaPzMYsRweY"/>
+<div class="absolute top-2.5 left-2.5 px-2.5 py-1 rounded bg-primary-container/90 text-on-primary font-label-sm text-label-sm backdrop-blur-sm">
+            Zero Chemical Residue 0.0%
+          </div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-baseline">
+<h3 class="font-headline-sm text-headline-sm text-primary">Highland Greens &amp; Herbs</h3>
+<span class="font-label-md text-label-md text-secondary font-semibold">Daily Harvest Standing</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Harvested exclusively during the 04:30 dawn dew window. Sweet crisp mountain brassicas, heirloom aromatics, and tender microgreens delivered within hours of harvest.
+          </p>
+<div class="pt-2 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline">Batch: MAN3-HG-0881</span>
+<button class="h-9 px-4 rounded-lg bg-surface-container-high text-primary font-label-md text-label-md flex items-center gap-1 active:bg-surface-dim">
+<span>Reserve Lot</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="p-3.5 bg-surface-container-lowest rounded-xl shadow-sm flex flex-col gap-3">
+<div class="relative w-full h-44 rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Agronomist examining lush green bio-diverse agroforestry slope with Mount Gede volcanic crest in distance, holding natural soil core sample in clean glass specimen cylinder, morning light, high scientific precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzYZHyZ40eSEvJ5qymmkUWZ2oSmIGq_s6JouzPwdfklWzHu-VwvblS4FMAEmvImfUCTJG0rx3tS9B_rKVXo6AsF9ybscr8uIFiwXWhxkANYIzoMsEcdgIYf7LJDsZkTdwPStQa0-MqhC8zlM0dmDDB3EVi3S7Yvhqc_KTNIK4duy1o9PU2_GB7T1G1p9t6H91Ow9E1wXUA1JdalPr6MhaGl64efmNhI4hb2JMD1ps"/>
+<div class="absolute top-2.5 left-2.5 px-2.5 py-1 rounded bg-secondary/90 text-on-secondary font-label-sm text-label-sm backdrop-blur-sm">
+            Consultative Advisory
+          </div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-baseline">
+<h3 class="font-headline-sm text-headline-sm text-primary">Ecological Land Advisory</h3>
+<span class="font-label-md text-label-md text-secondary font-semibold">Contract Alliances</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Collaborative custom plots for luxury hospitality brands, dedicated paddock leases, institutional carbon offset validation, and bespoke culinary agronomy.
+          </p>
+<div class="pt-2 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline">Tenure: Annual / Seasonal</span>
+<button class="h-9 px-4 rounded-lg bg-surface-container-high text-primary font-label-md text-label-md flex items-center gap-1 active:bg-surface-dim">
+<span>Request Deck</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Empirical Verification (Deep Green Surface) -->
+<section class="mx-margin-sm my-space-md p-5 bg-primary-container rounded-xl text-on-primary shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-tertiary-fixed font-semibold">Scientific Transparency</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-primary">Measured by Nature and Precision Science</h2>
+<p class="font-body-sm text-body-sm text-on-primary-container leading-relaxed">
+        Empirical laboratory benchmarks backing every dispatch lot from Mount Gede-Pangrango.
+      </p>
+</div>
+<!-- 2x2 Metric Grid -->
+<div class="grid grid-cols-2 gap-space-sm pt-1">
+<div class="p-3.5 bg-primary/40 rounded-xl flex flex-col gap-0.5">
+<span class="font-headline-sm text-headline-sm font-semibold text-tertiary-fixed">1,200+ Ha</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-primary-container">Protected Acreage</span>
+<span class="font-body-sm text-body-sm text-on-primary/80 pt-0.5">Active conservation easement</span>
+</div>
+<div class="p-3.5 bg-primary/40 rounded-xl flex flex-col gap-0.5">
+<span class="font-headline-sm text-headline-sm font-semibold text-tertiary-fixed">0.0%</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-primary-container">Chemical Residue</span>
+<span class="font-body-sm text-body-sm text-on-primary/80 pt-0.5">Lab verified per lot</span>
+</div>
+<div class="p-3.5 bg-primary/40 rounded-xl flex flex-col gap-0.5">
+<span class="font-headline-sm text-headline-sm font-semibold text-tertiary-fixed">45+</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-primary-container">HoReCa Partners</span>
+<span class="font-body-sm text-body-sm text-on-primary/80 pt-0.5">Supplied weekly across Java</span>
+</div>
+<div class="p-3.5 bg-primary/40 rounded-xl flex flex-col gap-0.5">
+<span class="font-headline-sm text-headline-sm font-semibold text-tertiary-fixed">ISO 22000</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-primary-container">Grade A Verified</span>
+<span class="font-body-sm text-body-sm text-on-primary/80 pt-0.5">Full farm-to-table safety</span>
+</div>
+</div>
+</section>
+<!-- 5. Integrity Protocol -->
+<section class="flex flex-col px-margin-sm py-space-md gap-space-md">
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-semibold">Strict Stewardship</span>
+<h2 class="font-headline-md text-headline-md text-primary">Rigorous Verification from Soil to Plate</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+        Four cardinal audit gates enforced for every harvest batch dispatched from our reserve.
+      </p>
+</div>
+<div class="flex flex-col gap-2.5">
+<!-- Item 1 -->
+<div class="p-3.5 bg-surface-container-lowest rounded-xl shadow-sm flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[18px]">qr_code_2</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-primary font-semibold">Batch-Level Digital Traceability</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant pt-0.5">
+            Every shipment arrives with an authenticated digital passport containing harvest hour, paddock coordinates, and soil microbial profile.
+          </p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="p-3.5 bg-surface-container-lowest rounded-xl shadow-sm flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-primary font-semibold">Certified National &amp; Global Compliance</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant pt-0.5">
+            Compliant with SNI Organik, Halal BPJPH, HACCP cold chain, and international regenerative organic agriculture criteria.
+          </p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="p-3.5 bg-surface-container-lowest rounded-xl shadow-sm flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[18px]">thermostat</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-primary font-semibold">Continuous Cold-Chain Integrity (2°C–4°C)</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant pt-0.5">
+            Hermetically sealed refrigerated transport directly from the Cisarua packing facility into your receiving bay with continuous thermal tracking.
+          </p>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="p-3.5 bg-surface-container-lowest rounded-xl shadow-sm flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[18px]">water_drop</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-primary font-semibold">Volcanic Spring Sub-Surface Irrigation</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant pt-0.5">
+            Pristine mountain mineral waters channeled through gravity-fed biological filtration, preserving plant cellular vitality.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. B2B & Direct Engagement Form -->
+<section class="flex flex-col px-margin-sm pt-space-sm pb-space-lg">
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+<!-- Header -->
+<div class="p-5 bg-primary text-on-primary flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-tertiary-fixed">handshake</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-tertiary-fixed font-semibold">Partnership Portal</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-primary">Establish Your Sourcing Partnership</h2>
+<p class="font-body-sm text-body-sm text-inverse-primary leading-relaxed">
+          Request private herd allocations, weekly restaurant delivery contracts, or schedule an executive agronomy site visit.
+        </p>
+<!-- Direct Contact Strip -->
+<div class="pt-2 flex flex-col gap-1.5 text-on-primary font-body-sm text-body-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed">call</span>
+<span>Concierge: +62 21 5088 3491 (WhatsApp)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed">schedule</span>
+<span>Dispatch Window: 04:00 – 18:00 WIB</span>
+</div>
+</div>
+</div>
+<!-- Form Body -->
+<form class="p-5 flex flex-col gap-4" onsubmit="event.preventDefault(); const s = document.getElementById('formSuccess'); s.classList.remove('hidden'); this.reset();">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Full Name *</label>
+<input class="w-full h-11 px-3 bg-surface-container-low text-on-surface rounded-xl font-body-md text-body-md focus:bg-surface-container-lowest focus:outline-none transition-colors" placeholder="Executive Chef or Estate Manager" required="" type="text"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Organization / Brand *</label>
+<input class="w-full h-11 px-3 bg-surface-container-low text-on-surface rounded-xl font-body-md text-body-md focus:bg-surface-container-lowest focus:outline-none transition-colors" placeholder="e.g. Grand Terroir Bistro, Bali" required="" type="text"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Business Type *</label>
+<select class="w-full h-11 px-3 bg-surface-container-low text-on-surface rounded-xl font-body-md text-body-md focus:bg-surface-container-lowest focus:outline-none transition-colors">
+<option>Fine Dining &amp; Independent Restaurant</option>
+<option>Luxury Hotel &amp; Resort Group (HoReCa)</option>
+<option>Boutique Retailer &amp; Purveyor</option>
+<option>Private Family Estate Client</option>
+<option>Ecological Agroforestry Partner</option>
+</select>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Email or Mobile Number *</label>
+<input class="w-full h-11 px-3 bg-surface-container-low text-on-surface rounded-xl font-body-md text-body-md focus:bg-surface-container-lowest focus:outline-none transition-colors" placeholder="chef@restaurant.com or +62 811..." required="" type="text"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Inquired Supply / Program *</label>
+<select class="w-full h-11 px-3 bg-surface-container-low text-on-surface rounded-xl font-body-md text-body-md focus:bg-surface-container-lowest focus:outline-none transition-colors">
+<option>Pasture-Fed Beef Allocation (Primal &amp; Sub-primal)</option>
+<option>Dawn Harvest Microgreens &amp; Mountain Brassicas</option>
+<option>Combined Seasonal Tasting Basket</option>
+<option>Custom Paddock Lease &amp; Land Advisory</option>
+</select>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Estimated Weekly Volume or Notes</label>
+<textarea class="w-full p-3 bg-surface-container-low text-on-surface rounded-xl font-body-md text-body-md focus:bg-surface-container-lowest focus:outline-none transition-colors resize-none" placeholder="Anticipated weekly kilogram requirement, delivery frequency, or preferred cuts..." rows="3"></textarea>
+</div>
+<div class="hidden p-3 bg-surface-container-high rounded-xl text-primary font-body-sm text-body-sm flex items-center gap-2" id="formSuccess">
+<span class="material-symbols-outlined text-[20px] text-tertiary-container">check_circle</span>
+<span>Thank you. Our agronomy relations officer will contact you within 4 hours.</span>
+</div>
+<button class="w-full h-12 mt-1 bg-secondary text-on-secondary rounded-xl font-label-lg text-label-lg shadow-sm flex items-center justify-center gap-2 active:opacity-95 transition-opacity" type="submit">
+<span>Submit Inquiry</span>
+<span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+<p class="text-center font-label-sm text-label-sm text-outline pt-1">
+          Strict non-disclosure observed for custom recipe specs &amp; estate contracts.
+        </p>
+</form>
+</div>
+</section>
+</div><footer class="w-full bg-surface-container-low px-gutter-sm pt-space-xl pb-28 mt-space-xl"><div class="flex flex-col gap-space-lg"><div class="flex flex-col gap-space-xs"><div class="flex items-center gap-2"><span class="font-headline-sm text-headline-sm text-primary font-semibold">MAN3</span><span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm">BIO-TECH</span></div><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed max-w-sm">Pioneering restorative biological agriculture, soil health conservation, and pure harvest stewardship for culinary and HoReCa enterprise.</p></div><div class="flex flex-wrap gap-2"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container-highest text-primary font-label-sm text-label-sm"><span class="material-symbols-outlined text-[14px]">verified</span>Regen Organic</span><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container-highest text-primary font-label-sm text-label-sm"><span class="material-symbols-outlined text-[14px]">co2</span>Carbon Negative</span><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container-highest text-primary font-label-sm text-label-sm"><span class="material-symbols-outlined text-[14px]">qr_code_2</span>Lot Traceable</span></div><div class="grid grid-cols-2 gap-space-md py-space-sm"><div class="flex flex-col gap-2"><span class="font-label-sm text-label-sm uppercase text-outline">Initiatives</span><a class="font-body-sm text-body-sm text-on-surface hover:text-primary" data-path="ecosystem-conservation" href="#">Bio-Reserves</a><a class="font-body-sm text-body-sm text-on-surface hover:text-primary" data-path="food-products" href="#">Harvest Lots</a><a class="font-body-sm text-body-sm text-on-surface hover:text-primary" data-path="why-choose-man3" href="#">Soil Metrics</a></div><div class="flex flex-col gap-2"><span class="font-label-sm text-label-sm uppercase text-outline">Partners</span><a class="font-body-sm text-body-sm text-on-surface hover:text-primary" data-path="b2b-partnership" href="#">HoReCa Supply</a><a class="font-body-sm text-body-sm text-on-surface hover:text-primary" data-path="partner-consultation" href="#">Consultations</a><a class="font-body-sm text-body-sm text-on-surface hover:text-primary" data-path="about-us" href="#">Agronomy Team</a></div></div><div class="pt-space-md flex flex-col gap-2 text-on-surface-variant font-label-sm text-label-sm"><p>© 2025 MAN3 Bio-Agri &amp; Conservation Inc. All rights reserved.</p><p class="text-outline">Strict Biological Quality Control Protocols.</p></div></div></footer></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]" data-active-classes="text-primary-container font-label-lg font-bold"><div class="flex justify-around items-center h-20 px-space-xs"><a class="flex flex-col items-center justify-center gap-1 w-16 h-16 text-on-surface-variant transition-colors hover:text-on-surface" data-path="home" href="#"><span class="material-symbols-outlined text-[22px]">eco</span><span class="font-label-sm text-label-sm">Overview</span></a><a class="flex flex-col items-center justify-center gap-1 w-16 h-16 text-on-surface-variant transition-colors hover:text-on-surface" data-path="ecosystem-conservation" href="#"><span class="material-symbols-outlined text-[22px]">forest</span><span class="font-label-sm text-label-sm">Ecosystem</span></a><a class="flex flex-col items-center justify-center gap-1 w-16 h-16 text-on-surface-variant transition-colors hover:text-on-surface" data-path="food-products" href="#"><span class="material-symbols-outlined text-[22px]">nutrition</span><span class="font-label-sm text-label-sm">Products</span></a><a class="flex flex-col items-center justify-center gap-1 w-16 h-16 text-on-surface-variant transition-colors hover:text-on-surface" data-path="b2b-partnership" href="#"><span class="material-symbols-outlined text-[22px]">domain</span><span class="font-label-sm text-label-sm">B2B</span></a></div></nav><script>const t=document.getElementById('menuToggle'),d=document.getElementById('mobileDrawer'),b=document.getElementById('drawerBackdrop'),c=document.getElementById('drawerClose');function toggle(o){if(!d||!b)return;if(o){d.classList.remove('-translate-x-full');b.classList.remove('opacity-0','pointer-events-none');b.classList.add('opacity-100');}else{d.classList.add('-translate-x-full');b.classList.add('opacity-0','pointer-events-none');b.classList.remove('opacity-100');}}if(t)t.addEventListener('click',()=>toggle(true));if(c)c.addEventListener('click',()=>toggle(false));if(b)b.addEventListener('click',()=>toggle(false));</script></body></html>

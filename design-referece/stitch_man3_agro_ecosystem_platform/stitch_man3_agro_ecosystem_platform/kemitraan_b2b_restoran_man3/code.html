@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+
+<html lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&amp;family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&amp;family=Space+Grotesk:wght@400..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "surface-container-highest": "#d0e8d8",
+        "on-tertiary-fixed": "#002113",
+        "surface-container-low": "#e1fae9",
+        "on-surface": "#0a1f16",
+        "inverse-primary": "#a5d0b9",
+        "inverse-surface": "#20352a",
+        "outline": "#717973",
+        "on-primary": "#ffffff",
+        "surface-container": "#dbf4e4",
+        "on-error-container": "#93000a",
+        "on-secondary-fixed": "#360f01",
+        "on-tertiary-container": "#53b889",
+        "secondary": "#885039",
+        "surface-container-high": "#d5eede",
+        "primary-fixed": "#c1ecd4",
+        "tertiary-container": "#00452c",
+        "on-primary-fixed-variant": "#274e3d",
+        "error-container": "#ffdad6",
+        "tertiary": "#002d1b",
+        "surface-tint": "#3f6653",
+        "background": "#e8ffef",
+        "outline-variant": "#c1c8c2",
+        "primary-fixed-dim": "#a5d0b9",
+        "error": "#ba1a1a",
+        "on-error": "#ffffff",
+        "primary": "#012d1d",
+        "inverse-on-surface": "#def7e6",
+        "surface-bright": "#e8ffef",
+        "secondary-container": "#ffb599",
+        "primary-container": "#1b4332",
+        "on-tertiary": "#ffffff",
+        "tertiary-fixed-dim": "#75daa8",
+        "on-primary-container": "#86af99",
+        "surface-variant": "#d0e8d8",
+        "tertiary-fixed": "#92f7c3",
+        "surface-container-lowest": "#ffffff",
+        "on-secondary": "#ffffff",
+        "on-secondary-container": "#7a442e",
+        "surface": "#e8ffef",
+        "on-surface-variant": "#414844",
+        "on-tertiary-fixed-variant": "#005235",
+        "on-primary-fixed": "#002114",
+        "on-secondary-fixed-variant": "#6c3924",
+        "on-background": "#0a1f16",
+        "secondary-fixed": "#ffdbce",
+        "surface-dim": "#c7e0d0",
+        "secondary-fixed-dim": "#ffb599"
+      },
+      "borderRadius": {
+        "DEFAULT": "0.125rem",
+        "lg": "0.25rem",
+        "xl": "0.5rem",
+        "full": "0.75rem"
+      },
+      "spacing": {
+        "space-sm": "0.5rem",
+        "space-xl": "2.5rem",
+        "margin-sm": "1rem",
+        "margin-lg": "4rem",
+        "gutter": "1.5rem",
+        "space-md": "1rem",
+        "gutter-lg": "2rem",
+        "gutter-sm": "1rem",
+        "space-lg": "1.5rem",
+        "margin": "1.5rem",
+        "space-xs": "0.25rem"
+      },
+      "fontFamily": {
+        "label-md": [
+          "Space Grotesk"
+        ],
+        "body-sm": [
+          "Plus Jakarta Sans"
+        ],
+        "headline-sm": [
+          "Newsreader"
+        ],
+        "body-lg": [
+          "Plus Jakarta Sans"
+        ],
+        "body-md": [
+          "Plus Jakarta Sans"
+        ],
+        "display-lg-mobile": [
+          "Newsreader"
+        ],
+        "label-sm": [
+          "Space Grotesk"
+        ],
+        "display-lg": [
+          "Newsreader"
+        ],
+        "headline-md": [
+          "Newsreader"
+        ],
+        "label-lg": [
+          "Space Grotesk"
+        ],
+        "headline-lg-mobile": [
+          "Newsreader"
+        ],
+        "headline-lg": [
+          "Newsreader"
+        ]
+      },
+      "fontSize": {
+        "label-md": [
+          "12px",
+          {
+            "lineHeight": "16px",
+            "letterSpacing": "0.06em",
+            "fontWeight": "500"
+          }
+        ],
+        "body-sm": [
+          "13px",
+          {
+            "lineHeight": "20px",
+            "fontWeight": "400"
+          }
+        ],
+        "headline-sm": [
+          "22px",
+          {
+            "lineHeight": "30px",
+            "fontWeight": "600"
+          }
+        ],
+        "body-lg": [
+          "18px",
+          {
+            "lineHeight": "28px",
+            "fontWeight": "400"
+          }
+        ],
+        "body-md": [
+          "15px",
+          {
+            "lineHeight": "24px",
+            "fontWeight": "400"
+          }
+        ],
+        "display-lg-mobile": [
+          "38px",
+          {
+            "lineHeight": "46px",
+            "letterSpacing": "-0.015em",
+            "fontWeight": "500"
+          }
+        ],
+        "label-sm": [
+          "10px",
+          {
+            "lineHeight": "14px",
+            "letterSpacing": "0.08em",
+            "fontWeight": "600"
+          }
+        ],
+        "display-lg": [
+          "56px",
+          {
+            "lineHeight": "64px",
+            "letterSpacing": "-0.02em",
+            "fontWeight": "500"
+          }
+        ],
+        "headline-md": [
+          "28px",
+          {
+            "lineHeight": "36px",
+            "letterSpacing": "-0.01em",
+            "fontWeight": "500"
+          }
+        ],
+        "label-lg": [
+          "14px",
+          {
+            "lineHeight": "20px",
+            "letterSpacing": "0.04em",
+            "fontWeight": "600"
+          }
+        ],
+        "headline-lg-mobile": [
+          "28px",
+          {
+            "lineHeight": "36px",
+            "letterSpacing": "-0.01em",
+            "fontWeight": "500"
+          }
+        ],
+        "headline-lg": [
+          "40px",
+          {
+            "lineHeight": "48px",
+            "letterSpacing": "-0.015em",
+            "fontWeight": "500"
+          }
+        ]
+      }
+    },
+  },
+}</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 w-full z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-[1360px] mx-auto px-margin-sm md:px-margin lg:px-margin-lg flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md shrink-0"><img alt="MAN3 Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrByN1hzlM4EJMqRzJ9ItuGqj7sKt80FF_1ql6DCbgs272GSv_bjXD0P319ZAXdfqiyi3HvwFraBqAHDKIeC73RcHJ4cN71Z-wg_rXyv1g9-AhmHxbWDHVdFKD_iIGTq_dfLs-K8EPQOXljFl6HGaq5uUIC2Ey73vmPRHaT6lNCp-l0f9dIzEp8Eim8tkaG3BWPuj4tIEA7_-pfJ69XVXPh_kK43u347vu5uRLkxmKhZ"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary leading-none">MAN3</span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Bio-Agritech &amp; Konservasi</span></div></div><nav class="hidden xl:flex items-center gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-label-md rounded-lg"><a class="px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-label-md text-label-md" data-path="tentang-kami" href="#">Tentang Kami</a><a class="px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-label-md text-label-md" data-path="ekosistem-dan-konservasi" href="#">Ekosistem &amp; Konservasi</a><a class="px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-label-md text-label-md" data-path="katalog-pangan" href="#">Katalog Pangan</a><a class="px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-label-md text-label-md" data-path="kemitraan-b2b-dan-restoran" href="#">Kemitraan B2B &amp; Restoran</a><a class="px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-label-md text-label-md" data-path="dampak-dan-sertifikasi" href="#">Dampak &amp; Sertifikasi</a></nav><div class="flex items-center gap-space-md shrink-0"><a class="hidden sm:inline-flex items-center justify-center px-space-lg py-space-sm bg-primary-container hover:bg-primary text-on-primary rounded-lg font-label-md text-label-md transition-all shadow-[0_2px_6px_-1px_rgba(27,67,50,0.08)]" data-path="pengajuan-kemitraan" href="#">Ajukan Kemitraan B2B</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface min-h-[calc(100vh-20rem)]"><div class="flex flex-col w-full">
+<!-- HERO SECTION B2B -->
+<section class="relative w-full overflow-hidden bg-surface-container-low py-space-xl lg:py-24">
+<div class="max-w-[1360px] mx-auto px-margin-sm md:px-margin lg:px-margin-lg">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg items-center">
+<div class="lg:col-span-7 flex flex-col gap-space-md z-10">
+<div class="inline-flex items-center gap-space-xs self-start px-space-md py-space-xs rounded-full bg-surface-container-highest text-primary">
+<span class="material-symbols-outlined text-[16px] text-tertiary-container" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Program Pasokan Khusus HoReCa &amp; F&amp;B Enterprise</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary leading-tight font-medium max-w-2xl">
+            Pasokan Bahan Pangan Terstandar, Segar &amp; Terlacak untuk Bisnis Kuliner Anda
+          </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+            Kolaborasi strategis MAN3 bersama jaringan restoran, hotel, katering, dan supermarket. Memastikan chef dan manajer F&amp;B mendapatkan potongan daging berkualitas etis dan hasil panen bebas pestisida tepat waktu dengan stabilitas harga kontrak tahunan.
+          </p>
+<div class="flex flex-wrap items-center gap-space-md pt-space-sm">
+<a class="inline-flex items-center justify-center gap-space-xs px-space-xl py-space-md bg-secondary hover:bg-on-secondary-container text-on-secondary rounded-lg font-label-md text-label-md transition-all shadow-md" href="#onboarding-form">
+<span class="material-symbols-outlined text-[18px]">inventory_2</span>
+              Jadwalkan Pengiriman Sample
+            </a>
+<button class="inline-flex items-center justify-center gap-space-xs px-space-lg py-space-md bg-surface-container hover:bg-surface-container-high text-primary rounded-lg font-label-md text-label-md transition-all shadow-sm" onclick="alert('Katalog spesifikasi B2B dan estimasi harga kontrak telah diunduh.')" type="button">
+<span class="material-symbols-outlined text-[18px]">download_for_offline</span>
+              Unduh Pricelist &amp; Spesifikasi B2B
+            </button>
+</div>
+<div class="grid grid-cols-3 gap-space-md pt-space-lg mt-space-sm border-t-0 bg-surface-container-high/60 p-space-md rounded-xl backdrop-blur-sm">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant">SLA Dispatch Dapur</p>
+<p class="font-headline-sm text-headline-sm text-primary">04:30 WIB</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Garansi tiba sebelum prep</p>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant">Stabilitas Harga</p>
+<p class="font-headline-sm text-headline-sm text-primary">6-12 Bulan</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Kontrak lindung nilai panen</p>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant">Kepatuhan Suplai</p>
+<p class="font-headline-sm text-headline-sm text-primary">99.4%</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Tingkat akurasi pesanan</p>
+</div>
+</div>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="relative rounded-2xl overflow-hidden shadow-xl bg-surface-container">
+<img class="w-full h-[480px] object-cover" data-alt="Close up photograph of a professional head chef in a clean stainless steel commercial kitchen inspecting vibrant fresh heirloom vegetables and prime aged beef cuts delivered in eco-insulated chilled crates. Natural morning light, deep organic greens, warm earthen tones, high culinary editorial quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoYPLoEzxvH2Zkkp2rQ_-mE57oYu-2zCaNCK2aK8pXlg_pVl971OIwI1izR_qwzDxrZTKg3UzEUpJGW-f0Z8_u2sY-bMh1WBoXT4dxGeaVkQWDZ48iqwM1Dh5u1cN8-addKK2ZNDp0n6_sfBKjavVgrPwCKZ9cXzZOuLi_Dg8YM2_yzpeoXoxgCefW8wn-mxlG0-_GbdqsSVUrXkuEswQNIfz5a-cXDDYgITIJonY"/>
+<div class="absolute bottom-4 left-4 right-4 p-space-md rounded-xl bg-primary/95 text-on-primary backdrop-blur-md flex items-center justify-between shadow-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-tertiary-container flex items-center justify-center text-tertiary-fixed">
+<span class="material-symbols-outlined text-[20px]">ac_unit</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-primary-container uppercase tracking-wider">Cold-Chain Status</p>
+<p class="font-label-lg text-label-lg font-semibold">Terkontrol 2.4°C Rute Jabodetabek</p>
+</div>
+</div>
+<span class="px-space-sm py-space-xs rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-semibold">Aktif</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FITUR UNGGULAN LAYANAN RESTORAN & B2B -->
+<section class="w-full py-space-xl bg-surface">
+<div class="max-w-[1360px] mx-auto px-margin-sm md:px-margin lg:px-margin-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md mb-space-xl">
+<div class="max-w-2xl">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">Standardisasi Kelas Perhotelan &amp; Kuliner Presisi</span>
+<h2 class="font-headline-lg text-headline-lg text-primary mt-space-xs">Infrastruktur Pasokan yang Dibangun untuk Kecepatan Dapur Profesional</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">
+          Kami meniadakan perantara rantai pasok. Dari ladang dan peternakan regeneratif kami, langsung ke docking penerimaan bahan baku restoran Anda.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Card 1 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary mb-space-md">
+<span class="material-symbols-outlined text-[26px]">balance</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">Consistent Grade Quality</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Toleransi gramasi potongan daging maksimal ±15g per porsi steak. Daun salad disortir dengan ketat tanpa memar, menjaga yield penggunaan bahan baku dapur hingga 98%.
+            </p>
+</div>
+<div class="mt-space-lg pt-space-sm bg-surface-container-low p-space-xs rounded-lg">
+<span class="font-label-sm text-label-sm text-primary font-semibold flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Kalibrasi Digital Harian
+            </span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary mb-space-md">
+<span class="material-symbols-outlined text-[26px]">local_shipping</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">Dedicated Cold-Chain</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Armada van berpendingin dual-chamber (0-4°C untuk chilled meat &amp; sayur; -18°C untuk stok beku). Pengantaran subuh tepat waktu sebelum mise en place dimulai.
+            </p>
+</div>
+<div class="mt-space-lg pt-space-sm bg-surface-container-low p-space-xs rounded-lg">
+<span class="font-label-sm text-label-sm text-primary font-semibold flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[14px]">sensors</span> Real-time Temp Telemetry
+            </span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary mb-space-md">
+<span class="material-symbols-outlined text-[26px]">eco</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">Traceability &amp; Eco-Badge</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Lisensi eksklusif pemasangan emblem 'Supplied by MAN3 Bio-Conservation Farm' di buku menu Anda. Berikan QR story bagi pelanggan tentang jejak karbon &amp; asal panen.
+            </p>
+</div>
+<div class="mt-space-lg pt-space-sm bg-surface-container-low p-space-xs rounded-lg">
+<span class="font-label-sm text-label-sm text-primary font-semibold flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[14px]">qr_code_2</span> Menu Co-branding Kit
+            </span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary mb-space-md">
+<span class="material-symbols-outlined text-[26px]">support_agent</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">Dedicated Key Account</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Satu narahubung spesialis agronomi untuk pemesanan darurat hingga pukul 21:00 WIB untuk pengantaran esok pagi. Akses portal PO berbasis cloud dengan invoice bulanan.
+            </p>
+</div>
+<div class="mt-space-lg pt-space-sm bg-surface-container-low p-space-xs rounded-lg">
+<span class="font-label-sm text-label-sm text-primary font-semibold flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[14px]">timer</span> Respons Cepat &lt;15 Menit
+            </span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- KATALOG KHUSUS MITRA RESTORAN & SPESIFIKASI DAPUR -->
+<section class="w-full py-space-xl bg-surface-container-low">
+<div class="max-w-[1360px] mx-auto px-margin-sm md:px-margin lg:px-margin-lg">
+<div class="flex flex-col gap-space-xs mb-space-lg">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold">Katalog Bahan Baku Mentah &amp; Olahan</span>
+<h2 class="font-headline-lg text-headline-lg text-primary">Standarisasi Komoditas untuk Dapur Presisi</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+          Pilih kategori bahan pangan di bawah untuk melihat spesifikasi pemotongan dapur, MOQ (Minimum Order Quantity), dan jadwal siklus petik-ke-kirim.
+        </p>
+</div>
+<!-- Tab Buttons -->
+<div class="flex flex-wrap gap-space-xs mb-space-lg bg-surface-container p-1 rounded-xl w-fit">
+<button class="cat-btn px-space-md py-space-sm rounded-lg font-label-md text-label-md bg-primary-container text-on-primary font-medium transition-all shadow-sm" id="btn-daging" onclick="switchCategory('daging')" type="button">
+          Daging Sapi &amp; Unggas Etis
+        </button>
+<button class="cat-btn px-space-md py-space-sm rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" id="btn-sayuran" onclick="switchCategory('sayuran')" type="button">
+          Sayuran Daun Hidroponik &amp; Tanah Subur
+        </button>
+<button class="cat-btn px-space-md py-space-sm rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" id="btn-umbi" onclick="switchCategory('umbi')" type="button">
+          Umbi &amp; Buah Tropis Kuliner
+        </button>
+<button class="cat-btn px-space-md py-space-sm rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" id="btn-herba" onclick="switchCategory('herba')" type="button">
+          Bumbu &amp; Herba Segar
+        </button>
+</div>
+<!-- Bento Catalog Content Containers -->
+<!-- Category 1: Daging -->
+<div class="cat-content grid grid-cols-1 lg:grid-cols-3 gap-gutter" id="cat-daging">
+<div class="lg:col-span-1 rounded-xl overflow-hidden bg-surface-container-lowest shadow-sm flex flex-col">
+<img class="w-full h-56 object-cover" data-alt="High-end culinary photo of perfectly dry-aged grass-fed beef ribeye and sub-primal striploin on a dark granite butcher block, garnished with fresh rosemary sprigs, shot under warm atmospheric restaurant kitchen lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0cSQS49bID8zjqC9WvtAHPEHTtdDueqPh4IfN_ZMF77R-158fkZgWk3Hy_KpQMALU8tGYfQgGilhZohllbAjsEY4Di5JpwUpt_uY8Jm7XZUEsfBKVQ-LSBiUJ7m_sCEpxqyCC0cB4_VUmkVTtuKxQLdf9vG5vJUpLGCUPfisS-Kuv2Tu9KxLH-sBAHJceAM4_2rir1xzbt4NBqSN7FPPRRnv-DIg0d8zLiP1Ehvk"/>
+<div class="p-space-lg flex flex-col justify-between flex-1">
+<div>
+<span class="px-space-sm py-space-xs rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">Dry-Aged &amp; Fresh Cuts</span>
+<h3 class="font-headline-md text-headline-md text-primary mt-space-xs">Pasture-Fed Prime Beef</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">
+                Sapi pedaging dipelihara dengan rotasi padang rumput alami tanpa suntikan hormon. Marbling Score 4-6 alami dengan profil rasa gurih yang bersih.
+              </p>
+</div>
+<div class="mt-space-md pt-space-md bg-surface-container p-space-sm rounded-lg">
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface-variant">MOQ Kitchen:</span>
+<span class="font-semibold text-primary">5 kg / cut type</span>
+</div>
+<div class="flex justify-between items-center text-body-sm mt-1">
+<span class="text-on-surface-variant">Lead Time:</span>
+<span class="font-semibold text-primary">24 Jam (Chilled)</span>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Sub-Primal Cut</span>
+<span class="font-label-sm text-label-sm bg-surface-container-high px-space-xs py-0.5 rounded text-on-surface">Vacuum Chilled</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-primary mt-space-xs">Tenderloin &amp; Striploin Bio-Grassfed</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">
+                Cocok untuk steakhouse &amp; fine-dining. Trimmed 95% denuded, siap potong portion steak tanpa buangan berlebih.
+              </p>
+</div>
+<div class="mt-space-md space-y-1 text-label-sm text-on-surface-variant bg-surface p-space-sm rounded">
+<p><strong class="text-on-surface">Kemasan:</strong> Food-grade Cryovac vacuum seal per 1.8-2.5 kg</p>
+<p><strong class="text-on-surface">Jadwal Kirim:</strong> Selasa, Kamis, Sabtu (Pukul 05:00 WIB)</p>
+</div>
+</div>
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Unggas Organik</span>
+<span class="font-label-sm text-label-sm bg-surface-container-high px-space-xs py-0.5 rounded text-on-surface">Air-Chilled</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-primary mt-space-xs">Ayam Kampung Bio-Probiotik Pasture-Raised</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">
+                Bebas residu antibiotik. Diberi pakan fermentasi herbal. Karkas padat dengan kulit kenyal, sangat ideal untuk roasting dan kaldu pekat.
+              </p>
+</div>
+<div class="mt-space-md space-y-1 text-label-sm text-on-surface-variant bg-surface p-space-sm rounded">
+<p><strong class="text-on-surface">Kemasan:</strong> Karkas utuh eviscerated 0.9 - 1.2 kg per ekor</p>
+<p><strong class="text-on-surface">MOQ Kitchen:</strong> 10 ekor / batch order</p>
+</div>
+</div>
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Charcuterie &amp; Cured</span>
+<span class="font-label-sm text-label-sm bg-surface-container-high px-space-xs py-0.5 rounded text-on-surface">Artisan Small-Batch</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-primary mt-space-xs">Pastrami &amp; Bresaola Daging Sapi Konservasi</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">
+                Asap dingin menggunakan kayu buah lokal terpilih selama 14 hari proses curing. Karakter umami intens tanpa MSG tambahan.
+              </p>
+</div>
+<div class="mt-space-md space-y-1 text-label-sm text-on-surface-variant bg-surface p-space-sm rounded">
+<p><strong class="text-on-surface">Spesifikasi:</strong> Sliced 1.2mm atau block utuh untuk deli cafe</p>
+<p><strong class="text-on-surface">Shelf Life:</strong> 60 hari suhu chilled terjamin</p>
+</div>
+</div>
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Katering &amp; QSR Batch</span>
+<span class="font-label-sm text-label-sm bg-surface-container-high px-space-xs py-0.5 rounded text-on-surface">Portion Controlled</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-primary mt-space-xs">Beef Diced &amp; Minced 85/15 Lean</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">
+                Gilingan daging murni untuk burger patty restoran atau potongan dadu goulash/rendang siap masak tanpa tulang atau gristle.
+              </p>
+</div>
+<div class="mt-space-md space-y-1 text-label-sm text-on-surface-variant bg-surface p-space-sm rounded">
+<p><strong class="text-on-surface">Standar:</strong> Fat ratio terstandar analitis lab</p>
+<p><strong class="text-on-surface">MOQ Kitchen:</strong> 15 kg (Kemasan per 2.5 kg pack)</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Category 2: Sayuran -->
+<div class="cat-content hidden grid grid-cols-1 lg:grid-cols-3 gap-gutter" id="cat-sayuran">
+<div class="lg:col-span-1 rounded-xl overflow-hidden bg-surface-container-lowest shadow-sm flex flex-col">
+<img class="w-full h-56 object-cover" data-alt="Vibrant close-up of harvested crisp hydroponic butterhead lettuces and wild rocket leaves with dewdrops, placed in natural wooden crates on a farm staging table under bright natural morning sunlight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZfwm3dm78sk1tWD1_2-Y_Cw54SSXAIPnqn2TlEKj6zQGBrFpk7pA_IlJM_B7MLfej_jU8Rq8ucesNSnHbev1NfkWAhQ8dNBjToxelxoXZAb6pxykwkwSzNPP6NLk3ME0PcWtA1jj8qt4r1vyC3_8-uNV6CS2ag9l5w1ASAYHnMTEFW5UNW3iNt-kqvSOUn5EcNYCNlYLMVWE4l3kGVw0TxMazWan8IFYoVlpIXBE"/>
+<div class="p-space-lg flex flex-col justify-between flex-1">
+<div>
+<span class="px-space-sm py-space-xs rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm font-semibold">Petik Malam &amp; Kirim Subuh</span>
+<h3 class="font-headline-md text-headline-md text-primary mt-space-xs">Microgreens &amp; Salad Greens</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">
+                Sistem hidroponik tertutup dan tanah humus organik lereng gunung. Tekstur renyah tahan simpan hingga 7 hari di chiller dapur tanpa menguning.
+              </p>
+</div>
+<div class="mt-space-md pt-space-md bg-surface-container p-space-sm rounded-lg">
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface-variant">Siklus Panen:</span>
+<span class="font-semibold text-primary">Petik Jam 23:00 WIB</span>
+</div>
+<div class="flex justify-between items-center text-body-sm mt-1">
+<span class="text-on-surface-variant">Tiba di Dapur:</span>
+<span class="font-semibold text-primary">05:00 - 06:30 WIB</span>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Salad Grade A</span>
+<h4 class="font-headline-sm text-headline-sm text-primary mt-space-xs">Butterhead &amp; Romaine Crispy</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Akar basah terproteksi spons biodegradabel untuk kesegaran maksimal saat plating.</p>
+<p class="mt-space-md text-label-sm text-on-surface-variant">MOQ: 5 kg | Pre-washed ozone option available</p>
+</div>
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Garnish Presisi</span>
+<h4 class="font-headline-sm text-headline-sm text-primary mt-space-xs">Living Microgreens Trays</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Red radish, pea shoots, amaranth. Dikirim dalam tray hidup untuk dipotong segar oleh chef saat pesanan masuk.</p>
+<p class="mt-space-md text-label-sm text-on-surface-variant">MOQ: 6 tray / order</p>
+</div>
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Brassica Organik</span>
+<h4 class="font-headline-sm text-headline-sm text-primary mt-space-xs">Baby Kale Lacinato &amp; Curly</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Daun bebas ulat dengan penanganan biological control. Tekstur lembut tidak pahit untuk menu healthy-bowl.</p>
+<p class="mt-space-md text-label-sm text-on-surface-variant">MOQ: 3 kg | Daun pilihan bebas tangkai keras</p>
+</div>
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Asia &amp; Wok Prep</span>
+<h4 class="font-headline-sm text-headline-sm text-primary mt-space-xs">Bok Choy &amp; Kailan Mini Unggul</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Kerapatan batang renyah dengan rasa manis pekat. Sempurna untuk hidangan tumis cepat suhu tinggi.</p>
+<p class="mt-space-md text-label-sm text-on-surface-variant">MOQ: 10 kg | Standarisasi panjang 12-15 cm</p>
+</div>
+</div>
+</div>
+<!-- Category 3: Umbi & Buah -->
+<div class="cat-content hidden grid grid-cols-1 lg:grid-cols-3 gap-gutter" id="cat-umbi">
+<div class="lg:col-span-1 rounded-xl overflow-hidden bg-surface-container-lowest shadow-sm flex flex-col">
+<img class="w-full h-56 object-cover" data-alt="Still life photograph of heirloom purple sweet potatoes, culinary carrots, and ripe tropical passion fruits cut in half showing glistening seeds on an earthy terracotta tray, warm rustic tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfj_jLFSnQwOdeqkY7icbPXuNYibq7-5-FdWpgDwNCHDnP_0dLbyGkzOamNIl-oWLYL5iHQ5z7HTAx-gn4d9DcHEulyrVxPfYX9IM4lBoH0YpT2r0b6ctXvos2AYgPso9HeZYCA8rleCVwvhigAggQvY9C7twSrFE3M6IZglNcEzy_2KG6ZAxR7Nv3oHxyS_6jni1wBgwvkEYsVJ8ie-iSbSsHYJryj1estt0DKeY"/>
+<div class="p-space-lg flex flex-col justify-between flex-1">
+<div>
+<span class="px-space-sm py-space-xs rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">Kandungan Brix Tinggi</span>
+<h3 class="font-headline-md text-headline-md text-primary mt-space-xs">Umbi &amp; Buah Gastronomi</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">
+                Dipanen pada tingkat kematangan optimal khusus kebutuhan pastry, reduction sauce, dan bakery premium.
+              </p>
+</div>
+<div class="mt-space-md pt-space-md bg-surface-container p-space-sm rounded-lg">
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface-variant">Kalibrasi Ukuran:</span>
+<span class="font-semibold text-primary">Uniform ±10%</span>
+</div>
+<div class="flex justify-between items-center text-body-sm mt-1">
+<span class="text-on-surface-variant">Sortasi Cacat:</span>
+<span class="font-semibold text-primary">0% Blemish Tol.</span>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Pastry &amp; Puree</span>
+<h4 class="font-headline-sm text-headline-sm text-primary mt-space-xs">Ubi Ungu Gunung Ciremai Heritage</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Kadar pati padat dengan warna ungu alami pekat tanpa pewarna tambahan. Pilihan utama chef patisserie.</p>
+<p class="mt-space-md text-label-sm text-on-surface-variant">MOQ: 20 kg | Crate ventilasi kayu</p>
+</div>
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Bar &amp; Mocktail Base</span>
+<h4 class="font-headline-sm text-headline-sm text-primary mt-space-xs">Markisa Hutan &amp; Jeruk Purut Seedless</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Aroma sitrus intens dengan keasaman seimbang untuk racikan minuman artisanal dan saus ceviche.</p>
+<p class="mt-space-md text-label-sm text-on-surface-variant">MOQ: 5 kg | Panen pohon terseleksi</p>
+</div>
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Roasting Selection</span>
+<h4 class="font-headline-sm text-headline-sm text-primary mt-space-xs">Baby Heirloom Carrots Tri-Color</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Kuning, ungu, oranye dengan batang daun segar utuh untuk plating visual hidangan utama modern.</p>
+<p class="mt-space-md text-label-sm text-on-surface-variant">MOQ: 5 kg | Bersih tanah terstandar</p>
+</div>
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Dessert &amp; Sorbet</span>
+<h4 class="font-headline-sm text-headline-sm text-primary mt-space-xs">Nanas Madu Organik Pasirwangi</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Tingkat kemanisan stabil 16-18 Brix tanpa sensasi gatal di lidah berkat pengolahan enzim tanah alami.</p>
+<p class="mt-space-md text-label-sm text-on-surface-variant">MOQ: 10 buah | Grade Super 1.2kg+</p>
+</div>
+</div>
+</div>
+<!-- Category 4: Herba & Bumbu -->
+<div class="cat-content hidden grid grid-cols-1 lg:grid-cols-3 gap-gutter" id="cat-herba">
+<div class="lg:col-span-1 rounded-xl overflow-hidden bg-surface-container-lowest shadow-sm flex flex-col">
+<img class="w-full h-56 object-cover" data-alt="Artisanal display of freshly cut aromatic herbs, including fresh Italian basil, tarragon, lemongrass stalks, and galangal roots on a dark slate board with subtle kitchen smoke background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDd91UdrZpe9hNRQR2ihK-LAbB9gjUuxlcm4RuhetxUCcTzGvtOIiRZiPOrKNt3ICblDgbaQdn0vkQC5cx-B8YBIE3edUNN9eVuTOpAdgWl9wsjTbo9DJjzoI6oM6VNY94ubr-FoTez59b5wd14wVKGgIYwd74NH0l4EasMwpuWRqCkJ-Vwv6ZreqCHWqlkrXH2McnF4GKrwSv547B7YoVOT7kOfb9T31nPyO0UJRQ"/>
+<div class="p-space-lg flex flex-col justify-between flex-1">
+<div>
+<span class="px-space-sm py-space-xs rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm font-semibold">Minyak Atsiri Terkonsentrasi</span>
+<h3 class="font-headline-md text-headline-md text-primary mt-space-xs">Aromatik &amp; Herba Segar</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">
+                Ditanam pada ketinggian 1.100 mdpl yang memicu sintesis minyak esensial herbal dua kali lebih tajam dibanding herba dataran rendah.
+              </p>
+</div>
+<div class="mt-space-md pt-space-md bg-surface-container p-space-sm rounded-lg">
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface-variant">Kemasan:</span>
+<span class="font-semibold text-primary">Micro-perforated bag</span>
+</div>
+<div class="flex justify-between items-center text-body-sm mt-1">
+<span class="text-on-surface-variant">Kondisi:</span>
+<span class="font-semibold text-primary">Kering daun (Chilled)</span>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Western Classical</span>
+<h4 class="font-headline-sm text-headline-sm text-primary mt-space-xs">Fresh Rosemary, Thyme &amp; Tarragon</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Batang kuat dan daun segar tahan browning selama 10 hari penyimpanan refrigerator.</p>
+<p class="mt-space-md text-label-sm text-on-surface-variant">MOQ: 500g per jenis herba</p>
+</div>
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Italian Fine</span>
+<h4 class="font-headline-sm text-headline-sm text-primary mt-space-xs">Genovese Sweet Basil</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Lembar daun lebar tanpa bercak nekrotik. Karakter manis pedas sempurna untuk pesto otentik.</p>
+<p class="mt-space-md text-label-sm text-on-surface-variant">MOQ: 1 kg | Kemasan anti benturan</p>
+</div>
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Rempah Nusantara</span>
+<h4 class="font-headline-sm text-headline-sm text-primary mt-space-xs">Jahe Merah &amp; Kunyit Biogenik</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Kandungan kurkuminoid tinggi, bersih dicuci siap olah tanpa menyita waktu prep dapur.</p>
+<p class="mt-space-md text-label-sm text-on-surface-variant">MOQ: 10 kg | Grade ekspor</p>
+</div>
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Pungency Selection</span>
+<h4 class="font-headline-sm text-headline-sm text-primary mt-space-xs">Cabai Habanero &amp; Rawit Merah Subur</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Tingkat kepedasan stabil sepanjang musim hujan dan kemarau tanpa lonjakan harga tiba-tiba.</p>
+<p class="mt-space-md text-label-sm text-on-surface-variant">MOQ: 5 kg | Tangkai terpetik bersih</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- TESTIMONI & KISAH KOLABORASI CHEF -->
+<section class="w-full py-space-xl bg-surface">
+<div class="max-w-[1360px] mx-auto px-margin-sm md:px-margin lg:px-margin-lg">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg items-center">
+<div class="lg:col-span-5 relative">
+<div class="relative rounded-2xl overflow-hidden shadow-lg bg-surface-container">
+<img class="w-full h-[520px] object-cover" data-alt="Portrait of an experienced Indonesian executive chef in pristine white chef uniform smiling warmly in a fine dining restaurant dining room with verdant indoor plants and modern wooden decor, editorial style photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDu6y2rnQ_WMcSPIEZ5DB7ddhtYzVKkkPsc84mthJmYQEOtsj53EOgiLo-B50zQTGUhGygDMbElWWeUySGzqQE1UbSAKibZqRO3LUI1-owuAWybauot1JeN5h0hOFmolVOJ7CzitnKxp_pLRYb8IQF3k6GMlkRRTtz4d6njWvQw-gwUjVvDeF2ygkjY_DpUNEnIwQka0Owfujq28KpfwY-kF52BWTgIIM7UpEFsSvM"/>
+<div class="absolute top-4 left-4 p-space-sm rounded-lg bg-surface/90 backdrop-blur-md">
+<span class="font-label-sm text-label-sm uppercase text-secondary font-bold">Mitra Restoran MAN3 sejak 2022</span>
+</div>
+<div class="absolute bottom-4 left-4 right-4 p-space-md rounded-xl bg-surface/95 backdrop-blur-md shadow-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center font-headline-sm text-headline-sm text-primary">
+                  ✦
+                </div>
+<div>
+<h4 class="font-label-lg text-label-lg font-bold text-primary">Chef Adrian Sasmita</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Executive Chef &amp; Co-Founder, Akar Terakota Dining</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-7 flex flex-col gap-space-md lg:pl-space-md">
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<blockquote class="font-headline-md text-headline-md text-primary italic leading-relaxed">
+            “Tantangan terbesar konsep farm-to-table di kota metropolitan adalah inkonsistensi bahan baku. Bersama MAN3, kami mendapatkan tekstur daging sapi yang matang sempurna secara etis, serta daun salad dengan daya tahan kerenyahan yang belum pernah saya temukan di supplier lain. Nilai tambah stiker traceability mereka bahkan menjadi topik obrolan favorit para tamu kami.”
+          </blockquote>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-space-md pt-space-md">
+<div class="p-space-sm rounded-lg bg-surface-container-low">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Food Waste Dapur</p>
+<p class="font-headline-sm text-headline-sm text-primary">-35%</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Penurunan trimming loss</p>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Frekuensi Pengiriman</p>
+<p class="font-headline-sm text-headline-sm text-primary">4x / Minggu</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Jadwal konsisten subuh</p>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Menu Eco-Badge</p>
+<p class="font-headline-sm text-headline-sm text-primary">12 Items</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Menu bersertifikat MAN3</p>
+</div>
+</div>
+<div class="pt-space-xs flex items-center gap-space-md">
+<img class="h-10 w-auto opacity-70 object-contain" data-alt="Monochrome vector-style logo of a fine dining modern Indonesian restaurant named Akar Terakota, clean typography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4ckL7BR_Z8oHL_FQrjOtBPDFJZBa6oIO81DFVvUgFfs9QohEbx6_8JDRQFZ1dXvjuRvqBB_zaCMPLWDZSFSjoqJENXUcgcwyv48ZMXS4mPlebBcADRcJHNba5MkU1dx8aLr5MKXaH560Y-4GC8Dmaje49WXFaHanFYJSBiBdJCXy-TUO-jPBuPg17f8O-0u3A9o6A824tOXqImJUuOowCaKpPWdXFmEt9XSC4bHw"/>
+<span class="text-on-surface-variant font-label-md text-label-md">Bersama 40+ grup restoran &amp; hotel berbintang di Indonesia</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FORM PENGAJUAN PASOKAN KEMITRAAN (B2B ONBOARDING) -->
+<section class="w-full py-space-xl bg-surface-container-low" id="onboarding-form">
+<div class="max-w-[1360px] mx-auto px-margin-sm md:px-margin lg:px-margin-lg">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg">
+<!-- Left Column: Explanation & Guarantees -->
+<div class="lg:col-span-5 flex flex-col justify-between gap-space-lg">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">Portal Onboarding Cepat</span>
+<h2 class="font-headline-lg text-headline-lg text-primary mt-space-xs">Mulai Uji Coba Kualitas MAN3 di Dapur Anda Hari Ini</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-md">
+              Kami memahami keputusan dapur berada di tangan tim kuliner. Dapatkan <span class="text-primary font-semibold">Complimentary Chef Sample Kit</span> yang disesuaikan dengan menu dan konsep outlet Anda tanpa ikatan kontrak awal.
+            </p>
+<div class="flex flex-col gap-space-md mt-space-lg">
+<div class="flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">package_2</span>
+</div>
+<div>
+<h4 class="font-label-lg text-label-lg font-bold text-primary">Sample Box Bebas Biaya</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Pilihan cut daging sampel dan aneka daun panen segar dikirim langsung ke kitchen dock Anda.</p>
+</div>
+</div>
+<div class="flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+</div>
+<div>
+<h4 class="font-label-lg text-label-lg font-bold text-primary">Simulasi Biaya Kontrak</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Dapatkan proposal penghematan biaya bahan baku berbasis proyeksi volume mingguan restoran Anda.</p>
+</div>
+</div>
+<div class="flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</div>
+<div>
+<h4 class="font-label-lg text-label-lg font-bold text-primary">Audit Rantai Pasok Terbuka</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Undangan kunjungan farm inspection bagi Executive Chef dan tim QA sebelum menandatangani perjanjian pasokan.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container text-on-surface">
+<p class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Bantuan Pengadaan Segera?</p>
+<p class="font-body-md text-body-md font-semibold text-primary mt-1">Direct Procurement Hotline: +62 21 5088 3491</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Senin - Sabtu: 06.00 - 21.00 WIB (Fast WhatsApp Routing)</p>
+</div>
+</div>
+<!-- Right Column: Interactive Form -->
+<div class="lg:col-span-7">
+<div class="p-space-lg lg:p-space-xl rounded-2xl bg-surface-container-lowest shadow-xl">
+<h3 class="font-headline-md text-headline-md text-primary mb-space-xs">Form Pengajuan Pasokan &amp; Sample Kit</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-lg">Lengkapi profil bisnis F&amp;B Anda untuk menerima penawaran harga khusus mitra.</p>
+<form class="space-y-space-md" id="b2bForm" onsubmit="handleB2BSubmit(event)">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1 font-semibold">Nama Bisnis / Brand Restoran *</label>
+<input class="w-full px-space-md py-space-sm rounded-lg bg-surface-container-low text-on-surface font-body-sm focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Contoh: Osteria Nusantara Group" required="" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1 font-semibold">Kategori Usaha F&amp;B *</label>
+<select class="w-full px-space-md py-space-sm rounded-lg bg-surface-container-low text-on-surface font-body-sm focus:outline-none focus:ring-2 focus:ring-primary" required="">
+<option disabled="" selected="" value="">Pilih Klasifikasi</option>
+<option value="fine-dining">Restoran Fine Dining / Casual Dining</option>
+<option value="cafe">Cafe &amp; Bistro / Artisanal Bakery</option>
+<option value="hotel">Jaringan Hotel &amp; Resort Berbintang</option>
+<option value="catering">Katering Korporasi &amp; Industri</option>
+<option value="supermarket">Supermarket Premium &amp; Specialty Grocer</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1 font-semibold">Lokasi Kitchen Dock / Kota *</label>
+<input class="w-full px-space-md py-space-sm rounded-lg bg-surface-container-low text-on-surface font-body-sm focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Contoh: Senopati, Jakarta Selatan" required="" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1 font-semibold">Estimasi Kebutuhan Mingguan *</label>
+<select class="w-full px-space-md py-space-sm rounded-lg bg-surface-container-low text-on-surface font-body-sm focus:outline-none focus:ring-2 focus:ring-primary" required="">
+<option disabled="" selected="" value="">Volume Bahan Mentah</option>
+<option value="small">50 kg - 150 kg / minggu (Single Outlet)</option>
+<option value="medium">150 kg - 500 kg / minggu (Multi-Outlet)</option>
+<option value="large">500 kg - 2.000 kg / minggu (Hotel / Cloud Kitchen)</option>
+<option value="enterprise">&gt; 2.000 kg / minggu (Enterprise / Supermarket)</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1 font-semibold">Komoditas yang Ingin Diuji (Pilih Semua yang Relevan) *</label>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-xs pt-1">
+<label class="flex items-center gap-space-xs p-space-xs rounded bg-surface cursor-pointer text-body-sm text-on-surface">
+<input checked="" class="rounded accent-primary" name="sample_cat" type="checkbox" value="beef"/> Daging Sapi
+                  </label>
+<label class="flex items-center gap-space-xs p-space-xs rounded bg-surface cursor-pointer text-body-sm text-on-surface">
+<input class="rounded accent-primary" name="sample_cat" type="checkbox" value="poultry"/> Ayam Probiotik
+                  </label>
+<label class="flex items-center gap-space-xs p-space-xs rounded bg-surface cursor-pointer text-body-sm text-on-surface">
+<input checked="" class="rounded accent-primary" name="sample_cat" type="checkbox" value="greens"/> Salad &amp; Greens
+                  </label>
+<label class="flex items-center gap-space-xs p-space-xs rounded bg-surface cursor-pointer text-body-sm text-on-surface">
+<input class="rounded accent-primary" name="sample_cat" type="checkbox" value="herbs"/> Herba Segar
+                  </label>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1 font-semibold">Nama PIC &amp; Jabatan *</label>
+<input class="w-full px-space-md py-space-sm rounded-lg bg-surface-container-low text-on-surface font-body-sm focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Contoh: Chef Bagus (Head of Kitchen)" required="" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1 font-semibold">WhatsApp PIC (Untuk Dispatch Sample) *</label>
+<input class="w-full px-space-md py-space-sm rounded-lg bg-surface-container-low text-on-surface font-body-sm focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Contoh: 081234567890" required="" type="tel"/>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1 font-semibold">Catatan Khusus Pemotongan / Spesifikasi Menu (Opsional)</label>
+<textarea class="w-full px-space-md py-space-sm rounded-lg bg-surface-container-low text-on-surface font-body-sm focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Sebutkan preferensi ketebalan cut, sertifikasi yang diwajibkan (Halal/ISO), atau waktu ideal penerimaan sample..." rows="2"></textarea>
+</div>
+<div class="pt-space-xs">
+<button class="w-full py-space-md px-space-lg bg-primary hover:bg-primary-container text-on-primary rounded-lg font-label-lg text-label-lg font-semibold transition-all shadow-md flex items-center justify-center gap-space-sm" id="submitBtn" type="submit">
+<span class="material-symbols-outlined text-[20px]">local_shipping</span>
+                  Kirim Pengajuan Pasokan &amp; Dapatkan Sample Kit
+                </button>
+<p class="text-center font-label-sm text-label-sm text-on-surface-variant mt-space-xs">
+                  Tim Supply Specialist MAN3 akan menghubungi dalam 1x24 jam untuk verifikasi slot pengantaran sample dingin.
+                </p>
+</div>
+</form>
+<div class="hidden mt-space-md p-space-md rounded-xl bg-surface-container text-on-surface text-center" id="formSuccessMessage">
+<span class="material-symbols-outlined text-primary text-[36px]">task_alt</span>
+<h4 class="font-headline-sm text-headline-sm text-primary mt-1">Pengajuan Berhasil Diterima!</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                Account Manager MAN3 untuk sektor Anda sedang menyiapkan jadwal slot pengiriman Chef Sample Kit dingin ke alamat docking Anda.
+              </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- JAVASCRIPT LOGIC -->
+<script>
+    function switchCategory(catId) {
+      // Hide all contents
+      document.querySelectorAll('.cat-content').forEach(el => {
+        el.classList.add('hidden');
+      });
+      // Show selected content
+      const target = document.getElementById('cat-' + catId);
+      if (target) {
+        target.classList.remove('hidden');
+      }
+
+      // Reset button styles
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        btn.classList.remove('bg-primary-container', 'text-on-primary', 'shadow-sm');
+        btn.classList.add('text-on-surface-variant');
+      });
+
+      // Highlight active button
+      const activeBtn = document.getElementById('btn-' + catId);
+      if (activeBtn) {
+        activeBtn.classList.remove('text-on-surface-variant');
+        activeBtn.classList.add('bg-primary-container', 'text-on-primary', 'shadow-sm');
+      }
+    }
+
+    function handleB2BSubmit(e) {
+      e.preventDefault();
+      const form = document.getElementById('b2bForm');
+      const success = document.getElementById('formSuccessMessage');
+      const submitBtn = document.getElementById('submitBtn');
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="material-symbols-outlined text-[20px] animate-spin">refresh</span> Memproses Pengajuan...';
+
+      setTimeout(() => {
+        form.classList.add('hidden');
+        success.classList.remove('hidden');
+      }, 900);
+    }
+  </script>
+</div></main><footer class="w-full bg-surface-container-low mt-space-xl"><div class="max-w-[1360px] mx-auto px-margin-sm md:px-margin lg:px-margin-lg py-space-xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-gutter-lg"><div class="lg:col-span-4 flex flex-col gap-space-md"><div class="flex items-center gap-space-md"><img alt="MAN3 Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrByN1hzlM4EJMqRzJ9ItuGqj7sKt80FF_1ql6DCbgs272GSv_bjXD0P319ZAXdfqiyi3HvwFraBqAHDKIeC73RcHJ4cN71Z-wg_rXyv1g9-AhmHxbWDHVdFKD_iIGTq_dfLs-K8EPQOXljFl6HGaq5uUIC2Ey73vmPRHaT6lNCp-l0f9dIzEp8Eim8tkaG3BWPuj4tIEA7_-pfJ69XVXPh_kK43u347vu5uRLkxmKhZ"/><span class="font-headline-sm text-headline-sm text-primary">MAN3</span></div><p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm">Pelopor integrasi bioteknologi agrikultur, peternakan regeneratif, dan pemulihan keanekaragaman hayati nusantara untuk pasokan bahan pangan bermutu tinggi sektor B2B, HoReCa, dan retail premium.</p><div class="flex flex-wrap items-center gap-space-xs pt-space-xs"><span class="px-space-sm py-space-xs rounded-full bg-surface-container-highest text-on-surface font-label-sm text-label-sm uppercase">ISO 22000 Certified</span><span class="px-space-sm py-space-xs rounded-full bg-surface-container-highest text-on-surface font-label-sm text-label-sm uppercase">Organik Indonesia</span><span class="px-space-sm py-space-xs rounded-full bg-surface-container-highest text-on-surface font-label-sm text-label-sm uppercase">Carbon Neutral Terverifikasi</span></div></div><div class="lg:col-span-2 flex flex-col gap-space-sm"><span class="font-label-lg text-label-lg text-primary uppercase">Navigasi</span><ul class="flex flex-col gap-space-xs"><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer">Tentang Kami</li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer">Ekosistem Terintegrasi</li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer">Katalog Pangan Segar</li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer">Laporan Dampak Hayati</li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer">Karier Agronomi</li></ul></div><div class="lg:col-span-3 flex flex-col gap-space-sm"><span class="font-label-lg text-label-lg text-primary uppercase">Portal Kemitraan B2B</span><p class="font-body-sm text-body-sm text-on-surface-variant">Penyedia kontrak suplai skala grosir bagi rantai hotel, grup restoran fine-dining, dan eksportir bahan organik.</p><div class="flex flex-col gap-space-xs pt-space-xs"><span class="font-body-sm text-body-sm text-on-surface font-semibold flex items-center gap-space-xs"><span class="material-symbols-outlined text-[16px] text-primary">mail</span> b2b@man3-agri.co.id</span><span class="font-body-sm text-body-sm text-on-surface font-semibold flex items-center gap-space-xs"><span class="material-symbols-outlined text-[16px] text-primary">call</span> +62 21 5088 3491</span><span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-space-xs"><span class="material-symbols-outlined text-[16px] text-primary">schedule</span> Layanan Dispatch: 04.00 - 18.00 WIB</span></div></div><div class="lg:col-span-3 flex flex-col gap-space-sm"><span class="font-label-lg text-label-lg text-primary uppercase">Kantor Pusat &amp; Bio-Hub</span><p class="font-body-sm text-body-sm text-on-surface-variant">Kawasan Agrowisata &amp; Pusat Penelitian Terpadu MAN3, Jl. Raya Konservasi Hayati No. 42, Cisarua, Jawa Barat 16750</p><div class="flex items-center gap-space-sm pt-space-xs"><div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center hover:bg-surface-container-high transition-colors cursor-pointer"><span class="material-symbols-outlined text-[18px] text-primary">public</span></div><div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center hover:bg-surface-container-high transition-colors cursor-pointer"><span class="material-symbols-outlined text-[18px] text-primary">share</span></div><div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center hover:bg-surface-container-high transition-colors cursor-pointer"><span class="material-symbols-outlined text-[18px] text-primary">feed</span></div><div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center hover:bg-surface-container-high transition-colors cursor-pointer"><span class="material-symbols-outlined text-[18px] text-primary">hub</span></div></div></div></div><div class="mt-space-xl pt-space-lg flex flex-col sm:flex-row items-center justify-between gap-space-md text-on-surface-variant font-label-md text-label-md"><p>© 2025 PT MAN3 Agri Bio-Konservasi Nusantara. Hak Cipta Dilindungi Undang-Undang.</p><div class="flex items-center gap-space-lg"><span class="hover:text-on-surface cursor-pointer">Kebijakan Privasi</span><span class="hover:text-on-surface cursor-pointer">Standar Rantai Pasok</span><span class="hover:text-on-surface cursor-pointer">Integritas Sertifikasi</span></div></div></div></footer></body></html>

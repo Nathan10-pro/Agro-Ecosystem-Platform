@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+
+<html lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&amp;family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&amp;family=Space+Grotesk:wght@400..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "surface-container-highest": "#d0e8d8",
+        "on-tertiary-fixed": "#002113",
+        "surface-container-low": "#e1fae9",
+        "on-surface": "#0a1f16",
+        "inverse-primary": "#a5d0b9",
+        "inverse-surface": "#20352a",
+        "outline": "#717973",
+        "on-primary": "#ffffff",
+        "surface-container": "#dbf4e4",
+        "on-error-container": "#93000a",
+        "on-secondary-fixed": "#360f01",
+        "on-tertiary-container": "#53b889",
+        "secondary": "#885039",
+        "surface-container-high": "#d5eede",
+        "primary-fixed": "#c1ecd4",
+        "tertiary-container": "#00452c",
+        "on-primary-fixed-variant": "#274e3d",
+        "error-container": "#ffdad6",
+        "tertiary": "#002d1b",
+        "surface-tint": "#3f6653",
+        "background": "#e8ffef",
+        "outline-variant": "#c1c8c2",
+        "primary-fixed-dim": "#a5d0b9",
+        "error": "#ba1a1a",
+        "on-error": "#ffffff",
+        "primary": "#012d1d",
+        "inverse-on-surface": "#def7e6",
+        "surface-bright": "#e8ffef",
+        "secondary-container": "#ffb599",
+        "primary-container": "#1b4332",
+        "on-tertiary": "#ffffff",
+        "tertiary-fixed-dim": "#75daa8",
+        "on-primary-container": "#86af99",
+        "surface-variant": "#d0e8d8",
+        "tertiary-fixed": "#92f7c3",
+        "surface-container-lowest": "#ffffff",
+        "on-secondary": "#ffffff",
+        "on-secondary-container": "#7a442e",
+        "surface": "#e8ffef",
+        "on-surface-variant": "#414844",
+        "on-tertiary-fixed-variant": "#005235",
+        "on-primary-fixed": "#002114",
+        "on-secondary-fixed-variant": "#6c3924",
+        "on-background": "#0a1f16",
+        "secondary-fixed": "#ffdbce",
+        "surface-dim": "#c7e0d0",
+        "secondary-fixed-dim": "#ffb599"
+      },
+      "borderRadius": {
+        "DEFAULT": "0.125rem",
+        "lg": "0.25rem",
+        "xl": "0.5rem",
+        "full": "0.75rem"
+      },
+      "spacing": {
+        "space-sm": "0.5rem",
+        "space-xl": "2.5rem",
+        "margin-sm": "1rem",
+        "margin-lg": "4rem",
+        "gutter": "1.5rem",
+        "space-md": "1rem",
+        "gutter-lg": "2rem",
+        "gutter-sm": "1rem",
+        "space-lg": "1.5rem",
+        "margin": "1.5rem",
+        "space-xs": "0.25rem"
+      },
+      "fontFamily": {
+        "label-md": [
+          "Space Grotesk"
+        ],
+        "body-sm": [
+          "Plus Jakarta Sans"
+        ],
+        "headline-sm": [
+          "Newsreader"
+        ],
+        "body-lg": [
+          "Plus Jakarta Sans"
+        ],
+        "body-md": [
+          "Plus Jakarta Sans"
+        ],
+        "display-lg-mobile": [
+          "Newsreader"
+        ],
+        "label-sm": [
+          "Space Grotesk"
+        ],
+        "display-lg": [
+          "Newsreader"
+        ],
+        "headline-md": [
+          "Newsreader"
+        ],
+        "label-lg": [
+          "Space Grotesk"
+        ],
+        "headline-lg-mobile": [
+          "Newsreader"
+        ],
+        "headline-lg": [
+          "Newsreader"
+        ]
+      },
+      "fontSize": {
+        "label-md": [
+          "12px",
+          {
+            "lineHeight": "16px",
+            "letterSpacing": "0.06em",
+            "fontWeight": "500"
+          }
+        ],
+        "body-sm": [
+          "13px",
+          {
+            "lineHeight": "20px",
+            "fontWeight": "400"
+          }
+        ],
+        "headline-sm": [
+          "22px",
+          {
+            "lineHeight": "30px",
+            "fontWeight": "600"
+          }
+        ],
+        "body-lg": [
+          "18px",
+          {
+            "lineHeight": "28px",
+            "fontWeight": "400"
+          }
+        ],
+        "body-md": [
+          "15px",
+          {
+            "lineHeight": "24px",
+            "fontWeight": "400"
+          }
+        ],
+        "display-lg-mobile": [
+          "38px",
+          {
+            "lineHeight": "46px",
+            "letterSpacing": "-0.015em",
+            "fontWeight": "500"
+          }
+        ],
+        "label-sm": [
+          "10px",
+          {
+            "lineHeight": "14px",
+            "letterSpacing": "0.08em",
+            "fontWeight": "600"
+          }
+        ],
+        "display-lg": [
+          "56px",
+          {
+            "lineHeight": "64px",
+            "letterSpacing": "-0.02em",
+            "fontWeight": "500"
+          }
+        ],
+        "headline-md": [
+          "28px",
+          {
+            "lineHeight": "36px",
+            "letterSpacing": "-0.01em",
+            "fontWeight": "500"
+          }
+        ],
+        "label-lg": [
+          "14px",
+          {
+            "lineHeight": "20px",
+            "letterSpacing": "0.04em",
+            "fontWeight": "600"
+          }
+        ],
+        "headline-lg-mobile": [
+          "28px",
+          {
+            "lineHeight": "36px",
+            "letterSpacing": "-0.01em",
+            "fontWeight": "500"
+          }
+        ],
+        "headline-lg": [
+          "40px",
+          {
+            "lineHeight": "48px",
+            "letterSpacing": "-0.015em",
+            "fontWeight": "500"
+          }
+        ]
+      }
+    },
+  },
+}</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 w-full z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-[1360px] mx-auto px-margin-sm md:px-margin lg:px-margin-lg flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md shrink-0"><img alt="MAN3 Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrByN1hzlM4EJMqRzJ9ItuGqj7sKt80FF_1ql6DCbgs272GSv_bjXD0P319ZAXdfqiyi3HvwFraBqAHDKIeC73RcHJ4cN71Z-wg_rXyv1g9-AhmHxbWDHVdFKD_iIGTq_dfLs-K8EPQOXljFl6HGaq5uUIC2Ey73vmPRHaT6lNCp-l0f9dIzEp8Eim8tkaG3BWPuj4tIEA7_-pfJ69XVXPh_kK43u347vu5uRLkxmKhZ"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary leading-none">MAN3</span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Bio-Agritech &amp; Konservasi</span></div></div><nav class="hidden xl:flex items-center gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-label-md rounded-lg"><a class="px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-label-md text-label-md" data-path="tentang-kami" href="#">Tentang Kami</a><a class="px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-label-md text-label-md" data-path="ekosistem-dan-konservasi" href="#">Ekosistem &amp; Konservasi</a><a class="px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-label-md text-label-md" data-path="katalog-pangan" href="#">Katalog Pangan</a><a class="px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-label-md text-label-md" data-path="kemitraan-b2b-dan-restoran" href="#">Kemitraan B2B &amp; Restoran</a><a class="px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-label-md text-label-md" data-path="dampak-dan-sertifikasi" href="#">Dampak &amp; Sertifikasi</a></nav><div class="flex items-center gap-space-md shrink-0"><a class="hidden sm:inline-flex items-center justify-center px-space-lg py-space-sm bg-primary-container hover:bg-primary text-on-primary rounded-lg font-label-md text-label-md transition-all shadow-[0_2px_6px_-1px_rgba(27,67,50,0.08)]" data-path="pengajuan-kemitraan" href="#">Ajukan Kemitraan B2B</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface min-h-[calc(100vh-20rem)]"><div class="flex flex-col w-full">
+<!-- Top Traceability Banner & Breadcrumb Tracker -->
+<section class="w-full bg-surface-container-low px-margin-sm md:px-margin lg:px-margin-lg py-space-sm">
+<div class="max-w-[1360px] mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-space-sm">
+<nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-space-xs font-label-md text-label-md text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="#">Beranda</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Katalog Pangan Segar &amp; Olahan</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Daging Etis &amp; Olahan</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary font-semibold">Pasture-Fed Prime Beef</span>
+</nav>
+<div class="flex items-center gap-space-sm bg-surface-container-highest/70 px-space-md py-1 rounded-full shadow-sm">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-tertiary font-semibold uppercase tracking-wider">Lot Verifikasi: #MAN3-2024-BF09</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">• Batch Dispatch Subuh</span>
+</div>
+</div>
+</section>
+<!-- Product Showcase Section -->
+<section class="w-full px-margin-sm md:px-margin lg:px-margin-lg py-space-xl">
+<div class="max-w-[1360px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg items-start">
+<!-- Visual Gallery (Left Col 7) -->
+<div class="lg:col-span-7 flex flex-col gap-space-md">
+<!-- Main Hero Visual -->
+<div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden shadow-md bg-surface-container-highest group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Close up artisanal culinary cut of premium grass-fed marbled beef tenderloin and ribeye resting on slate stone, natural sunlight catching deep crimson meat textures and fine natural fat marbling, framed by fresh alpine herbs, rustic editorial photography for high-end gastronomy, earthy deep forest green hues" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALdbhBAr2iB8EG3wFETtnF1oHRVOkFPt7_DDHnjrA_loa12Cd2rg0T39OGx90QgfFhfuCE-tMoiCiMJSnxvyzNrGcCUTWwJ-iUViUDemvUCx_4eDa8GBUWXFlbNOb0T4JRBFKZ8gHwTPCO90oP8imveeSFtKKPcs4bIP9mQjx1xg--VLtQQy3o9-2EHGjj_nKdX6qgV6tDuLq6xQwHoAfMxMl319vVX0_KaXlWt7M"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent"></div>
+<!-- Badges Overlay -->
+<div class="absolute top-4 left-4 flex flex-wrap gap-2">
+<span class="px-space-sm py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur text-primary font-label-sm text-label-sm uppercase font-semibold flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-tertiary">eco</span> 100% Grass-Fed Padang Alami
+            </span>
+<span class="px-space-sm py-1 rounded-full bg-primary text-on-primary font-label-sm text-label-sm uppercase font-semibold flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">verified</span> Zero Hormon &amp; Antibiotik
+            </span>
+</div>
+<!-- Bottom Provenance Meta -->
+<div class="absolute bottom-4 left-4 right-4 flex items-end justify-between text-on-primary">
+<div>
+<p class="font-label-sm text-label-sm uppercase tracking-widest text-primary-fixed">Terroir Provenance</p>
+<h4 class="font-headline-sm text-headline-sm text-on-primary">Kawasan Konservasi Gn. Gede-Pangrango (Alt. 1.250 mdpl)</h4>
+</div>
+<div class="hidden sm:flex items-center gap-2 bg-surface-container-lowest/20 backdrop-blur-md px-3 py-1.5 rounded-lg">
+<span class="material-symbols-outlined text-[16px] text-primary-fixed">thermostat</span>
+<span class="font-label-md text-label-md text-on-primary">Cold-Chain: 1.4°C Rata-rata</span>
+</div>
+</div>
+</div>
+<!-- Thumbnails & Micro-Data Mosaic -->
+<div class="grid grid-cols-3 gap-space-sm">
+<div class="relative aspect-[16/10] rounded-lg overflow-hidden bg-surface-container shadow-sm cursor-pointer ring-2 ring-primary">
+<img class="w-full h-full object-cover" data-alt="Overhead macro shot of vacuum skin packed prime ribeye steak displaying lot number barcode and pristine crimson grain, clinical clean organic agronomy style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAevoCRMcDZIRaX9_TZ7HNpdyQfLI7tZCUeCRuOMb8mGDsjA3RK_p8QqtOoaA1HhhEA3hfY3kJ_EgG_7QL_Ev7HqSsy_38aqNTjF7wOx4kiuRXBPyfj89skzMjtbJcGdqjz2lgTFWKtKnelmmLTf5c63cMN7z-nP69-1Nfq0CVHTdGLXfE5-SdBV_kZnAZ6rfq9LPZZIWbwYagce2I8zSn-guUQoi5dDuMlfUZs9mQ"/>
+<span class="absolute bottom-1 left-2 font-label-sm text-label-sm text-on-primary bg-primary/70 px-1 rounded">VSP Pack</span>
+</div>
+<div class="relative aspect-[16/10] rounded-lg overflow-hidden bg-surface-container shadow-sm cursor-pointer hover:opacity-90 transition-opacity">
+<img class="w-full h-full object-cover" data-alt="Dry aging chamber with Himalayan salt bricks showing rows of hanging bio-conservation pasture beef primals, controlled humidity, deep rich amber lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh5eQr5c6Ec6RKPJFRgInosbha9EY2qTgpC1twRPiLPArpNVNAdbV-7HQZgTAMLWudjLvq5OtXhevBuIJBfWJEatuDFSm45SQh2m0OQfRaXMu0nDJKSjLnKIkvRlLgBRqLJhw8qXR1rJOsS90UAUqk211LoVjlnxu67d6F-jvspq6ohh0aJe2juUzfBb9Jza5WQVY0RP_RsuG-YMi1In-xeLeJl_KmISxeXL_Qr8s"/>
+<span class="absolute bottom-1 left-2 font-label-sm text-label-sm text-on-primary bg-primary/70 px-1 rounded">Dry-Aging 35D</span>
+</div>
+<div class="relative aspect-[16/10] rounded-lg overflow-hidden bg-surface-container shadow-sm cursor-pointer hover:opacity-90 transition-opacity">
+<img class="w-full h-full object-cover" data-alt="Lush green mountainous pasture with healthy heritage cattle grazing naturally under morning mist in West Java highland valley, sustainable bio-conservation habitat" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDw0m39O4-F6tdQI2X1qGRks4RrmZx0m_iERubQB9IPu0RNV5ISMcGqeMIiaKKlaTZbEuk1VGHjDsp36-XbdDvGpiMN3r1FXa9BpN4g2hKnKbjYBvJ-C9CigFtBFvj36ub79wE9LpjLF8dApV6X3JN-k6FsjG1IqIpLCSJuGOLK1Baikw_a6mBvmHzZPIhO7Q9bUoeD6OSyb1Y6FDcTfNtGaH6FUFtIRqJJ5nm4qy8"/>
+<span class="absolute bottom-1 left-2 font-label-sm text-label-sm text-on-primary bg-primary/70 px-1 rounded">Padang Lepas</span>
+</div>
+</div>
+<!-- Biological & Culinary Metrics Bar -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-sm bg-surface-container p-space-md rounded-xl shadow-sm">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Marbling Level</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold">MB 4–6</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Intramuskular Alami</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Maturasi Optimal</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold">21–45 Hari</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Dry &amp; Wet Aging</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Yield Efisiensi</span>
+<span class="font-headline-sm text-headline-sm text-secondary font-bold">98.2%</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Trimming Waste &lt;2%</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Rasio Omega 3:6</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold">1 : 1.8</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Profil Lipid Sehat</span>
+</div>
+</div>
+</div>
+<!-- Purchasing & Spec Control Panel (Right Col 5) -->
+<div class="lg:col-span-5 flex flex-col gap-space-md bg-surface-container-lowest p-space-lg rounded-xl shadow-md">
+<!-- Header Info -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary font-semibold uppercase tracking-wider">Bio-Conservation Grade S+</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-tertiary">check_circle</span> Stok Batch Ready: 380 kg
+            </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary leading-tight">
+            Pasture-Fed Prime Beef Cuts
+          </h1>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Daging sapi unggul berkelanjutan ras Silangan Bali-Aberdeen Angus, dipelihara di lereng vulkanik dengan pakan rumput organik fermentasi bio-aktif.
+          </p>
+</div>
+<!-- Cut Selection Pills -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-on-surface font-semibold">Pilih Spesifikasi Bagian (Primal Cut):</label>
+<div class="grid grid-cols-2 gap-space-xs">
+<button class="px-space-md py-space-sm rounded-lg bg-primary-container text-on-primary font-label-md text-label-md flex flex-col items-start text-left shadow-sm">
+<span class="font-bold">Center-Cut Tenderloin</span>
+<span class="text-[11px] opacity-80">Full Denuded / PSMO</span>
+</button>
+<button class="px-space-md py-space-sm rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex flex-col items-start text-left transition-colors">
+<span class="font-bold">Prime Ribeye (Cube Roll)</span>
+<span class="text-[11px] text-on-surface-variant">Lip-on 1-inch trimmed</span>
+</button>
+</div>
+</div>
+<!-- Tiered Pricing & Tab Selector -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-md">
+<div class="flex p-1 bg-surface-container rounded-lg font-label-md text-label-md">
+<button class="flex-1 py-1.5 rounded bg-surface-container-lowest text-primary font-bold shadow-sm transition-all" id="b2b-tab-btn">
+              Kontrak Pasokan B2B &amp; HoReCa
+            </button>
+<button class="flex-1 py-1.5 rounded text-on-surface-variant font-medium hover:text-on-surface transition-all" id="retail-tab-btn">
+              Grosir Terbatas
+            </button>
+</div>
+<!-- Active Pricing Tier (B2B) -->
+<div class="flex flex-col gap-space-sm" id="pricing-b2b-content">
+<div class="flex items-baseline justify-between">
+<div>
+<span class="font-headline-lg text-headline-lg text-primary font-bold">Rp 485.000</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ kg (Chilled)</span>
+</div>
+<span class="px-space-sm py-1 rounded bg-surface-container-highest text-primary font-label-sm text-label-sm font-semibold">
+                MOQ: 5 kg per cut
+              </span>
+</div>
+<!-- Volume Tier Cards -->
+<div class="flex flex-col gap-space-xs text-body-sm">
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-lowest/80 text-on-surface">
+<span class="font-label-md text-label-md font-medium">Tier 1 (5 – 25 kg / pengiriman)</span>
+<span class="font-semibold text-primary">Rp 485.000 / kg</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-lowest/80 text-on-surface">
+<span class="font-label-md text-label-md font-medium">Tier 2 (26 – 100 kg / kontrak reguler)</span>
+<span class="font-semibold text-secondary">Rp 445.000 / kg</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-lowest/80 text-on-surface">
+<span class="font-label-md text-label-md font-medium">Tier Enterprise (&gt;100 kg / minggu)</span>
+<span class="font-semibold text-primary font-bold">Harga Mitra Eksklusif</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant italic">
+              *Toleransi portion cut kustom ±15g per steak. Termasuk sertifikat lab mikrobiologi &amp; cold-pack returnable box.
+            </p>
+</div>
+</div>
+<!-- Culinary Chef Actions -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<button class="w-full py-3 px-space-md rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg transition-all shadow-md flex items-center justify-center gap-space-sm">
+<span class="material-symbols-outlined text-[20px]">inventory_2</span>
+            Minta Sample Box Uji Dapur (Gratis untuk Chef &amp; Resto)
+          </button>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<a class="py-2.5 px-space-md rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors flex items-center justify-center gap-space-xs" href="#">
+<span class="material-symbols-outlined text-[18px] text-primary">picture_as_pdf</span>
+              Unduh Spec Sheet Teknis (PDF)
+            </a>
+<a class="py-2.5 px-space-md rounded-lg bg-secondary hover:bg-secondary/90 text-on-secondary font-label-md text-label-md transition-colors flex items-center justify-center gap-space-xs shadow-sm" href="#">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+              Konsultasi Potongan Custom
+            </a>
+</div>
+</div>
+<!-- SLA Badges -->
+<div class="grid grid-cols-3 gap-2 pt-space-xs text-center">
+<div class="p-2 rounded bg-surface-container-low flex flex-col items-center">
+<span class="material-symbols-outlined text-primary text-[20px]">local_shipping</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold mt-1">Same-Day Dispatch</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Jabodetabek &amp; Bandung</span>
+</div>
+<div class="p-2 rounded bg-surface-container-low flex flex-col items-center">
+<span class="material-symbols-outlined text-primary text-[20px]">ac_unit</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold mt-1">Cold-Chain Terpadu</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Log sensor GPS aktif</span>
+</div>
+<div class="p-2 rounded bg-surface-container-low flex flex-col items-center">
+<span class="material-symbols-outlined text-primary text-[20px]">health_and_safety</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold mt-1">Halal BPJPH &amp; HACCP</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">RPH Standar Internasional</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Food Cost & Yield Calculator Section -->
+<section class="w-full bg-surface-container px-margin-sm md:px-margin lg:px-margin-lg py-space-xl">
+<div class="max-w-[1360px] mx-auto flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div>
+<span class="font-label-sm text-label-sm text-primary uppercase font-bold tracking-wider">Kitchen Yield &amp; Profitability Engine</span>
+<h2 class="font-headline-lg text-headline-lg text-primary">Kalkulator Food-Cost &amp; Yield Dapur Komersial</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+            Simulasikan efisiensi biaya potongan daging MAN3 bersertifikasi Bio-Conservation dengan standar denuded 98% dibanding daging komersial umum.
+          </p>
+</div>
+<div class="px-space-md py-space-sm bg-surface-container-lowest rounded-lg shadow-sm flex items-center gap-space-sm shrink-0">
+<span class="material-symbols-outlined text-primary">savings</span>
+<span class="font-label-md text-label-md text-on-surface">Potensi Penghematan Waste: <strong>9% – 14% per Batch</strong></span>
+</div>
+</div>
+<!-- Calculator Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-md grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg items-center">
+<!-- Interactive Inputs (Col 6) -->
+<div class="lg:col-span-6 flex flex-col gap-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center">
+<label class="font-label-md text-label-md text-on-surface font-semibold">Target Porsi Layanan (Guests / Covers):</label>
+<span class="font-headline-sm text-headline-sm text-primary font-bold" id="portions-display">60 Porsi</span>
+</div>
+<input class="w-full h-2 bg-surface-container-highest rounded-lg accent-primary cursor-pointer" id="portion-slider" max="300" min="10" step="5" type="range" value="60"/>
+<div class="flex justify-between text-[11px] text-on-surface-variant font-label-sm">
+<span>10 Porsi</span>
+<span>150 Porsi</span>
+<span>300 Porsi</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center">
+<label class="font-label-md text-label-md text-on-surface font-semibold">Gramatur per Porsi:</label>
+<span class="font-headline-sm text-headline-sm text-primary font-bold" id="grams-display">180 Gram</span>
+</div>
+<input class="w-full h-2 bg-surface-container-highest rounded-lg accent-primary cursor-pointer" id="gram-slider" max="300" min="120" step="10" type="range" value="180"/>
+<div class="flex justify-between text-[11px] text-on-surface-variant font-label-sm">
+<span>120g (Petite)</span>
+<span>180g (Standard)</span>
+<span>300g (Bone-In / Large)</span>
+</div>
+</div>
+<div class="p-space-md bg-surface-container-low rounded-lg flex items-center justify-between text-body-sm">
+<span class="text-on-surface">Target Harga Jual Menu per Porsi:</span>
+<div class="flex items-center gap-1 font-bold text-primary">
+<span>Rp</span>
+<input class="w-28 px-2 py-1 bg-surface-container-lowest text-right rounded font-label-md" id="menu-price-input" step="5000" type="number" value="280000"/>
+</div>
+</div>
+</div>
+<!-- Comparative Output Yield (Col 6) -->
+<div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<!-- MAN3 Bio-Conservation Performance -->
+<div class="bg-primary text-on-primary p-space-md rounded-xl flex flex-col justify-between shadow-md relative overflow-hidden">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary-fixed">MAN3 Prime Trimmed</span>
+<span class="px-2 py-0.5 rounded-full bg-primary-container text-primary-fixed text-[11px] font-bold">Waste &lt;2%</span>
+</div>
+<p class="font-headline-sm text-headline-sm font-bold text-primary-fixed pt-1" id="man3-raw-needed">11.02 kg</p>
+<span class="text-body-sm text-[12px] opacity-80">Kebutuhan Bahan Mentah</span>
+</div>
+<div class="pt-space-md flex flex-col gap-1 border-t border-primary-container">
+<span class="font-label-sm text-label-sm uppercase text-primary-fixed">Estimasi Food-Cost Ratio:</span>
+<span class="font-headline-md text-headline-md text-on-primary font-bold" id="man3-cost-ratio">31.8%</span>
+<span class="text-body-sm text-[12px] opacity-80">Margin kotor dapur sangat sehat (&gt;68%)</span>
+</div>
+</div>
+<!-- Pasar Konvensional / Karkas Biasa -->
+<div class="bg-surface-container-high p-space-md rounded-xl flex flex-col justify-between shadow-sm">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Daging Grosir Biasa</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant text-[11px] font-bold">Waste ~13%</span>
+</div>
+<p class="font-headline-sm text-headline-sm font-bold text-on-surface pt-1" id="conv-raw-needed">12.41 kg</p>
+<span class="text-body-sm text-[12px] text-on-surface-variant">Kebutuhan Bahan Mentah</span>
+</div>
+<div class="pt-space-md flex flex-col gap-1 border-t border-outline-variant">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Estimasi Food-Cost Ratio:</span>
+<span class="font-headline-md text-headline-md text-secondary font-bold" id="conv-cost-ratio">38.4%</span>
+<span class="text-body-sm text-[12px] text-on-surface-variant">Beban waktu trim staff + waste lemak</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Deep-Dive Specifications & Bio-Traceability Bento Grid -->
+<section class="w-full px-margin-sm md:px-margin lg:px-margin-lg py-space-xl">
+<div class="max-w-[1360px] mx-auto flex flex-col gap-space-xl">
+<div class="text-center max-w-3xl mx-auto flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm text-secondary uppercase font-semibold tracking-widest">Integritas Rantai Pasok Hayati</span>
+<h2 class="font-headline-lg text-headline-lg text-primary">Sains di Balik Tekstur, Rasa, &amp; Konservasi</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Diferensiasi MAN3 terletak pada transparansi absolut: mulai dari mikrobioma padang rumput hingga verifikasi keamanan pangan laboratorium berkala.
+        </p>
+</div>
+<!-- Bento Grid Architecture -->
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-12 gap-gutter-lg">
+<!-- Bento 1: Profil Rasa & Karakteristik Organoleptik (Col 7) -->
+<div class="lg:col-span-7 bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs text-primary">
+<span class="material-symbols-outlined">restaurant</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Karakteristik Kuliner &amp; Profil Organoleptik</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Berkat pakan multi-spesies rumput pegunungan (Cynodon dactylon, Setaria, legum tropis) dan fermentasi probiotik herbal lokal, daging memiliki aroma bersih tanpa amis (clean grassy aroma) dengan nuansa nutty alami saat di-sear.
+            </p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm pt-space-xs">
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-1">
+<span class="font-label-md text-label-md text-primary font-bold">Tekstur &amp; Tenderness</span>
+<p class="text-body-sm text-[12px] text-on-surface-variant">Serat otot halus dengan shear force rendah pasca-aging 28 hari. Tetap juicy pada tingkat kematangan Medium-Rare hingga Medium.</p>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-1">
+<span class="font-label-md text-label-md text-secondary font-bold">Melting Point Lemak Rendah</span>
+<p class="text-body-sm text-[12px] text-on-surface-variant">Lemak intramuskular meleleh pada suhu 36°C (suhu rongga mulut manusia), memberikan mouthfeel velvety tanpa lapisan lilin tebal.</p>
+</div>
+</div>
+</div>
+<!-- Micro Sensoric Chart Visualizer SVG -->
+<div class="p-space-md rounded-lg bg-surface-container flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<svg class="w-24 h-24 shrink-0 -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-container-highest" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="4"></path>
+<path class="text-tertiary-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="94, 100" stroke-linecap="round" stroke-width="4"></path>
+</svg>
+<div>
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Sensory Score Panel</span>
+<h4 class="font-headline-sm text-headline-sm text-primary font-bold">94 / 100 Sensory Rating</h4>
+<p class="text-body-sm text-[12px] text-on-surface-variant">Dinilai oleh Panel Asosiasi Kuliner Independen (Maret 2025)</p>
+</div>
+</div>
+<span class="px-space-md py-1.5 rounded-full bg-surface-container-highest text-primary font-label-md text-label-md font-semibold shrink-0">
+              Gold Standard HoReCa
+            </span>
+</div>
+</div>
+<!-- Bento 2: Bio-Traceability & Pakan (Col 5) -->
+<div class="lg:col-span-5 bg-primary-container text-on-primary rounded-xl p-space-lg shadow-md flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs text-primary-fixed">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+<span class="font-label-md text-label-md uppercase font-bold tracking-wider">DNA &amp; Feed Traceability</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest/15 text-primary-fixed font-label-sm text-label-sm">Batch #BF09</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-primary">Siklus Pakan Hayati Berkelanjutan</h3>
+<p class="font-body-sm text-body-sm text-on-primary-container">
+              100% bebas dari ransum konsentrat berbasis jagung GMO impor, pakan tepung hewani, dan urea sintetik. Ternak mengonsumsi hijauan padang rotasional yang dirawat menggunakan pupuk bio-slurry kompos cacing.
+            </p>
+<ul class="flex flex-col gap-space-xs text-body-sm pt-space-xs">
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary-fixed">check</span>
+<span>Rotasi Padang Gembala 7-Hari (Rotational Grazing)</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary-fixed">check</span>
+<span>Air Minum Mata Air Alami Pegunungan Tersaring</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary-fixed">check</span>
+<span>Probiotik Fermentasi Temulawak &amp; Kunyit Penjaga Imun</span>
+</li>
+</ul>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-lowest/10 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-fixed">co2</span>
+<span class="font-label-sm text-label-sm text-primary-fixed">Net-Zero Carbon Soil Program</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-on-primary">-1.8 kg CO2e / kg daging</span>
+</div>
+</div>
+<!-- Bento 3: Timeline Batch & Cold Chain (Col 6) -->
+<div class="lg:col-span-6 bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center gap-space-xs text-primary">
+<span class="material-symbols-outlined">schedule</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Timeline Batch &amp; Cold-Chain Log</h3>
+</div>
+<div class="relative pl-6 space-y-4 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-surface-container-highest">
+<div class="relative">
+<div class="absolute -left-6 top-1 w-3 h-3 rounded-full bg-primary ring-4 ring-surface-container-lowest"></div>
+<p class="font-label-sm text-label-sm text-secondary font-semibold uppercase">01 Maret 2025 • 05:00 WIB</p>
+<h4 class="font-label-md text-label-md text-on-surface font-bold">Pemotongan Etis &amp; Sertifikasi Halal</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">RPH Modern Standar Animal Welfare Internasional tanpa stres pre-slaughter.</p>
+</div>
+<div class="relative">
+<div class="absolute -left-6 top-1 w-3 h-3 rounded-full bg-primary ring-4 ring-surface-container-lowest"></div>
+<p class="font-label-sm text-label-sm text-secondary font-semibold uppercase">02 Maret – 23 Maret 2025</p>
+<h4 class="font-label-md text-label-md text-on-surface font-bold">Maturasi Dry-Aging &amp; Wet-Aging 21 Hari</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Suhu kamar stabil 1.5°C, kelembapan 78% RH dengan ventilasi garam himalaya.</p>
+</div>
+<div class="relative">
+<div class="absolute -left-6 top-1 w-3 h-3 rounded-full bg-on-tertiary-container ring-4 ring-surface-container-lowest animate-pulse"></div>
+<p class="font-label-sm text-label-sm text-primary font-semibold uppercase">Hari Ini • Siap Dispatch</p>
+<h4 class="font-label-md text-label-md text-on-surface font-bold">Portioning &amp; Vacuum Skin Packaging (VSP)</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Uji laboratorium negatif Salmonella &amp; E. Coli, barcode QR terlampir per kemasan.</p>
+</div>
+</div>
+</div>
+<!-- Bento 4: Akreditasi & Sertifikasi Keamanan Pangan (Col 6) -->
+<div class="lg:col-span-6 bg-surface-container-low rounded-xl p-space-lg shadow-sm flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs text-primary">
+<span class="material-symbols-outlined">verified_user</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Sertifikasi &amp; Standar Mutu</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Memenuhi seluruh kualifikasi ketat hotel bintang lima, jaringan restoran premium, dan standar ekspor mancanegara:
+            </p>
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs">
+<div class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">task_alt</span>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface font-bold">Halal BPJPH</h4>
+<span class="text-body-sm text-[12px] text-on-surface-variant">ID00310001892010822</span>
+</div>
+</div>
+<div class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">task_alt</span>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface font-bold">HACCP &amp; ISO 22000</h4>
+<span class="text-body-sm text-[12px] text-on-surface-variant">Food Safety Codex Compliant</span>
+</div>
+</div>
+<div class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">task_alt</span>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface font-bold">Organik Indonesia</h4>
+<span class="text-body-sm text-[12px] text-on-surface-variant">No. 129/LSO-005-IDN</span>
+</div>
+</div>
+<div class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">task_alt</span>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface font-bold">Lab Residue-Free</h4>
+<span class="text-body-sm text-[12px] text-on-surface-variant">Bebas Logam Berat &amp; Pestisida</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container">
+<span class="font-label-md text-label-md text-on-surface font-medium">Perlu COA (Certificate of Analysis) Batch Ini?</span>
+<a class="font-label-md text-label-md text-primary font-bold hover:underline flex items-center gap-1" href="#">
+              Download COA <span class="material-symbols-outlined text-[16px]">download</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Culinary Application & Chef Inspiration Showcase -->
+<section class="w-full bg-surface-container-low px-margin-sm md:px-margin lg:px-margin-lg py-space-xl">
+<div class="max-w-[1360px] mx-auto flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div>
+<span class="font-label-sm text-label-sm text-secondary uppercase font-semibold tracking-wider">Aplikasi Gastronomi</span>
+<h2 class="font-headline-lg text-headline-lg text-primary">Inspirasi Kreasi Menu Fine-Dining</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Dikurasi bersama koki mitra MAN3 untuk memaksimalkan profil rasa alami pasture-fed beef.
+          </p>
+</div>
+<span class="font-label-md text-label-md text-primary font-semibold flex items-center gap-1">
+          Rekomendasi Temperatur Inti: <strong>52°C – 54°C (Medium Rare)</strong>
+</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter-lg">
+<!-- Recipe Concept 1 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm flex flex-col sm:flex-row">
+<div class="sm:w-1/2 aspect-[4/3] sm:aspect-auto relative bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Gourmet plated charred pasture-fed tenderloin steak topped with glossy wild forest mushroom jus and micro herbs, dark earthy ceramic plate, Michelin star presentation" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxeuK7WGdYSu4dqfndpONgGkyeotXL8hyBO3Gfz5PXYgFwBTiNhwuD6IGPYWd71pPsIfaEY6tgubcybQnWs39tKmL5D6iwYDh_trhBdBroOkCHVVGlCqqel5Ax-zyoYP8Dgo7rv7H6KCBX7PaWJkPowB-UO4iQfOpvoN-MoiJwPpEYnZHXehtJhslZjhBxFYzBbe_yvqfjB1Y4aP-AqDebVE1UX5jFxvlteww0Ybs"/>
+</div>
+<div class="sm:w-1/2 p-space-md flex flex-col justify-between gap-space-sm">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm text-secondary font-semibold uppercase">Signature Tenderloin Cut</span>
+<h4 class="font-headline-sm text-headline-sm text-primary">Charred Tenderloin with Wild Forest Mushroom Jus</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Dipanggang cepat di atas arang kopi kayu keras, dipadukan jus kaldu tulang sapi MAN3 dan jamur liar lereng Gn. Gede.
+              </p>
+</div>
+<div class="pt-space-xs border-t border-surface-container flex items-center justify-between text-[12px] font-label-md text-on-surface">
+<span>Cooking Method: <strong>Cast Iron Sear &amp; Butter Baste</strong></span>
+</div>
+</div>
+</div>
+<!-- Recipe Concept 2 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm flex flex-row flex-col sm:flex-row">
+<div class="sm:w-1/2 aspect-[4/3] sm:aspect-auto relative bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Pan-seared grass-fed ribeye steak sliced into thick tender medallions with herb butter melting over crusty outer layer, sea salt flakes, rustic timber background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBp0iXTVUmG3nf1nWOdaxysbv05KmBn3Pmv64VoAR0675lw2gkkDq7K6vcgYgHPzahW_w74xPHRwG81DZ6COsOs9nzi3tTqkXoIU-ztri3J1vpfcRsNARTmLoNQKqJnnLff-xtNioOKnrU3NtOSZfcMT8zliv1sxdfDkvHpCtiYl8zQDe0IQPP0GteojHVUwXwb-qd11LADCQ0xlQTrGOV1t6NBJwNkyXjixBb1B1A"/>
+</div>
+<div class="sm:w-1/2 p-space-md flex flex-col justify-between gap-space-sm">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm text-secondary font-semibold uppercase">Prime Ribeye Cut</span>
+<h4 class="font-headline-sm text-headline-sm text-primary">Pan-Seared Ribeye with Fermented Herb Butter</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Lapisan karamelisasi maillard tebal dengan lelehan mentega herba probiotik lokal dan garam laut kristal Kusamba.
+              </p>
+</div>
+<div class="pt-space-xs border-t border-surface-container flex items-center justify-between text-[12px] font-label-md text-on-surface">
+<span>Cooking Method: <strong>Reverse Sear &amp; Resting 8 Menit</strong></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Complementary Supplies & Cross-Inventory Section -->
+<section class="w-full px-margin-sm md:px-margin lg:px-margin-lg py-space-xl">
+<div class="max-w-[1360px] mx-auto flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-xs">
+<div>
+<span class="font-label-sm text-label-sm text-primary uppercase font-bold tracking-wider">Sinergi Dapur Komersial</span>
+<h2 class="font-headline-lg text-headline-lg text-primary">Pasokan Komplementer Panen Pagi</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Gabungkan dalam 1 armada pengiriman berpendingin (Cold-Chain Consolidator).</p>
+</div>
+<a class="font-label-md text-label-md text-primary font-bold hover:underline flex items-center gap-1" href="#">
+          Lihat Seluruh Bahan Pendamping <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter-sm">
+<!-- Cross-Item 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-sm shadow-sm flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div class="aspect-video rounded-lg overflow-hidden bg-surface-container relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Vibrant fresh hydroponic microgreens mix in bio-compostable punnet container, crisp dew droplets, organic certification" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLlBjSPw8mYUR8P5sQjmr3IfLk-su6JPFLJwAuYEpZ3BptSumR9A3TAGH-ChVmFNbebr-FEkr9KzsOateQaoABg7Pvwz7-m8boYDXhaa2pfFc0d2xj1qFZdmoYyK2jY-j0BZiH00A9cd81WAsK2OLGfU8tsh6f45HXps5GNZfb1j5zmvOr4L7JjaxJc1HCv9kyaGkrpwpB419bj-00IHjdeAFUsP4FhdZE1cwz_HA"/>
+<span class="absolute top-2 left-2 bg-primary/80 text-on-primary font-label-sm text-label-sm px-1.5 py-0.5 rounded">Panen Subuh</span>
+</div>
+<div class="flex flex-col gap-1 pt-space-sm">
+<h4 class="font-label-lg text-label-lg text-primary font-bold">Artisanal Microgreens Mix</h4>
+<p class="text-body-sm text-[12px] text-on-surface-variant">Garnish peppery nasturtium, pea tendrils, red amaranth.</p>
+<div class="flex items-center justify-between pt-2">
+<span class="font-bold text-primary text-body-md">Rp 45.000 <span class="text-[11px] font-normal text-on-surface-variant">/ 100g</span></span>
+<button class="px-2 py-1 bg-surface-container-high hover:bg-primary hover:text-on-primary rounded text-label-sm font-semibold transition-colors">Tambah</button>
+</div>
+</div>
+</div>
+<!-- Cross-Item 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-sm shadow-sm flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div class="aspect-video rounded-lg overflow-hidden bg-surface-container relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Bottles of concentrated pasture-fed beef bone broth reduction with amber hue, chef kitchen preparation" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTpns8RRVnkIcb47EkhOP0jL38ppExA-AMiLP3ZTsxmWHe_ZcU2huLCfP00gFQWX4yJAKJEVJVuksCa0lSZb5JYSXSL32oo3VzqE83VjHjNEDQ0Z5815N8R6ANqeOyHMqp66Y0DJd2spxAWlJOZfLf2gBeoTs-rOG9OaJ6w-xWSGaJitw0SfLGUYbmP9o1nY3pCDd25kLpdx4IjvC8Jw4WpEsccP6HDkjNaWuGyyo"/>
+<span class="absolute top-2 left-2 bg-secondary text-on-secondary font-label-sm text-label-sm px-1.5 py-0.5 rounded">Slow Simmered 48H</span>
+</div>
+<div class="flex flex-col gap-1 pt-space-sm">
+<h4 class="font-label-lg text-label-lg text-primary font-bold">Konsentrat Jus Kaldu Tulang Sapi</h4>
+<p class="text-body-sm text-[12px] text-on-surface-variant">Ekstrak kolagen murni untuk reduction jus &amp; demi-glace.</p>
+<div class="flex items-center justify-between pt-2">
+<span class="font-bold text-primary text-body-md">Rp 120.000 <span class="text-[11px] font-normal text-on-surface-variant">/ 500ml</span></span>
+<button class="px-2 py-1 bg-surface-container-high hover:bg-primary hover:text-on-primary rounded text-label-sm font-semibold transition-colors">Tambah</button>
+</div>
+</div>
+</div>
+<!-- Cross-Item 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-sm shadow-sm flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div class="aspect-video rounded-lg overflow-hidden bg-surface-container relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Bundle of fresh rosemary, mountain thyme and sage harvested in highland bio-farm tied with natural jute twine" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxrC557l9iRKW2YtXoao6Vjz--W0Fc8qyTLAdDSgG6zB9Rvmqzym0gxKJ-Qv8xD0qQB0mPV2pGVHYjKbeQ7uQYZ2PhZLzAvK3yrCcTm94ABlRvO8XaEGxrhk_SjtyxP0uz1zk0Au1OPl5VwOQ-x8u12mvL0CDkLcx5luujHDfxIbeAKgju-0OCXI-BxfmOfjk8MFzlrIvB2CwdrNgpGPF4esDfNeVbbS3E-NzjobQ"/>
+<span class="absolute top-2 left-2 bg-primary/80 text-on-primary font-label-sm text-label-sm px-1.5 py-0.5 rounded">Aromatic Herbs</span>
+</div>
+<div class="flex flex-col gap-1 pt-space-sm">
+<h4 class="font-label-lg text-label-lg text-primary font-bold">Highland Fresh Herb Trio</h4>
+<p class="text-body-sm text-[12px] text-on-surface-variant">Rosemary vulkanik, thyme pegunungan, dan sage wangi.</p>
+<div class="flex items-center justify-between pt-2">
+<span class="font-bold text-primary text-body-md">Rp 35.000 <span class="text-[11px] font-normal text-on-surface-variant">/ Ikat 150g</span></span>
+<button class="px-2 py-1 bg-surface-container-high hover:bg-primary hover:text-on-primary rounded text-label-sm font-semibold transition-colors">Tambah</button>
+</div>
+</div>
+</div>
+<!-- Cross-Item 4 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-sm shadow-sm flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div class="aspect-video rounded-lg overflow-hidden bg-surface-container relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Block of artisanal salted cultured butter wrapped in butter paper next to sea salt crystals and wooden butter paddle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2j_o3Esa8hinxUc57PIllNlp7OkpeF3Eqqj46Drskl2z6ZSbU7-LRU_SpmgDmQkYhgkJFh_UodrTOct7zqwadwDC6KsjAvhTvDZBONwCnBCBSRhe7YQDw6cwvIbqiNIKCsmD_YBC8Gy7trEr1wa9JmAiyr6jriVcB_-Byp3-YqEYMqhWw0NRpaZ41KSZJNmU5p8WSCBQnzR3OXOCGU284ebs_QPA_FkP1QYa8-fI"/>
+<span class="absolute top-2 left-2 bg-secondary text-on-secondary font-label-sm text-label-sm px-1.5 py-0.5 rounded">Grass-Fed Dairy</span>
+</div>
+<div class="flex flex-col gap-1 pt-space-sm">
+<h4 class="font-label-lg text-label-lg text-primary font-bold">Artisan Cultured Grass-Fed Butter</h4>
+<p class="text-body-sm text-[12px] text-on-surface-variant">Mentega fermentasi 84% fat untuk steak basting terbaik.</p>
+<div class="flex items-center justify-between pt-2">
+<span class="font-bold text-primary text-body-md">Rp 95.000 <span class="text-[11px] font-normal text-on-surface-variant">/ 250g</span></span>
+<button class="px-2 py-1 bg-surface-container-high hover:bg-primary hover:text-on-primary rounded text-label-sm font-semibold transition-colors">Tambah</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Sticky In-Page B2B Quick Consultation Floating Strip -->
+<div class="sticky bottom-4 z-40 px-margin-sm md:px-margin lg:px-margin-lg mb-6">
+<div class="max-w-[1360px] mx-auto bg-primary text-on-primary p-space-md rounded-xl shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary-fixed">support_agent</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-primary">Ingin Uji Coba Kualitas Daging di Dapur Anda?</span>
+<span class="text-body-sm text-[13px] text-on-primary-container">Kemitraan korporasi, supply contract hotel, dan food-test gratis bersama Agronomist Chef MAN3.</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm shrink-0 w-full sm:w-auto">
+<a class="flex-1 sm:flex-none text-center px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-primary font-label-md text-label-md font-bold hover:bg-primary-fixed transition-colors shadow-sm" href="#">
+          Jadwalkan Kitchen Tasting
+        </a>
+<a class="p-2.5 rounded-lg bg-primary-container hover:bg-primary-fixed-variant text-on-primary transition-colors flex items-center justify-center" href="#">
+<span class="material-symbols-outlined text-[20px]">phone_in_talk</span>
+</a>
+</div>
+</div>
+</div>
+<script>
+    // Tab switching for B2B vs Retail Pricing Panel
+    const b2bBtn = document.getElementById('b2b-tab-btn');
+    const retailBtn = document.getElementById('retail-tab-btn');
+    const pricingContent = document.getElementById('pricing-b2b-content');
+
+    if (b2bBtn && retailBtn && pricingContent) {
+      b2bBtn.addEventListener('click', () => {
+        b2bBtn.className = 'flex-1 py-1.5 rounded bg-surface-container-lowest text-primary font-bold shadow-sm transition-all';
+        retailBtn.className = 'flex-1 py-1.5 rounded text-on-surface-variant font-medium hover:text-on-surface transition-all';
+        pricingContent.innerHTML = `
+          <div class="flex items-baseline justify-between">
+            <div>
+              <span class="font-headline-lg text-headline-lg text-primary font-bold">Rp 485.000</span>
+              <span class="font-body-sm text-body-sm text-on-surface-variant">/ kg (Chilled)</span>
+            </div>
+            <span class="px-space-sm py-1 rounded bg-surface-container-highest text-primary font-label-sm text-label-sm font-semibold">
+              MOQ: 5 kg per cut
+            </span>
+          </div>
+          <div class="flex flex-col gap-space-xs text-body-sm">
+            <div class="flex items-center justify-between p-2 rounded bg-surface-container-lowest/80 text-on-surface">
+              <span class="font-label-md text-label-md font-medium">Tier 1 (5 – 25 kg / pengiriman)</span>
+              <span class="font-semibold text-primary">Rp 485.000 / kg</span>
+            </div>
+            <div class="flex items-center justify-between p-2 rounded bg-surface-container-lowest/80 text-on-surface">
+              <span class="font-label-md text-label-md font-medium">Tier 2 (26 – 100 kg / kontrak reguler)</span>
+              <span class="font-semibold text-secondary">Rp 445.000 / kg</span>
+            </div>
+            <div class="flex items-center justify-between p-2 rounded bg-surface-container-lowest/80 text-on-surface">
+              <span class="font-label-md text-label-md font-medium">Tier Enterprise (>100 kg / minggu)</span>
+              <span class="font-semibold text-primary font-bold">Harga Mitra Eksklusif</span>
+            </div>
+          </div>
+          <p class="font-body-sm text-body-sm text-on-surface-variant italic">
+            *Toleransi portion cut kustom ±15g per steak. Termasuk sertifikat lab mikrobiologi & cold-pack returnable box.
+          </p>
+        `;
+      });
+
+      retailBtn.addEventListener('click', () => {
+        retailBtn.className = 'flex-1 py-1.5 rounded bg-surface-container-lowest text-primary font-bold shadow-sm transition-all';
+        b2bBtn.className = 'flex-1 py-1.5 rounded text-on-surface-variant font-medium hover:text-on-surface transition-all';
+        pricingContent.innerHTML = `
+          <div class="flex items-baseline justify-between">
+            <div>
+              <span class="font-headline-lg text-headline-lg text-primary font-bold">Rp 525.000</span>
+              <span class="font-body-sm text-body-sm text-on-surface-variant">/ kg (VSP Retail Pack)</span>
+            </div>
+            <span class="px-space-sm py-1 rounded bg-surface-container-highest text-primary font-label-sm text-label-sm font-semibold">
+              MOQ: 1 kg (2-3 Steaks)
+            </span>
+          </div>
+          <div class="flex flex-col gap-space-xs text-body-sm">
+            <div class="flex items-center justify-between p-2 rounded bg-surface-container-lowest/80 text-on-surface">
+              <span class="font-label-md text-label-md font-medium">Pack 500g (Vacuum Skin Sealed)</span>
+              <span class="font-semibold text-primary">Rp 265.000 / pack</span>
+            </div>
+            <div class="flex items-center justify-between p-2 rounded bg-surface-container-lowest/80 text-on-surface">
+              <span class="font-label-md text-label-md font-medium">Family Cut Box (2.5 kg Assorted)</span>
+              <span class="font-semibold text-secondary">Rp 1.280.000 / box</span>
+            </div>
+          </div>
+          <p class="font-body-sm text-body-sm text-on-surface-variant italic">
+            *Pengiriman retail mencakup gel es beku ramah lingkungan dan kotak insulasi termal biodegradable.
+          </p>
+        `;
+      });
+    }
+
+    // Kitchen Yield & Food Cost Calculator Engine
+    const portionSlider = document.getElementById('portion-slider');
+    const gramSlider = document.getElementById('gram-slider');
+    const menuPriceInput = document.getElementById('menu-price-input');
+
+    const portionsDisplay = document.getElementById('portions-display');
+    const gramsDisplay = document.getElementById('grams-display');
+    const man3RawNeeded = document.getElementById('man3-raw-needed');
+    const convRawNeeded = document.getElementById('conv-raw-needed');
+    const man3CostRatio = document.getElementById('man3-cost-ratio');
+    const convCostRatio = document.getElementById('conv-cost-ratio');
+
+    function updateCalculations() {
+      const portions = parseInt(portionSlider.value, 10);
+      const grams = parseInt(gramSlider.value, 10);
+      const menuPrice = parseFloat(menuPriceInput.value) || 280000;
+
+      portionsDisplay.innerText = `${portions} Porsi`;
+      gramsDisplay.innerText = `${grams} Gram`;
+
+      const totalCookedGrams = portions * grams;
+      // MAN3: waste factor ~1.8%
+      const man3Kg = (totalCookedGrams / 1000) / 0.98;
+      // Conventional: waste factor ~13%
+      const convKg = (totalCookedGrams / 1000) / 0.87;
+
+      man3RawNeeded.innerText = `${man3Kg.toFixed(2)} kg`;
+      convRawNeeded.innerText = `${convKg.toFixed(2)} kg`;
+
+      // MAN3 price per kg average B2B Tier: Rp 465.000
+      const man3MeatCostTotal = man3Kg * 465000;
+      const man3MeatCostPerPortion = man3MeatCostTotal / portions;
+      const man3Ratio = (man3MeatCostPerPortion / menuPrice) * 100;
+
+      // Conventional wholesale: ~Rp 420.000 per kg but higher waste
+      const convMeatCostTotal = convKg * 420000;
+      const convMeatCostPerPortion = convMeatCostTotal / portions;
+      const convRatio = (convMeatCostPerPortion / menuPrice) * 100;
+
+      man3CostRatio.innerText = `${man3Ratio.toFixed(1)}%`;
+      convCostRatio.innerText = `${convRatio.toFixed(1)}%`;
+    }
+
+    if (portionSlider && gramSlider && menuPriceInput) {
+      portionSlider.addEventListener('input', updateCalculations);
+      gramSlider.addEventListener('input', updateCalculations);
+      menuPriceInput.addEventListener('input', updateCalculations);
+    }
+  </script>
+</div></main><footer class="w-full bg-surface-container-low mt-space-xl"><div class="max-w-[1360px] mx-auto px-margin-sm md:px-margin lg:px-margin-lg py-space-xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-gutter-lg"><div class="lg:col-span-4 flex flex-col gap-space-md"><div class="flex items-center gap-space-md"><img alt="MAN3 Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrByN1hzlM4EJMqRzJ9ItuGqj7sKt80FF_1ql6DCbgs272GSv_bjXD0P319ZAXdfqiyi3HvwFraBqAHDKIeC73RcHJ4cN71Z-wg_rXyv1g9-AhmHxbWDHVdFKD_iIGTq_dfLs-K8EPQOXljFl6HGaq5uUIC2Ey73vmPRHaT6lNCp-l0f9dIzEp8Eim8tkaG3BWPuj4tIEA7_-pfJ69XVXPh_kK43u347vu5uRLkxmKhZ"/><span class="font-headline-sm text-headline-sm text-primary">MAN3</span></div><p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm">Pelopor integrasi bioteknologi agrikultur, peternakan regeneratif, dan pemulihan keanekaragaman hayati nusantara untuk pasokan bahan pangan bermutu tinggi sektor B2B, HoReCa, dan retail premium.</p><div class="flex flex-wrap items-center gap-space-xs pt-space-xs"><span class="px-space-sm py-space-xs rounded-full bg-surface-container-highest text-on-surface font-label-sm text-label-sm uppercase">ISO 22000 Certified</span><span class="px-space-sm py-space-xs rounded-full bg-surface-container-highest text-on-surface font-label-sm text-label-sm uppercase">Organik Indonesia</span><span class="px-space-sm py-space-xs rounded-full bg-surface-container-highest text-on-surface font-label-sm text-label-sm uppercase">Carbon Neutral Terverifikasi</span></div></div><div class="lg:col-span-2 flex flex-col gap-space-sm"><span class="font-label-lg text-label-lg text-primary uppercase">Navigasi</span><ul class="flex flex-col gap-space-xs"><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer">Tentang Kami</li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer">Ekosistem Terintegrasi</li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer">Katalog Pangan Segar</li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer">Laporan Dampak Hayati</li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer">Karier Agronomi</li></ul></div><div class="lg:col-span-3 flex flex-col gap-space-sm"><span class="font-label-lg text-label-lg text-primary uppercase">Portal Kemitraan B2B</span><p class="font-body-sm text-body-sm text-on-surface-variant">Penyedia kontrak suplai skala grosir bagi rantai hotel, grup restoran fine-dining, dan eksportir bahan organik.</p><div class="flex flex-col gap-space-xs pt-space-xs"><span class="font-body-sm text-body-sm text-on-surface font-semibold flex items-center gap-space-xs"><span class="material-symbols-outlined text-[16px] text-primary">mail</span> b2b@man3-agri.co.id</span><span class="font-body-sm text-body-sm text-on-surface font-semibold flex items-center gap-space-xs"><span class="material-symbols-outlined text-[16px] text-primary">call</span> +62 21 5088 3491</span><span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-space-xs"><span class="material-symbols-outlined text-[16px] text-primary">schedule</span> Layanan Dispatch: 04.00 - 18.00 WIB</span></div></div><div class="lg:col-span-3 flex flex-col gap-space-sm"><span class="font-label-lg text-label-lg text-primary uppercase">Kantor Pusat &amp; Bio-Hub</span><p class="font-body-sm text-body-sm text-on-surface-variant">Kawasan Agrowisata &amp; Pusat Penelitian Terpadu MAN3, Jl. Raya Konservasi Hayati No. 42, Cisarua, Jawa Barat 16750</p><div class="flex items-center gap-space-sm pt-space-xs"><div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center hover:bg-surface-container-high transition-colors cursor-pointer"><span class="material-symbols-outlined text-[18px] text-primary">public</span></div><div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center hover:bg-surface-container-high transition-colors cursor-pointer"><span class="material-symbols-outlined text-[18px] text-primary">share</span></div><div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center hover:bg-surface-container-high transition-colors cursor-pointer"><span class="material-symbols-outlined text-[18px] text-primary">feed</span></div><div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center hover:bg-surface-container-high transition-colors cursor-pointer"><span class="material-symbols-outlined text-[18px] text-primary">hub</span></div></div></div></div><div class="mt-space-xl pt-space-lg flex flex-col sm:flex-row items-center justify-between gap-space-md text-on-surface-variant font-label-md text-label-md"><p>© 2025 PT MAN3 Agri Bio-Konservasi Nusantara. Hak Cipta Dilindungi Undang-Undang.</p><div class="flex items-center gap-space-lg"><span class="hover:text-on-surface cursor-pointer">Kebijakan Privasi</span><span class="hover:text-on-surface cursor-pointer">Standar Rantai Pasok</span><span class="hover:text-on-surface cursor-pointer">Integritas Sertifikasi</span></div></div></div></footer></body></html>

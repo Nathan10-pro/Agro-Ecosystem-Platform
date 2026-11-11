@@ -1,0 +1,25 @@
+import { redirect } from "next/navigation";
+import { getCurrentUser } from "@/lib/auth";
+import DashboardShell from "@/components/dashboard/DashboardShell";
+
+export const metadata = {
+  title: "Dashboard Admin — MAN3",
+};
+
+export default async function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const user = await getCurrentUser();
+
+  if (!user) {
+    redirect("/login");
+  }
+
+  if (user.role !== "admin") {
+    redirect("/");
+  }
+
+  return <DashboardShell user={user}>{children}</DashboardShell>;
+}

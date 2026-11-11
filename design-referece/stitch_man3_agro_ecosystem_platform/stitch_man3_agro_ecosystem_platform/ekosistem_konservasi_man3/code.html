@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+
+<html lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-surface-variant":"#414844","background":"#e8ffef","surface-container-low":"#e1fae9","on-primary-container":"#86af99","inverse-surface":"#20352a","surface-dim":"#c7e0d0","surface-container-highest":"#d0e8d8","secondary-container":"#ffb599","secondary-fixed-dim":"#ffb599","on-primary":"#ffffff","surface-container-lowest":"#ffffff","tertiary-fixed":"#92f7c3","secondary-fixed":"#ffdbce","error-container":"#ffdad6","surface-bright":"#e8ffef","surface":"#e8ffef","on-primary-fixed-variant":"#274e3d","on-tertiary":"#ffffff","on-secondary-container":"#7a442e","primary-container":"#1b4332","outline":"#717973","tertiary":"#002d1b","surface-container-high":"#d5eede","primary":"#012d1d","primary-fixed-dim":"#a5d0b9","on-tertiary-container":"#53b889","on-error":"#ffffff","surface-container":"#dbf4e4","on-tertiary-fixed":"#002113","primary-fixed":"#c1ecd4","on-secondary-fixed-variant":"#6c3924","on-secondary-fixed":"#360f01","inverse-on-surface":"#def7e6","on-background":"#0a1f16","secondary":"#885039","tertiary-fixed-dim":"#75daa8","on-tertiary-fixed-variant":"#005235","tertiary-container":"#00452c","error":"#ba1a1a","surface-variant":"#d0e8d8","inverse-primary":"#a5d0b9","on-primary-fixed":"#002114","on-error-container":"#93000a","outline-variant":"#c1c8c2","on-surface":"#0a1f16","surface-tint":"#3f6653","on-secondary":"#ffffff"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"margin-sm":"1rem","gutter-lg":"2rem","gutter":"1.5rem","space-sm":"0.5rem","space-xs":"0.25rem","space-xl":"2.5rem","gutter-sm":"1rem","space-md":"1rem","space-lg":"1.5rem","margin-lg":"4rem","margin":"1.5rem"},"fontFamily":{"label-sm":["Space Grotesk"],"headline-md":["Newsreader"],"body-lg":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"display-lg":["Newsreader"],"headline-lg-mobile":["Newsreader"],"headline-sm":["Newsreader"],"body-sm":["Plus Jakarta Sans"],"headline-lg":["Newsreader"],"label-lg":["Space Grotesk"],"display-lg-mobile":["Newsreader"],"label-md":["Space Grotesk"]},"fontSize":{"label-sm":["10px",{"lineHeight":"14px","letterSpacing":"0.08em","fontWeight":"600"}],"headline-md":["28px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"500"}],"body-lg":["18px",{"lineHeight":"28px","fontWeight":"400"}],"body-md":["15px",{"lineHeight":"24px","fontWeight":"400"}],"display-lg":["56px",{"lineHeight":"64px","letterSpacing":"-0.02em","fontWeight":"500"}],"headline-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"500"}],"headline-sm":["22px",{"lineHeight":"30px","fontWeight":"600"}],"body-sm":["13px",{"lineHeight":"20px","fontWeight":"400"}],"headline-lg":["40px",{"lineHeight":"48px","letterSpacing":"-0.015em","fontWeight":"500"}],"label-lg":["14px",{"lineHeight":"20px","letterSpacing":"0.04em","fontWeight":"600"}],"display-lg-mobile":["38px",{"lineHeight":"46px","letterSpacing":"-0.015em","fontWeight":"500"}],"label-md":["12px",{"lineHeight":"16px","letterSpacing":"0.06em","fontWeight":"500"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(27,67,50,0.06)]"><div class="h-20 w-full px-margin-sm md:px-margin lg:px-margin-lg flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md flex-shrink-0"><div class="w-10 h-10 rounded-lg bg-primary-container text-on-primary flex items-center justify-center shadow-[0_2px_6px_-1px_rgba(27,67,50,0.2)]"><span class="material-symbols-outlined text-[22px]">eco</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary leading-none tracking-tight">MAN3</span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase mt-space-xs tracking-wider">Bio-Agritech &amp; Regenerative Stewardship</span></div></div><nav class="hidden xl:flex items-center gap-space-md flex-1 justify-center max-w-4xl" data-active-classes="text-primary font-semibold bg-surface-container-high rounded px-space-sm py-space-xs"><a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md px-space-xs py-space-xs" data-path="beranda" href="#">Beranda</a><a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md px-space-xs py-space-xs" data-path="tentang-kami" href="#">Tentang Kami</a><a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md px-space-xs py-space-xs" data-path="ekosistem-dan-konservasi" href="#">Ekosistem &amp; Konservasi</a><a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md px-space-xs py-space-xs" data-path="katalog-pangan" href="#">Katalog Pangan</a><a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md px-space-xs py-space-xs" data-path="why-choose-man3" href="#">Why Choose MAN3</a><a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md px-space-xs py-space-xs" data-path="kemitraan-b2b-dan-restoran" href="#">Kemitraan B2B &amp; Restoran</a></nav><div class="flex items-center gap-space-sm flex-shrink-0"><a class="hidden sm:inline-flex items-center justify-center font-label-md text-label-md text-primary hover:bg-surface-container-highest transition-colors px-space-md py-space-sm rounded-lg" data-path="konsultasi-pasokan" href="#">Konsultasi Pasokan</a><a class="inline-flex items-center justify-center font-label-md text-label-md bg-secondary text-on-secondary hover:bg-on-secondary-container transition-colors px-space-md py-space-sm rounded-lg shadow-[0_1px_4px_rgba(136,80,57,0.2)]" data-path="portal-mitra-b2b" href="#">Portal Mitra B2B</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-space-xs"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface"><div class="flex flex-col w-full">
+<!-- EDITORIAL HERO & TELEMETRY SECTION -->
+<section class="relative w-full overflow-hidden bg-primary text-on-primary">
+<div class="absolute inset-0 opacity-20 pointer-events-none mix-blend-overlay">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg">
+<path class="text-tertiary-fixed-dim" d="M0,160 Q250,90 500,180 T1000,120 L1000,600 L0,600 Z" fill="currentColor"></path>
+<path class="text-surface-tint" d="M0,280 Q320,180 620,310 T1000,240 L1000,600 L0,600 Z" fill="currentColor"></path>
+</svg>
+</div>
+<div class="relative w-full max-w-[1360px] mx-auto px-margin-sm md:px-margin lg:px-margin-lg pt-space-xl pb-space-xl">
+<!-- Super-title with precise editorial spacing -->
+<div class="flex items-center gap-space-xs text-primary-fixed-dim font-label-sm text-label-sm tracking-widest uppercase mb-space-sm">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed inline-block"></span>
+<span>Manifesto Agro-Ekologi Regeneratif</span>
+<span class="opacity-40">•</span>
+<span>Kawasan Cisarua &amp; Lereng Gn. Gede-Pangrango</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg items-end">
+<div class="lg:col-span-8 flex flex-col gap-space-md">
+<h1 class="font-display-lg text-display-lg font-normal leading-tight text-surface-container-lowest max-w-4xl tracking-tight">
+            Harmoni Ekologi Hayati: Melindungi Flora, Fauna, dan Kemurnian Tanah Tanpa Kompromi Kimiawi.
+          </h1>
+<p class="font-body-lg text-body-lg text-surface-dim max-w-2xl leading-relaxed font-light">
+            Mengintegrasikan bioteknologi alami, perlindungan koridor satwa liar, dan restorasi mikrobioma tanah untuk mewujudkan ekosistem agrikultur berdaulat, bebas residu sintetis, serta tangguh menghadapi fluktuasi iklim.
+          </p>
+<div class="flex flex-wrap items-center gap-space-md pt-space-sm">
+<a class="inline-flex items-center justify-center font-label-md text-label-md bg-secondary text-on-secondary px-space-lg py-space-sm rounded-lg hover:bg-on-secondary-container transition-all duration-200 shadow-md" href="#empat-pilar">
+              Eksplorasi 4 Kuadran Ekosistem
+              <span class="material-symbols-outlined text-[16px] ml-space-xs">south</span>
+</a>
+<a class="inline-flex items-center justify-center font-label-md text-label-md bg-transparent text-surface-container-lowest hover:bg-surface-container-highest/10 px-space-lg py-space-sm rounded-lg transition-colors" href="#registrasi-audit">
+<span class="material-symbols-outlined text-[18px] mr-space-xs text-tertiary-fixed">description</span>
+              Unduh Laporan Konservasi Hayati 2024 (PDF)
+            </a>
+</div>
+</div>
+<!-- Terroir Context Image Preview -->
+<div class="lg:col-span-4 flex flex-col">
+<div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden shadow-xl bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="Pemandangan terasering agroforestri berkabut di Cisarua lereng Gunung Gede Pangrango pada fajar. Pohon-pohon kanopi rindang menaungi tanaman herba dan teh hijau dengan humus tanah hitam basah yang subur dalam pencahayaan alami nan syahdu bergaya editorial National Geographic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCW1V8iz3IFUprskp8NlCBl8KMdcu9Lt-afWcPsQ2_pLSFLWeomKc4yYllcIVjoDeAfVw2jyp455N8b0dYPU5Ja2yJrF-qeiFuGuJrMAKjPBKYJyqhmhQ3dndg_A6cj3xFkOgQOAYX2Hu9BTVO8P7fMjK-0ztFRWHkzOwbsf3qritXBsZgiCMXJhJyIYIVtkp3HCmNvhBRzU7REEvyBLMRZ7tr1LF_HhAfS2VA5D5w"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-space-md left-space-md right-space-md flex justify-between items-end">
+<div>
+<span class="font-label-sm text-label-sm text-tertiary-fixed uppercase block">Stasiun Observasi Alpha</span>
+<span class="font-headline-sm text-headline-sm text-surface-container-lowest">Zona Cisarua Summit</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary-fixed-dim bg-primary/90 px-space-xs py-0.5 rounded">GPS -6.7024, 106.9455</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Live Terroir Telemetry Bar -->
+<div class="mt-space-xl pt-space-lg bg-primary-container text-on-primary rounded-xl px-space-lg py-space-md shadow-lg">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs text-primary-fixed-dim font-label-sm text-label-sm uppercase mb-1">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed">landscape</span>
+              Elevasi Terroir
+            </div>
+<div class="font-headline-md text-headline-md font-medium text-surface-container-lowest">1.400 <span class="font-label-md text-label-md font-normal text-surface-dim">mdpl</span></div>
+<span class="font-body-sm text-body-sm text-on-primary-container mt-0.5">Suhu rerata 17.8°C</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs text-primary-fixed-dim font-label-sm text-label-sm uppercase mb-1">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed">water_drop</span>
+              Kelembaban Humus
+            </div>
+<div class="font-headline-md text-headline-md font-medium text-surface-container-lowest">78% <span class="font-label-md text-label-md font-normal text-surface-dim">RH</span></div>
+<span class="font-body-sm text-body-sm text-on-primary-container mt-0.5">Kedalaman sensor 20cm</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs text-primary-fixed-dim font-label-sm text-label-sm uppercase mb-1">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed">diversity_2</span>
+              Shannon-Wiener (H')
+            </div>
+<div class="font-headline-md text-headline-md font-medium text-surface-container-lowest">3.82 <span class="font-label-md text-label-md font-normal text-tertiary-fixed font-semibold">Tinggi</span></div>
+<span class="font-body-sm text-body-sm text-on-primary-container mt-0.5">142 Spesies Terkatalog</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs text-primary-fixed-dim font-label-sm text-label-sm uppercase mb-1">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed">science</span>
+              Residu Kimia Sintetis
+            </div>
+<div class="font-headline-md text-headline-md font-medium text-tertiary-fixed">0.0% <span class="font-label-md text-label-md font-normal text-surface-dim">Zero Ppm</span></div>
+<span class="font-body-sm text-body-sm text-on-primary-container mt-0.5">Sertifikasi Uji Lab Q3-2024</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4 PILAR INTI KONSERVASI EKOSISTEM HAYATI -->
+<section class="w-full bg-surface-container-lowest py-space-xl" id="empat-pilar">
+<div class="w-full max-w-[1360px] mx-auto px-margin-sm md:px-margin lg:px-margin-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-space-xl gap-space-md">
+<div class="max-w-2xl">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest block mb-space-xs">Kerangka Kerja Agronomi Terpadu</span>
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight font-medium">
+            Empat Pilar Regenerasi Tanpa Kimiawi
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs">
+            Setiap jengkal lahan dikelola dengan metodologi ilmiah berbasis siklus alamiah biosfer, mengharmonisasikan interaksi flora, fauna, mikrobioma, dan hidrologi vulkanik.
+          </p>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md text-on-surface-variant">Standar Protokol: MAN3 Bio-Security Level 4</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter-lg">
+<!-- Pilar 01 -->
+<div class="bg-surface-container-low rounded-xl p-space-lg flex flex-col justify-between shadow-sm transition-all hover:shadow-md">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-label-lg text-label-lg font-bold text-secondary">PILAR 01</span>
+<span class="material-symbols-outlined text-[28px] text-primary">psychiatry</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">
+              Bio-Security Alami &amp; Manajemen Hama Nabati
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-space-md leading-relaxed">
+              Alih-alih menyemprot racun pembasmi, kami menanam sabuk botani <em class="font-semibold text-primary">refugia</em> (bunga kenikir, lavender gunung, dan serai wangi) di sekeliling bedeng. Sabuk ini mengundang koloni serangga predator alami seperti kumbang kubah (Coccinellidae) dan tawon parasitoid mikro yang mengeliminasi 100% kebutuhan pestisida maupun insektisida sintetis secara seimbang.
+            </p>
+</div>
+<div class="bg-surface-container rounded-lg p-space-md mt-space-sm flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[20px] text-primary">verified_user</span>
+<span class="font-body-sm text-body-sm font-semibold text-primary">Reduksi Serangan Hama Invasif</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-primary">94.3% Efektif Alami</span>
+</div>
+</div>
+<!-- Pilar 02 -->
+<div class="bg-surface-container-low rounded-xl p-space-lg flex flex-col justify-between shadow-sm transition-all hover:shadow-md">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-label-lg text-label-lg font-bold text-secondary">PILAR 02</span>
+<span class="material-symbols-outlined text-[28px] text-primary">cruelty_free</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">
+              Peternakan Etis &amp; Kesejahteraan Bebas Tekanan
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-space-md leading-relaxed">
+              Mengadopsi sistem <em class="font-semibold text-primary">rotational pasture-fed grazing</em> pada 24 paddock lereng berhawa sejuk. Sapi perah dan unggas bebas bergerak di bawah paparan sinar matahari langsung, nol kurungan kandang sempit, 0% antibiotik preventif, dan bebas hormon penggemuk buatan. Hewan diproteksi dengan pakan hijauan fermentasi silase herbal temulawak dan kunyit hutan.
+            </p>
+</div>
+<div class="bg-surface-container rounded-lg p-space-md mt-space-sm flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[20px] text-primary">favorite</span>
+<span class="font-body-sm text-body-sm font-semibold text-primary">Indeks Kesejahteraan Hewan (Five Freedoms)</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-primary">Tingkat A+ (Audit Terakreditasi)</span>
+</div>
+</div>
+<!-- Pilar 03 -->
+<div class="bg-surface-container-low rounded-xl p-space-lg flex flex-col justify-between shadow-sm transition-all hover:shadow-md">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-label-lg text-label-lg font-bold text-secondary">PILAR 03</span>
+<span class="material-symbols-outlined text-[28px] text-primary">compost</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">
+              Restorasi Mikrobioma Tanah Hidup &amp; No-Till
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-space-md leading-relaxed">
+              Tanpa pembajakan mekanis (<em class="font-semibold text-primary">no-tillage</em>) untuk mempertahankan integritas jejaring hifa miselium jamur mikoriza arbuskular. Kesuburan ditransfusikan melalui infus bio-slurry anaerobik hasil fermentasi kotoran ruminansia lokal dan asam humat alami. Metodologi ini menstabilkan pH tanah pada angka emas 6.8 dan memperkaya pori-pori tanah dengan biomassa karbon aktif.
+            </p>
+</div>
+<div class="bg-surface-container rounded-lg p-space-md mt-space-sm flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[20px] text-primary">science</span>
+<span class="font-body-sm text-body-sm font-semibold text-primary">Bahan Organik Tanah (SOM)</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-primary">7.8% (Standar Nasional: &gt;3%)</span>
+</div>
+</div>
+<!-- Pilar 04 -->
+<div class="bg-surface-container-low rounded-xl p-space-lg flex flex-col justify-between shadow-sm transition-all hover:shadow-md">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-label-lg text-label-lg font-bold text-secondary">PILAR 04</span>
+<span class="material-symbols-outlined text-[28px] text-primary">water_ph</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">
+              Konservasi Sumber Daya Air Mata Air Vulkanik
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-space-md leading-relaxed">
+              Melindungi 6 titik tangkapan mata air alami di ketinggian dengan radius suci zona hijau 500 meter yang tidak boleh dijamah aktivitas agrikultur intensif. Sistem irigasi memanfaatkan gaya gravitasi alami melalui parit batuan andesit dan sistem pipa resapan sub-surface berpori yang meminimalkan penguapan dan mencegah limpasan erosi lereng terjal.
+            </p>
+</div>
+<div class="bg-surface-container rounded-lg p-space-md mt-space-sm flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[20px] text-primary">waves</span>
+<span class="font-body-sm text-body-sm font-semibold text-primary">Efisiensi Konservasi Air Sub-Lembah</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-primary">Recycled &amp; Zero Waste Runoff</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- PETA INTERAKTIF & TATA KELOLA KORIDOR LANSKAP (1.200 HEKTAR) -->
+<section class="w-full bg-surface py-space-xl">
+<div class="w-full max-w-[1360px] mx-auto px-margin-sm md:px-margin lg:px-margin-lg">
+<div class="max-w-3xl mb-space-lg">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest block mb-space-xs">Tata Ruang Spasial Berkelanjutan</span>
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight font-medium">
+          Koridor Biosfer 1.200 Hektar Cisarua-Pangrango
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs">
+          Struktur zonasi ilmiah membagi wilayah konservasi kami ke dalam empat ranah terpadu untuk menjamin kontinuitas habitat satwa liar sekaligus menyediakan bahan pangan berdensitas nutrisi tertinggi.
+        </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg items-start">
+<!-- Visual Map & Spatial Card -->
+<div class="lg:col-span-7 flex flex-col gap-space-md">
+<div class="relative w-full aspect-[16/10] rounded-xl overflow-hidden shadow-md bg-surface-container-high" data-location="Cisarua, Bogor, West Java, Indonesia" style="">
+<!-- Simulated GIS Satellite Layer View -->
+<div class="absolute inset-0 bg-primary-container/20 mix-blend-multiply"></div>
+<!-- Zone Hotspots overlay -->
+<div class="absolute top-6 left-8 bg-surface-container-lowest/90 backdrop-blur-md rounded-lg p-space-sm shadow-md">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-secondary inline-block"></span>
+<span class="font-label-sm text-label-sm text-primary uppercase font-bold">Zona A: Rimba Inti (420 Ha)</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant block mt-0.5">Koridor Elang &amp; Primata Dilindungi</span>
+</div>
+<div class="absolute top-1/2 left-1/3 bg-surface-container-lowest/90 backdrop-blur-md rounded-lg p-space-sm shadow-md">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary inline-block"></span>
+<span class="font-label-sm text-label-sm text-primary uppercase font-bold">Zona B: Agroforestri (380 Ha)</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant block mt-0.5">Herba Eksotis &amp; Sayur Ketinggian</span>
+</div>
+<div class="absolute bottom-8 right-12 bg-surface-container-lowest/90 backdrop-blur-md rounded-lg p-space-sm shadow-md">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-tertiary-container inline-block"></span>
+<span class="font-label-sm text-label-sm text-primary uppercase font-bold">Zona D: Bio-Hub Lab (100 Ha)</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant block mt-0.5">Sentra Riset Bioteknologi Organik</span>
+</div>
+</div>
+<!-- Biodiversity Indicator Bar -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block mb-space-sm">Flora &amp; Fauna Indikator Terlindungi di Kawasan</span>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[22px]">nest_cam_wired_stand</span>
+<div>
+<div class="font-label-md text-label-md font-bold text-primary">Elang Jawa</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Spizaetus bartelsi</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[22px]">pets</span>
+<div>
+<div class="font-label-md text-label-md font-bold text-primary">Owa Jawa</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Hylobates moloch</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[22px]">spa</span>
+<div>
+<div class="font-label-md text-label-md font-bold text-primary">Anggrek Hutan</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Bulbophyllum spp.</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[22px]">microbiology</span>
+<div>
+<div class="font-label-md text-label-md font-bold text-primary">Indigenous IMO</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">48 Strain Endemik</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 4 Zoning Breakdown Accordion/Cards -->
+<div class="lg:col-span-5 flex flex-col gap-space-sm">
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary uppercase font-semibold">Zona 01 • Penyangga Inti</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">420 Hektar</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-primary mt-1 mb-1">Rimba Perlindungan Satwa Liar</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Hutan tutupan primer sub-alpin yang berbatasan langsung dengan Taman Nasional. Dilarang keras untuk budidaya mekanis; difungsikan sebagai reservoir mata air dan koridor migrasi satwa pegunungan endemik.
+            </p>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary uppercase font-semibold">Zona 02 • Produksi Simbiotik</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">380 Hektar</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-primary mt-1 mb-1">Agroforestri Multi-strata &amp; Herba</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Pertanian kanopi 4 tingkat: pohon damar dan puspa menaungi kopi arabika specialty, perdu temu-temuan obat tradisional, dan sayuran liar dataran tinggi dengan serapan karbon tinggi.
+            </p>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary uppercase font-semibold">Zona 03 • Rotasi Hijau</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">300 Hektar</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-primary mt-1 mb-1">Paddock Gembala Rotasional Alami</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Padang rumput campur legum alami terbagi menjadi 24 petak yang digembalakan secara bergilir setiap 5 hari untuk mencegah degradasi vegetasi dan mendistribusikan pupuk kandang secara alami.
+            </p>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-tertiary-container uppercase font-semibold">Zona 04 • Sains Hayati</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">100 Hektar</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-primary mt-1 mb-1">Bio-Hub &amp; Laboratorium Mikrobiologi</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Fasilitas purwarupa formulasi pupuk mikrobiologis anaerob, bank plasma nutfah benih pusaka (heirloom), dan unit cold-chain sortir terotomasi bertenaga mikrohidro surya.
+            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- METRIK EMPIRIS & TRANSPARANSI LABORATORIUM -->
+<section class="w-full bg-surface-container-low py-space-xl">
+<div class="w-full max-w-[1360px] mx-auto px-margin-sm md:px-margin lg:px-margin-lg">
+<div class="text-center max-w-3xl mx-auto mb-space-xl">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest block mb-space-xs">Validasi Ilmiah Independen</span>
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight font-medium">
+          Transparansi Data &amp; Metrik Konservasi
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs">
+          Integritas biologis kami tidak sekadar narasi; setiap ton biomassa panen didukung audit laboratorium terakreditasi, sensor in-situ real-time, dan audit rantai pasok digital tanpa celah.
+        </p>
+</div>
+<!-- 4 High Impact Key Metrics -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter mb-space-xl">
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Total Area Terproteksi</span>
+<div class="font-headline-lg text-headline-lg text-primary font-semibold mt-space-xs mb-1">1.200+ <span class="font-label-md text-label-md font-normal text-on-surface-variant">Ha</span></div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Terdaftar resmi di bawah SK Restorasi Ekosistem &amp; Kemitraan Konservasi Kehutanan.</p>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Rantai Pasok Tertelusur</span>
+<div class="font-headline-lg text-headline-lg text-primary font-semibold mt-space-xs mb-1">100% <span class="font-label-md text-label-md font-normal text-on-surface-variant">Traceable</span></div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Setiap batch panen dilengkapi QR code identitas petak, tanggal petik, dan juru tani bersertifikat.</p>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Jejak Karbon Netto</span>
+<div class="font-headline-lg text-headline-lg text-primary font-semibold mt-space-xs mb-1">-1.8 <span class="font-label-md text-label-md font-normal text-on-surface-variant">kg CO2e/kg</span></div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Karbon negatif: tanah kami menyerap lebih banyak emisi gas rumah kaca daripada yang diproduksi.</p>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Logam Berat &amp; Pestisida</span>
+<div class="font-headline-lg text-headline-lg text-tertiary font-semibold mt-space-xs mb-1">0.00 <span class="font-label-md text-label-md font-normal text-on-surface-variant">Ppm</span></div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Hasil GC-MS spektrometri independen per November 2024: tidak terdeteksi senyawa organofosfat.</p>
+</div>
+</div>
+<!-- Live Sensor Mikrobioma Tanah Simulation Component -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-md">
+<div class="flex flex-col md:flex-row md:items-center justify-between pb-space-md gap-space-sm">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary-fixed animate-ping"></span>
+<span class="font-label-sm text-label-sm text-primary uppercase font-bold tracking-wider">Telemetri Lapangan Aktif • Node Sensor #C-048</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mt-1">Status Kesehatan Mikrobiologis Tanah Petak Sub-Alpin</h3>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Terakhir diperbarui: 3 Menit Lalu (LoRaWAN Auto-Sync)</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter pt-space-sm">
+<!-- Sensor Gauges / Mini Visualizations -->
+<div class="bg-surface-container-low rounded-lg p-space-md">
+<div class="flex justify-between items-center mb-space-xs">
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">Keseimbangan pH Tanah</span>
+<span class="font-label-md text-label-md font-bold text-primary">6.82 (Optimal)</span>
+</div>
+<div class="w-full bg-surface-container-highest h-3 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 78%"></div>
+</div>
+<div class="flex justify-between text-[11px] text-on-surface-variant mt-1">
+<span>Asam (4.5)</span>
+<span class="font-bold text-primary">Target Emas 6.8</span>
+<span>Basa (8.5)</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-sm">
+              Inokulasi mikoriza arbuskular menetralkan keasaman alami tanah vulkanik tanpa kapur kimiawi.
+            </p>
+</div>
+<div class="bg-surface-container-low rounded-lg p-space-md">
+<div class="flex justify-between items-center mb-space-xs">
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">Aktivitas Mikroba Aerobik</span>
+<span class="font-label-md text-label-md font-bold text-primary">4.2 × 10⁸ CFU/g</span>
+</div>
+<div class="w-full bg-surface-container-highest h-3 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 88%"></div>
+</div>
+<div class="flex justify-between text-[11px] text-on-surface-variant mt-1">
+<span>Rendah</span>
+<span class="font-bold text-secondary">Populasi Sangat Padat</span>
+<span>Maksimal</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-sm">
+              Dominasi bakteri pelarut fosfat (Bacillus sp.) dan penambat nitrogen nonsimbiotik (Azotobacter).
+            </p>
+</div>
+<div class="bg-surface-container-low rounded-lg p-space-md">
+<div class="flex justify-between items-center mb-space-xs">
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">Indeks Ketersediaan N-P-K Alami</span>
+<span class="font-label-md text-label-md font-bold text-primary">Seimbang Tinggi</span>
+</div>
+<div class="w-full bg-surface-container-highest h-3 rounded-full overflow-hidden">
+<div class="bg-tertiary-container h-full rounded-full" style="width: 84%"></div>
+</div>
+<div class="flex justify-between text-[11px] text-on-surface-variant mt-1">
+<span>Defisit</span>
+<span class="font-bold text-primary">Bio-Tersedia</span>
+<span>Toksik</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-sm">
+              Dilepaskan secara perlahan (slow-release) dari degradasi daun pangkasan legum dan vermikompos.
+            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- PROGRAM KETERLIBATAN MITRA & KOMUNITAS -->
+<section class="w-full bg-surface-container-lowest py-space-xl">
+<div class="w-full max-w-[1360px] mx-auto px-margin-sm md:px-margin lg:px-margin-lg">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg items-center">
+<div class="lg:col-span-5 flex flex-col gap-space-md">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Kolaborasi Penjagaan Bumi</span>
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight font-medium">
+            Kemitraan Konservasi untuk Pelaku Industri Gastronomi
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Kami membuka pintu bagi hotel berbintang, jaringan restoran culinary arts, institusi pendidikan, dan peneliti untuk menjadi bagian langsung dari regenerasi ekosistem Cisarua.
+          </p>
+<div class="flex flex-col gap-space-md pt-space-xs">
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low text-primary flex items-center justify-center flex-shrink-0 mt-1">
+<span class="material-symbols-outlined text-[20px]">potted_plant</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-primary mb-1">Adopsi Paddock &amp; Sourcing Plot Kustom</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Restoran mitra dapat memesan petak khusus varietas herba mikro langka atau heirloom dengan sertifikat konservasi eksklusif berlabel nama restoran pada menu fine dining Anda.
+                </p>
+</div>
+</div>
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low text-primary flex items-center justify-center flex-shrink-0 mt-1">
+<span class="material-symbols-outlined text-[20px]">school</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-primary mb-1">Residensi Riset &amp; Edukasi Agronomi</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Program pertukaran peneliti mikrobiologi tanah dan pelatihan regeneratif gratis bagi generasi muda petani lereng pegunungan di wilayah Jawa Barat.
+                </p>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-7">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div class="rounded-xl overflow-hidden shadow-md bg-surface-container-high aspect-[4/5] relative">
+<img class="w-full h-full object-cover" data-alt="Dua agronomis muda pria dan wanita mengenakan celemek katun alami sedang memeriksa sampel tanah berhumus kaya di bawah pohon kopi naungan hutan Cisarua dalam suasana pagi berkabut dan rona pencahayaan hangat alami." src="https://lh3.googleusercontent.com/aida-public/AB6AXuClOmOYA6Jk91AJr3TeHjauRh4pFCBcoJyBi1ZWgHIv5JLsHT0ku3JMd-nrM9n8YAyA0roZwdaogPvS1MJsG6O49xuYP1WPHzDbb5ac1UwtJEC5HHZTkJq1ZPjQl4rdYdZooph4a8SFOMDLdnZFVaUKU5lOwF0_ZILblLpcGAfOOk4lVFvUZoV_wn9UyN81rFhBnC_AfP7hmCSoVQ5naHzq1AkeL5eOLxuRDjZUTEc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-space-md left-space-md right-space-md text-surface-container-lowest">
+<span class="font-label-sm text-label-sm text-tertiary-fixed block uppercase">Kemitraan Gastronomi</span>
+<span class="font-headline-sm text-headline-sm">Terroir Traceability Lot</span>
+</div>
+</div>
+<div class="rounded-xl overflow-hidden shadow-md bg-surface-container-high aspect-[4/5] relative">
+<img class="w-full h-full object-cover" data-alt="Sekelompok koki profesional dan ilmuwan pangan mengamati sayuran liar sub-alpin segar di petak percontohan lereng pegunungan hijau Cisarua yang subur dengan latar belakang hutan awan berkabut." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3zccpXFI4KXspoS6UpfJlrx6qkB1fXprKzFjSSniu7NIzvw-B3OT_1GJLM6zztYzXRPBDDu3BkUgL6NSiU3g-jVOW0eyJj1fj7SosN5pgWqav9uD2qgKXuVcN_TjuyLOm-QByvIB6PpOMlRv4b5cqL5a4fIpuQ1DvGlp0vrSd10RRFFefFol9UyM_GC13TNgju0swGczo8S3CQLNNFBJFCqYTvG5HMUnF24t-1Ko"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-space-md left-space-md right-space-md text-surface-container-lowest">
+<span class="font-label-sm text-label-sm text-tertiary-fixed block uppercase">Riset Lapangan</span>
+<span class="font-headline-sm text-headline-sm">Soil Microbiome Residency</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA SECTION & REGISTRASI VISIT AUDIT -->
+<section class="w-full bg-primary text-on-primary py-space-xl" id="registrasi-audit">
+<div class="w-full max-w-[1360px] mx-auto px-margin-sm md:px-margin lg:px-margin-lg">
+<div class="bg-primary-container text-on-primary rounded-xl p-space-xl shadow-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg">
+<div class="lg:col-span-5 flex flex-col justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-tertiary-fixed tracking-widest uppercase block mb-space-xs">Inspeksi Langsung Terroir</span>
+<h2 class="font-headline-lg text-headline-lg font-medium text-surface-container-lowest tracking-tight">
+                Jadwalkan Kunjungan Lapangan Konservasi (Terroir Audit Walk)
+              </h2>
+<p class="font-body-md text-body-md text-surface-dim mt-space-sm leading-relaxed">
+                Ajak tim kuliner, executive chef, manajer keberlanjutan korporat, atau peneliti Anda untuk melangkah langsung di tanah hitam Cisarua, menguji brix daun, dan mencicipi kemurnian mata air vulkanik.
+              </p>
+</div>
+<div class="mt-space-lg pt-space-md text-surface-dim font-body-sm text-body-sm flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-tertiary-fixed">schedule</span>
+<span>Jadwal Visit: Selasa &amp; Kamis (08.30 – 14.00 WIB)</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-tertiary-fixed">groups</span>
+<span>Maksimal 8 Delegasi per Sesi Terpandu</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-tertiary-fixed">verified</span>
+<span>Termasuk Pengujian Sampel Tanah &amp; Jamuan Panen Segar</span>
+</div>
+</div>
+</div>
+<!-- Registration Form Component -->
+<div class="lg:col-span-7 bg-surface-container-lowest text-on-surface rounded-xl p-space-lg shadow-md">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">Formulir Registrasi Delegasi</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md">
+              Silakan lengkapi formulir di bawah ini. Tim kurator biosfer MAN3 akan mengonfirmasi ketersediaan slot dalam 1x24 jam kerja.
+            </p>
+<form class="flex flex-col gap-space-md" id="auditForm">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-primary font-semibold">Nama Lengkap PIC</label>
+<input class="bg-surface-container-low text-on-surface px-space-md py-3 rounded-lg focus:outline-none focus:bg-surface-container-highest transition-colors font-body-md text-body-md" placeholder="mis. Chef Adrian Pratama" required="" type="text"/>
+</div>
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-primary font-semibold">Nama Institusi / Restoran</label>
+<input class="bg-surface-container-low text-on-surface px-space-md py-3 rounded-lg focus:outline-none focus:bg-surface-container-highest transition-colors font-body-md text-body-md" placeholder="mis. Amanjiwo Dining / Plataran" required="" type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-primary font-semibold">Email Korespondensi</label>
+<input class="bg-surface-container-low text-on-surface px-space-md py-3 rounded-lg focus:outline-none focus:bg-surface-container-highest transition-colors font-body-md text-body-md" placeholder="adrian@restoran.co.id" required="" type="email"/>
+</div>
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-primary font-semibold">Nomor WhatsApp / Kontak</label>
+<input class="bg-surface-container-low text-on-surface px-space-md py-3 rounded-lg focus:outline-none focus:bg-surface-container-highest transition-colors font-body-md text-body-md" placeholder="+62 812-3456-7890" required="" type="tel"/>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-primary font-semibold">Fokus Minat Kunjungan</label>
+<select class="bg-surface-container-low text-on-surface px-space-md py-3 rounded-lg focus:outline-none focus:bg-surface-container-highest transition-colors font-body-md text-body-md">
+<option>Sourcing Pasokan Restoran B2B (HoReCa)</option>
+<option>Audit Integritas Organik &amp; Tanah Bebas Kimia</option>
+<option>Adopsi Paddock Peternakan Etis</option>
+<option>Riset Akademik &amp; Mikrobioma Lahan</option>
+</select>
+</div>
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-primary font-semibold">Estimasi Jumlah Delegasi</label>
+<select class="bg-surface-container-low text-on-surface px-space-md py-3 rounded-lg focus:outline-none focus:bg-surface-container-highest transition-colors font-body-md text-body-md">
+<option>1 - 2 Orang (Delegasi Khusus)</option>
+<option>3 - 5 Orang (Tim Dapur &amp; Purchasing)</option>
+<option>6 - 8 Orang (Maksimal Kapasitas)</option>
+</select>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-primary font-semibold">Catatan Kebutuhan Khusus / Tanggal Pilihan</label>
+<textarea class="bg-surface-container-low text-on-surface px-space-md py-3 rounded-lg focus:outline-none focus:bg-surface-container-highest transition-colors font-body-md text-body-md resize-none" placeholder="Sebutkan preferensi tanggal (Selasa/Kamis) atau komoditas botani spesifik yang ingin diinspeksi..." rows="3"></textarea>
+</div>
+<button class="w-full bg-secondary hover:bg-on-secondary-container text-on-secondary py-space-sm rounded-lg font-label-md text-label-md transition-colors mt-space-xs shadow-md flex items-center justify-center gap-space-xs" type="submit">
+<span>Kirim Permohonan Terroir Audit Walk</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<div class="hidden bg-surface-container p-space-sm rounded-lg text-primary font-body-sm text-body-sm text-center" id="formSuccess">
+                ✓ Permohonan Anda telah diterima. Agronomist kami akan menghubungi melalui WhatsApp dalam kurun 24 jam.
+              </div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- MICRO-INTERACTION SCRIPT -->
+<script>
+    document.getElementById('auditForm')?.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const successEl = document.getElementById('formSuccess');
+      if (successEl) {
+        successEl.classList.remove('hidden');
+        this.reset();
+      }
+    });
+  </script>
+</div></main><footer class="w-full bg-surface-container-low shadow-[0_-1px_12px_rgba(27,67,50,0.03)] mt-space-xl"><div class="w-full px-margin-sm md:px-margin lg:px-margin-lg pt-space-xl pb-space-lg"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-gutter-lg pb-space-xl"><div class="lg:col-span-4 flex flex-col gap-space-md"><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded bg-primary-container text-on-primary flex items-center justify-center"><span class="material-symbols-outlined text-[18px]">nature_people</span></div><span class="font-headline-sm text-headline-sm text-primary">MAN3 Agro-Conservation</span></div><p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm">Pionir regenerasi agrikultur presisi dan konservasi lanskap tropis. Menghubungkan integritas biosfer pegunungan dengan standar kualifikasi gastronomi dan korporasi terintegrasi.</p><div class="flex flex-col gap-space-xs pt-space-xs"><div class="flex items-start gap-space-xs text-on-surface-variant font-body-sm text-body-sm"><span class="material-symbols-outlined text-[16px] text-primary mt-0.5">location_on</span><span>Kompleks Agrowisata &amp; Riset Terpadu, Jl. Raya Puncak KM 84, Cisarua, Bogor, Jawa Barat 16750</span></div><div class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm"><span class="material-symbols-outlined text-[16px] text-primary">mail</span><span>stewardship@man3agro.id</span></div></div></div><div class="lg:col-span-3 flex flex-col gap-space-sm"><span class="font-label-lg text-label-lg text-primary tracking-wide uppercase">Arsitektur Solusi</span><div class="flex flex-col gap-space-xs"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="ekosistem-dan-konservasi" href="#">Konservasi Daerah Aliran Sungai</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="katalog-pangan" href="#">Komoditas Sayur Sub-Alpin</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="katalog-pangan" href="#">Herba &amp; Botani Restoratif</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="kemitraan-b2b-dan-restoran" href="#">Program Langganan HoReCa</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="portal-mitra-b2b" href="#">Audit Traceability &amp; Batch Lot</a></div></div><div class="lg:col-span-2 flex flex-col gap-space-sm"><span class="font-label-lg text-label-lg text-primary tracking-wide uppercase">Tata Kelola</span><div class="flex flex-col gap-space-xs"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="tentang-kami" href="#">Laporan Dampak Ekologis</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="why-choose-man3" href="#">Standar Mutu &amp; Kerapatan Hara</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="kemitraan-b2b-dan-restoran" href="#">Protokol Rantai Pasok Dingin</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="tentang-kami" href="#">Pusat Riset Mikoriza Tanah</a></div></div><div class="lg:col-span-3 flex flex-col gap-space-sm"><span class="font-label-lg text-label-lg text-primary tracking-wide uppercase">Sertifikasi &amp; Legalitas</span><p class="font-body-sm text-body-sm text-on-surface-variant">Sistem budidaya dan fasilitas pascapanen telah tersertifikasi memenuhi audit mutu independen:</p><div class="grid grid-cols-2 gap-space-sm pt-space-xs"><div class="bg-surface-container rounded-lg p-space-sm flex items-center gap-space-xs"><span class="material-symbols-outlined text-primary text-[18px]">verified</span><span class="font-label-sm text-label-sm text-on-surface">SNI Organik</span></div><div class="bg-surface-container rounded-lg p-space-sm flex items-center gap-space-xs"><span class="material-symbols-outlined text-primary text-[18px]">verified</span><span class="font-label-sm text-label-sm text-on-surface">Halal BPJPH</span></div><div class="bg-surface-container rounded-lg p-space-sm flex items-center gap-space-xs"><span class="material-symbols-outlined text-primary text-[18px]">verified</span><span class="font-label-sm text-label-sm text-on-surface">ISO 22000</span></div><div class="bg-surface-container rounded-lg p-space-sm flex items-center gap-space-xs"><span class="material-symbols-outlined text-primary text-[18px]">verified</span><span class="font-label-sm text-label-sm text-on-surface">HACCP Certified</span></div></div></div></div><div class="pt-space-lg flex flex-col sm:flex-row items-center justify-between gap-space-md bg-surface-container-low"><span class="font-body-sm text-body-sm text-on-surface-variant">© 2025 PT MAN3 Agro Konservasi Nusantara. Hak Cipta Dilindungi Undang-Undang.</span><div class="flex items-center gap-space-md"><span class="font-label-sm text-label-sm text-on-surface-variant">Cisarua Biosphere Terraces, West Java</span><span class="font-label-sm text-label-sm text-on-surface-variant">•</span><span class="font-label-sm text-label-sm text-on-surface-variant">Precision Bio-Stewardship</span></div></div></div></footer></body></html>
