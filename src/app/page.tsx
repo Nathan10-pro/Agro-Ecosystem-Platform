@@ -1,902 +1,731 @@
 "use client";
 
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { siteConfig } from "@/config/site";
-import { initialProducts } from "@/data/products";
-import { initialNews } from "@/data/news";
 import {
-  ShieldCheck,
-  Mountain,
-  Sprout,
   ArrowRight,
-  ExternalLink,
-  Calendar,
-  User,
-  Sparkles,
+  Check,
+  ChevronRight,
+  Clock,
+  FileText,
   MapPin,
-  Phone,
-  Mail,
-  Send,
-  Building2,
-  Flower2,
-  PawPrint,
-  Recycle,
-  Leaf,
-  CheckCircle2,
+  Shield,
+  Truck,
   X,
+  ExternalLink,
+  Layers,
+  ArrowUpRight,
 } from "lucide-react";
+import { initialNews } from "@/data/news";
 
-interface NewsArticle {
+interface AllocationProduct {
   id: string;
-  title: string;
-  excerpt: string;
-  thumbnail_path: string;
+  name: string;
+  stock: string;
+  price: string;
+  unit: string;
+  spec: string;
   category: string;
-  created_at: string;
-  author_name: string;
-  content?: string;
 }
 
+const ALLOCATION_PRODUCTS: AllocationProduct[] = [
+  {
+    id: "p1",
+    name: "Tenderloin Pasture-Fed",
+    stock: "180 kg",
+    price: "Rp385.000",
+    unit: "/kg",
+    spec: "Whole muscle, vacuum",
+    category: "Daging Sapi",
+  },
+  {
+    id: "p2",
+    name: "Ribeye Lip-on",
+    stock: "240 kg",
+    price: "Rp340.000",
+    unit: "/kg",
+    spec: "Portion cut 300g",
+    category: "Daging Sapi",
+  },
+  {
+    id: "p3",
+    name: "Ayam Kampung Bio-Probiotik",
+    stock: "45 ekor",
+    price: "Rp82.000",
+    unit: "/ekor",
+    spec: "Utuh bersih",
+    category: "Unggas",
+  },
+  {
+    id: "p4",
+    name: "Paket Sayuran Daun Dataran Tinggi",
+    stock: "50 pack",
+    price: "Rp65.000",
+    unit: "/pack",
+    spec: "Curated box 5kg",
+    category: "Sayuran",
+  },
+];
+
 export default function HomePage() {
-  const [newsItems, setNewsItems] = useState<NewsArticle[]>(initialNews);
-  const [newsLoading, setNewsLoading] = useState(false);
-  const [newsError, setNewsError] = useState("");
-  const [selectedArticle, setSelectedArticle] = useState<NewsArticle | null>(null);
-  const [contactDemoSent, setContactDemoSent] = useState(false);
+  const [cartCount, setCartCount] = useState<number>(0);
+  const [addedItem, setAddedItem] = useState<string | null>(null);
+  const [showComparisonModal, setShowComparisonModal] = useState(false);
+  const [selectedArticle, setSelectedArticle] = useState<(typeof initialNews)[0] | null>(null);
 
+  // Sync with localStorage on mount
   useEffect(() => {
-    let active = true;
-    fetch("/api/news", { cache: "no-store" })
-      .then(async (response) => {
-        const data = await response.json();
-        if (!response.ok) throw new Error(data.error || "Berita gagal dimuat.");
-        return data.news as NewsArticle[];
-      })
-      .then((items) => {
-        if (active && Array.isArray(items) && items.length > 0) {
-          setNewsItems(items);
+    try {
+      const saved = localStorage.getItem("man3_cart");
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) {
+          setCartCount(parsed.length);
         }
-      })
-      .catch((error: unknown) => {
-        // Fallback sudah aman menggunakan initialNews
-        console.warn("API news fetch failed, relying on initial fallback:", error);
-      });
-
-    return () => { active = false; };
+      }
+    } catch {
+      // Ignore storage errors
+    }
   }, []);
 
-  useEffect(() => {
-    if (!("IntersectionObserver" in window)) return;
-
-    const cards = document.querySelectorAll<HTMLElement>("[data-reveal]");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.setAttribute("data-revealed", "true");
-            observer.unobserve(entry.target);
-          }
+  const handleAddToCart = (product: AllocationProduct) => {
+    try {
+      const current = localStorage.getItem("man3_cart");
+      const list = current ? JSON.parse(current) : [];
+      const existingIndex = list.findIndex((item: { id: string }) => item.id === product.id);
+      if (existingIndex >= 0) {
+        list[existingIndex].qty = (list[existingIndex].qty || 1) + 1;
+      } else {
+        list.push({
+          id: product.id,
+          name: product.name,
+          spec: product.spec,
+          price: parseInt(product.price.replace(/[^\d]/g, ""), 10) || 0,
+          qty: 1,
         });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -32px 0px" },
-    );
+      }
+      localStorage.setItem("man3_cart", JSON.stringify(list));
+      setCartCount(list.length);
+    } catch {
+      // Fallback
+    }
 
-    cards.forEach((card) => observer.observe(card));
-    return () => observer.disconnect();
-  }, []);
+    setAddedItem(product.name);
+    setTimeout(() => {
+      setAddedItem(null);
+    }, 2800);
+  };
 
   return (
-    <div className="flex flex-col w-full">
+    <div className="w-full bg-white text-[#141A17]">
       {/* 1. HERO SECTION */}
-      <section className="relative w-full py-12 md:py-20 lg:py-24 bg-surface overflow-hidden">
+      <section className="relative w-full border-b border-[#E5E5DE] bg-[#FBFBF9] py-16 sm:py-20 lg:py-28">
         <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-            {/* Left Col: Text */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            {/* Left Content (7 Cols) */}
             <div className="lg:col-span-7 flex flex-col space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-high text-primary w-fit text-xs font-mono font-semibold tracking-wider uppercase">
-                <span className="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span>
-                MAN3 — Ekosistem Pertanian, Peternakan &amp; Konservasi
+              <div className="flex items-center gap-2">
+                <span className="inline-block w-2 h-2 rounded-full bg-[#0F3D2E]" />
+                <span className="text-[11px] font-mono uppercase tracking-wider text-[#6B726C] font-semibold">
+                  Koridor Dataran Tinggi • Single Estate Agro-Ecosystem
+                </span>
               </div>
 
-              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium text-primary tracking-tight leading-[1.12]">
-                Harmoni Alam Menghadirkan Pangan Berkualitas Premium
+              <h1 className="font-serif text-3xl sm:text-5xl lg:text-[54px] font-medium leading-[1.12] text-[#0F3D2E] tracking-tight">
+                Pasture-Fed Single Estate dari Koridor Konservasi Gunung Gede–Pangrango
               </h1>
 
-              <p className="text-base sm:text-lg text-on-surface-variant leading-relaxed max-w-2xl">
-                MAN3 memadukan budidaya alami, peternakan ramah alam berbasis padang rumput, dan pelestarian koridor konservasi hayati untuk menyediakan bahan pangan segar bermutu tinggi bagi mitra kuliner.
+              <p className="text-base sm:text-lg text-[#4E5752] leading-relaxed max-w-2xl font-normal">
+                Daging sapi yang dikelola di dalam sistem zonasi 4 lapisan. Ketelusuran lot,
+                jadwal pengiriman subuh, dan kontribusi konservasi yang terukur.
               </p>
 
               {/* CTAs */}
-              <div className="flex flex-wrap items-center gap-4 pt-2">
-                <Link
-                  href="/kemitraan-b2b#onboarding-form"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-lg bg-primary hover:bg-primary-container text-white font-mono text-sm uppercase tracking-wider font-semibold transition-all shadow-sm hover:-translate-y-0.5"
+              <div className="pt-2 flex flex-wrap items-center gap-4">
+                <a
+                  href="#alokasi"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-[4px] bg-[#0F3D2E] hover:bg-[#08261C] text-white text-[13px] font-mono uppercase tracking-wider font-semibold transition-colors shadow-sm"
                 >
-                  Pelajari Kemitraan B2B
+                  <span>Lihat Alokasi Batch Minggu Ini</span>
                   <ArrowRight className="w-4 h-4" />
-                </Link>
+                </a>
 
                 <Link
-                  href="#products"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-surface-container-high hover:bg-surface-variant text-primary font-mono text-sm uppercase tracking-wider font-semibold transition-colors"
+                  href="/kemitraan-b2b?path=kunjungan"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-[4px] border border-[#E5E5DE] bg-white hover:bg-[#F5F5F1] text-[#141A17] text-[13px] font-mono uppercase tracking-wider font-medium transition-colors"
                 >
-                  Jelajahi Produk Kami
+                  <span>Jadwalkan Kunjungan Lapangan</span>
                 </Link>
               </div>
 
-              {/* Key Highlights Metrics */}
-              <div className="pt-6 grid grid-cols-2 sm:grid-cols-3 gap-6 border-t border-surface-container-high">
-                <div>
-                  <span className="block font-mono text-xl sm:text-2xl font-bold text-primary">
-                    100% Pasture-Fed
-                  </span>
-                  <span className="text-xs text-on-surface-variant">Pakan rumput alami bernutrisi</span>
-                </div>
-                <div>
-                  <span className="block font-mono text-xl sm:text-2xl font-bold text-primary">
-                    Sistem Terpadu
-                  </span>
-                  <span className="text-xs text-on-surface-variant">Agro-ekologi &amp; siklus hayati</span>
-                </div>
-                <div className="col-span-2 sm:col-span-1">
-                  <span className="block font-mono text-xl sm:text-2xl font-bold text-secondary">
-                    Konservasi Alam
-                  </span>
-                  <span className="text-xs text-on-surface-variant">Menjaga koridor keanekaragaman hayati</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Col: Hero Visual Card */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl bg-surface-container border border-surface-container-high">
-                <img
-                  src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1000&q=80"
-                  alt="Lanskap pertanian pegunungan MAN3"
-                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/30 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 text-white space-y-2">
-                  <div className="flex items-center gap-2 text-xs font-mono tracking-wider text-primary-fixed uppercase">
-                    <span className="w-2 h-2 rounded-full bg-tertiary-fixed"></span>
-                    Bentang Alam Dataran Tinggi
-                  </div>
-                  <h3 className="font-serif text-xl sm:text-2xl font-semibold">
-                    Harmoni Alam &amp; Produksi Pangan
-                  </h3>
-                  <p className="text-xs sm:text-sm text-inverse-on-surface/90 leading-relaxed">
-                    Pendekatan agro-ekologi terpadu yang memadukan kesuburan tanah pegunungan dan kesejahteraan ternak alami.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 2. DEDICATED PAGES DIRECTORY (7 Halaman Khusus Referensi Desain) */}
-      <section className="w-full py-12 bg-surface-container-low border-y border-surface-container-high">
-        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
-            <div>
-              <span className="font-mono text-xs uppercase tracking-wider text-secondary font-bold">
-                Eksplorasi Layanan &amp; Ekosistem
-              </span>
-              <h2 className="font-serif text-2xl sm:text-3xl font-medium text-primary mt-1">
-                Jelajahi Ekosistem Terpadu MAN3
-              </h2>
-            </div>
-            <p className="text-xs sm:text-sm text-on-surface-variant max-w-md">
-              Akses cepat ke seluruh pilar ekosistem bio-agri, katalog pangan segar, kemitraan usaha, dan sains konservasi kami.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <Link
-              href="/produk/daging-sapi-pasture-fed"
-              data-reveal
-              className="p-5 rounded-xl bg-white border border-outline-variant/40 hover:border-tertiary-container shadow-sm hover:shadow-md transition-all group flex flex-col justify-between"
-            >
-              <div>
-                <span className="text-xs font-mono text-secondary font-bold">01 / PRODUK</span>
-                <h3 className="font-serif text-lg font-semibold text-primary mt-1 group-hover:text-primary-container">
-                  Daging Sapi Pasture-Fed
-                </h3>
-                <p className="text-xs text-on-surface-variant mt-2 line-clamp-2">
-                  Daging sapi pilihan dari padang rumput alami dengan standar pemotongan presisi.
-                </p>
-              </div>
-              <div className="mt-4 flex items-center text-xs font-mono font-semibold text-primary gap-1 group-hover:translate-x-1 transition-transform">
-                <span>Lihat Detail</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </div>
-            </Link>
-
-            <Link
-              href="/ekosistem-konservasi"
-              data-reveal
-              className="p-5 rounded-xl bg-white border border-outline-variant/40 hover:border-tertiary-container shadow-sm hover:shadow-md transition-all group flex flex-col justify-between"
-            >
-              <div>
-                <span className="text-xs font-mono text-secondary font-bold">02 / ZONASI</span>
-                <h3 className="font-serif text-lg font-semibold text-primary mt-1 group-hover:text-primary-container">
-                  Ekosistem Konservasi
-                </h3>
-                <p className="text-xs text-on-surface-variant mt-2 line-clamp-2">
-                  Rancangan zonasi perlindungan alam, koridor hijau, dan siklus air pegunungan.
-                </p>
-              </div>
-              <div className="mt-4 flex items-center text-xs font-mono font-semibold text-primary gap-1 group-hover:translate-x-1 transition-transform">
-                <span>Pelajari Ekosistem</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </div>
-            </Link>
-
-            <Link
-              href="/kemitraan-b2b"
-              data-reveal
-              className="interactive-card p-5 rounded-xl bg-white border border-outline-variant/40 hover:border-tertiary-container shadow-sm hover:shadow-md transition-all group flex flex-col justify-between"
-            >
-              <div>
-                <span className="text-xs font-mono text-secondary font-bold">03 / KEMITRAAN</span>
-                <h3 className="font-serif text-lg font-semibold text-primary mt-1 group-hover:text-primary-container">
-                  Kemitraan B2B Restoran
-                </h3>
-                <p className="text-xs text-on-surface-variant mt-2 line-clamp-2">
-                  Program kemitraan pasokan bahan pangan bermutu untuk restoran, hotel, dan usaha kuliner.
-                </p>
-              </div>
-              <div className="mt-4 flex items-center text-xs font-mono font-semibold text-primary gap-1 group-hover:translate-x-1 transition-transform">
-                <span>Lihat Kemitraan</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </div>
-            </Link>
-
-            <Link
-              href="/corporate-profile"
-              data-reveal
-              className="p-5 rounded-xl bg-white border border-outline-variant/40 hover:border-tertiary-container shadow-sm hover:shadow-md transition-all group flex flex-col justify-between"
-            >
-              <div>
-                <span className="text-xs font-mono text-secondary font-bold">04 / KORPORAT</span>
-                <h3 className="font-serif text-lg font-semibold text-primary mt-1 group-hover:text-primary-container">
-                  Profil Perusahaan
-                </h3>
-                <p className="text-xs text-on-surface-variant mt-2 line-clamp-2">
-                  Visi, komitmen tata kelola, dan pendekatan holistik MAN3 dalam bio-agrikultur.
-                </p>
-              </div>
-              <div className="mt-4 flex items-center text-xs font-mono font-semibold text-primary gap-1 group-hover:translate-x-1 transition-transform">
-                <span>Buka Profil</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </div>
-            </Link>
-
-            <Link
-              href="/bio-conservation"
-              data-reveal
-              className="p-5 rounded-xl bg-white border border-outline-variant/40 hover:border-tertiary-container shadow-sm hover:shadow-md transition-all group flex flex-col justify-between"
-            >
-              <div>
-                <span className="text-xs font-mono text-secondary font-bold">05 / SAINS</span>
-                <h3 className="font-serif text-lg font-semibold text-primary mt-1 group-hover:text-primary-container">
-                  Budidaya dan Konservasi
-                </h3>
-                <p className="text-xs text-on-surface-variant mt-2 line-clamp-2">
-                  Prinsip sains agro-ekologi, kesehatan mikrobioma tanah, dan tanaman refugia.
-                </p>
-              </div>
-              <div className="mt-4 flex items-center text-xs font-mono font-semibold text-primary gap-1 group-hover:translate-x-1 transition-transform">
-                <span>Lihat Panduan Konsep</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </div>
-            </Link>
-
-            <Link
-              href="/portal-mitra"
-              data-reveal
-              className="p-5 rounded-xl bg-white border border-outline-variant/40 hover:border-tertiary-container shadow-sm hover:shadow-md transition-all group flex flex-col justify-between"
-            >
-              <div>
-                <span className="text-xs font-mono text-secondary font-bold">06 / PEMESANAN B2B</span>
-                <h3 className="font-serif text-lg font-semibold text-primary mt-1 group-hover:text-primary-container">
-                  Portal Mitra B2B
-                </h3>
-                <p className="text-xs text-on-surface-variant mt-2 line-clamp-2">
-                  Antarmuka pemesanan batch terstandar dengan informasi ketersediaan berkala.
-                </p>
-              </div>
-              <div className="mt-4 flex items-center text-xs font-mono font-semibold text-primary gap-1 group-hover:translate-x-1 transition-transform">
-                <span>Buka Portal Mitra</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </div>
-            </Link>
-
-            <Link
-              href="/why-choose-man3"
-              data-reveal
-              className="p-5 rounded-xl bg-white border border-outline-variant/40 hover:border-tertiary-container shadow-sm hover:shadow-md transition-all group flex flex-col justify-between"
-            >
-              <div>
-                <span className="text-xs font-mono text-secondary font-bold">07 / KEUNGGULAN</span>
-                <h3 className="font-serif text-lg font-semibold text-primary mt-1 group-hover:text-primary-container">
-                  Mengapa MAN3
-                </h3>
-                <p className="text-xs text-on-surface-variant mt-2 line-clamp-2">
-                  Nilai unggul model regeneratif MAN3 untuk mutu pangan dan keberlanjutan alam.
-                </p>
-              </div>
-              <div className="mt-4 flex items-center text-xs font-mono font-semibold text-primary gap-1 group-hover:translate-x-1 transition-transform">
-                <span>Pelajari Keunggulan</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </div>
-            </Link>
-
-            <Link
-              href="/#contact"
-              data-reveal
-              className="p-5 rounded-xl bg-primary text-white hover:bg-primary-container shadow-sm hover:shadow-md transition-all group flex flex-col justify-between"
-            >
-              <div>
-                <span className="text-xs font-mono text-tertiary-fixed font-bold">KONSULTASI</span>
-                <h3 className="font-serif text-lg font-semibold text-white mt-1">
-                  Mulai Kemitraan
-                </h3>
-                <p className="text-xs text-primary-fixed-dim/90 mt-2">
-                  Diskusikan spesifikasi kebutuhan pasokan pangan dengan tim konsultan kami.
-                </p>
-              </div>
-              <div className="mt-4 flex items-center text-xs font-mono font-semibold text-tertiary-fixed gap-1 group-hover:translate-x-1 transition-transform">
-                <span>Hubungi Kami</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </div>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. ABOUT SECTION & 3 CONSERVATION PILLARS */}
-      <section id="about" className="w-full py-16 sm:py-24 bg-surface-container-lowest">
-        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-14">
-            <span className="font-mono text-xs uppercase tracking-wider text-secondary font-bold block mb-2">
-              Tentang Ekosistem MAN3
-            </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium text-primary tracking-tight">
-              Sistem Pertanian, Peternakan &amp; Konservasi Terpadu
-            </h2>
-            <p className="text-base text-on-surface-variant mt-4 leading-relaxed">
-              {siteConfig.about.story}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Pilar 1 */}
-            <div data-reveal className="interactive-card flex flex-col bg-surface-container-low rounded-2xl p-8 transition-transform hover:-translate-y-1 border border-surface-container">
-              <div className="w-14 h-14 rounded-xl bg-surface-container flex items-center justify-center text-primary mb-6">
-                <Flower2 className="w-8 h-8 text-primary" />
-              </div>
-              <span className="font-mono text-xs uppercase font-bold text-secondary">Pertahanan Alami</span>
-              <h3 className="font-serif text-2xl font-semibold text-primary mt-2 mb-3">
-                Tanaman Refugia
-              </h3>
-              <p className="text-sm text-on-surface-variant leading-relaxed mb-6">
-                Kami menanam bunga refugia di sekitar lahan untuk mengundang serangga penyerbuk dan pemangsa alami, menjaga tanaman tetap subur dan terlindungi tanpa pestisida berbahaya.
-              </p>
-              <div className="mt-auto pt-4 border-t border-surface-container text-primary font-mono text-xs uppercase font-bold">
-                Prinsip: Keseimbangan Hayati
-              </div>
-            </div>
-
-            {/* Pilar 2 */}
-            <div data-reveal className="interactive-card flex flex-col bg-surface-container-low rounded-2xl p-8 transition-transform hover:-translate-y-1 border border-surface-container">
-              <div className="w-14 h-14 rounded-xl bg-surface-container flex items-center justify-center text-primary mb-6">
-                <PawPrint className="w-8 h-8 text-primary" />
-              </div>
-              <span className="font-mono text-xs uppercase font-bold text-secondary">Peternakan Ramah Alam</span>
-              <h3 className="font-serif text-2xl font-semibold text-primary mt-2 mb-3">
-                Penggembalaan Bergilir
-              </h3>
-              <p className="text-sm text-on-surface-variant leading-relaxed mb-6">
-                Sistem penggembalaan bergilir di padang rumput alami memastikan ternak tumbuh sehat, bebas stres, dan memberikan waktu yang cukup bagi lahan untuk pulih.
-              </p>
-              <div className="mt-auto pt-4 border-t border-surface-container text-primary font-mono text-xs uppercase font-bold">
-                Prinsip: Kesejahteraan Ternak
-              </div>
-            </div>
-
-            {/* Pilar 3 */}
-            <div data-reveal className="interactive-card flex flex-col bg-surface-container-low rounded-2xl p-8 transition-transform hover:-translate-y-1 border border-surface-container">
-              <div className="w-14 h-14 rounded-xl bg-surface-container flex items-center justify-center text-primary mb-6">
-                <Recycle className="w-8 h-8 text-primary" />
-              </div>
-              <span className="font-mono text-xs uppercase font-bold text-secondary">Kesuburan Tanah</span>
-              <h3 className="font-serif text-2xl font-semibold text-primary mt-2 mb-3">
-                Kompos Organik Alami
-              </h3>
-              <p className="text-sm text-on-surface-variant leading-relaxed mb-6">
-                Pupuk organik berbasis kompos mengembalikan nutrisi penting ke dalam tanah, menjaga kegemburan dan mendukung pertumbuhan tanaman secara alami dan berkelanjutan.
-              </p>
-              <div className="mt-auto pt-4 border-t border-surface-container text-primary font-mono text-xs uppercase font-bold">
-                Prinsip: Siklus Nutrisi Tertutup
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Standar Integritas & Nilai Mutu */}
-      <section className="w-full py-14 sm:py-16 bg-surface-container-low border-y border-surface-container-high" aria-labelledby="trust-heading">
-        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-8">
-            <span className="font-mono text-xs uppercase tracking-wider text-secondary font-bold">
-              Standar Integritas &amp; Mutu Pangan
-            </span>
-            <h2 id="trust-heading" className="font-serif text-3xl sm:text-4xl font-medium text-primary mt-2">
-              Prinsip Kualitas yang Menjadi Fondasi MAN3
-            </h2>
-            <p className="text-sm text-on-surface-variant mt-3 leading-relaxed">
-              Komitmen kami dalam menghadirkan bahan pangan berkualitas tinggi dibangun di atas transparansi, higienitas, dan kepedulian terhadap lingkungan.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div data-reveal className="interactive-card rounded-xl border border-outline-variant/60 bg-white p-6 shadow-sm">
-              <span className="text-xs font-mono font-bold uppercase text-secondary">Standar Higienitas</span>
-              <p className="mt-2 font-semibold text-primary text-base">Keamanan Pangan Terstandar</p>
-              <p className="mt-1 text-sm text-on-surface-variant leading-relaxed">
-                Menerapkan prosedur penanganan higienis dan rantai dingin terawat untuk menjaga nutrisi serta kesegaran optimal produk pangan.
+              {/* Operational / Concept Transparency Note */}
+              <p className="text-[11px] font-mono text-[#6B726C] pt-2">
+                Informasi zonasi kawasan dan kuota pasokan merupakan data rancangan model operasional terpadu MAN3.
               </p>
             </div>
-            <div data-reveal className="interactive-card rounded-xl border border-outline-variant/60 bg-white p-6 shadow-sm">
-              <span className="text-xs font-mono font-bold uppercase text-secondary">Kemitraan Terpercaya</span>
-              <p className="mt-2 font-semibold text-primary text-base">Kolaborasi Industri Kuliner</p>
-              <p className="mt-1 text-sm text-on-surface-variant leading-relaxed">
-                Menjadi mitra terpercaya bagi para chef, pemilik restoran, dan hotel yang mengutamakan cita rasa autentik serta bahan baku ramah lingkungan.
-              </p>
-            </div>
-            <div data-reveal className="interactive-card rounded-xl border border-outline-variant/60 bg-white p-6 shadow-sm">
-              <span className="text-xs font-mono font-bold uppercase text-secondary">Transparansi Asal</span>
-              <p className="mt-2 font-semibold text-primary text-base">Ketertelusuran Berbasis Batch</p>
-              <p className="mt-1 text-sm text-on-surface-variant leading-relaxed">
-                Sistem pencatatan terstruktur yang memastikan kejelasan asal-usul, riwayat perawatan, dan jadwal panen setiap produk pangan.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* 4. PRODUCTS & HARVEST SHOWCASE (Service Section) */}
-      <section id="products" className="w-full py-16 sm:py-24 bg-surface">
-        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-            <div>
-              <span className="font-mono text-xs uppercase tracking-wider text-secondary font-bold">
-                Pangan Segar &amp; Berkualitas
-              </span>
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium text-primary mt-2">
-                Koleksi Produk Pangan MAN3
-              </h2>
-            </div>
-            <Link
-              href="/kemitraan-b2b"
-              className="inline-flex items-center gap-2 text-sm font-mono font-bold text-primary hover:text-primary-container"
-            >
-              <span>Pelajari Kemitraan B2B</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {initialProducts.map((prod) => (
-              <div
-                key={prod.id}
-                data-reveal
-                className="interactive-card flex flex-col bg-white rounded-2xl overflow-hidden border border-outline-variant/50 shadow-sm hover:shadow-lg transition-all group"
-              >
-                <div className="relative w-full aspect-[4/3] bg-surface-container overflow-hidden">
-                  <img
-                    src={prod.image}
-                    alt={prod.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            {/* Right Visual (5 Cols) - Editorial Landscape Composition */}
+            <div className="lg:col-span-5">
+              <div className="relative border border-[#E5E5DE] bg-white p-2 rounded-[4px] shadow-sm">
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2px] bg-[#EFEFEA]">
+                  <Image
+                    src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=1200&q=80"
+                    alt="Padang rumput penggembalaan sapi di lereng dataran tinggi"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    priority
+                    className="object-cover"
                   />
-                  <div className="absolute top-3 left-3 flex flex-wrap gap-1">
-                    <span className="px-2.5 py-1 rounded-full bg-primary/90 text-white font-mono text-[10px] uppercase font-semibold">
-                      {prod.category}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4 text-white">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-[#D1EADB] font-bold block">
+                      Zona 03 • Rotational Pasture
+                    </span>
+                    <span className="text-sm font-serif font-medium mt-0.5 block">
+                      Padang Gembala Rotasional Dataran Tinggi
                     </span>
                   </div>
                 </div>
 
-                <div className="p-6 flex-1 flex flex-col justify-between">
+                {/* Micro Key Facts Bar */}
+                <div className="mt-2.5 grid grid-cols-3 divide-x divide-[#E5E5DE] text-center py-1.5 text-[#141A17]">
                   <div>
-                    <span className="text-xs font-mono text-on-surface-variant block mb-1">
-                      {prod.origin}
-                    </span>
-                    <h3 className="font-serif text-xl font-bold text-primary group-hover:text-primary-container">
-                      {prod.name}
-                    </h3>
-                    <p className="text-xs text-on-surface-variant mt-2 line-clamp-2 leading-relaxed">
-                      {prod.subtitle}
-                    </p>
-
-                    <div className="mt-4 flex flex-wrap gap-1.5">
-                      {prod.badges.slice(0, 2).map((b) => (
-                        <span
-                          key={b}
-                          className="px-2 py-0.5 rounded bg-surface-container text-primary font-mono text-[10px] font-medium"
-                        >
-                          {b}
-                        </span>
-                      ))}
-                    </div>
+                    <span className="text-[10px] font-mono text-[#6B726C] uppercase block">Elevasi</span>
+                    <span className="text-[13px] font-mono font-bold text-[#0F3D2E]">1.100 m dpl</span>
                   </div>
+                  <div>
+                    <span className="text-[10px] font-mono text-[#6B726C] uppercase block">Siklus Pakan</span>
+                    <span className="text-[13px] font-mono font-bold text-[#0F3D2E]">100% Hijauan</span>
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-mono text-[#6B726C] uppercase block">Distribusi</span>
+                    <span className="text-[13px] font-mono font-bold text-[#0F3D2E]">Cold-Chain</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-                  <div className="mt-6 pt-4 border-t border-surface-container flex items-center justify-between">
+      {/* 2. PRODUCT ALLOCATION SECTION */}
+      <section id="alokasi" className="w-full py-16 lg:py-24 border-b border-[#E5E5DE]">
+        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Notification feedback when item is added */}
+          {addedItem && (
+            <div className="mb-6 p-3 bg-[#0F3D2E] text-white text-xs font-mono rounded-[4px] flex items-center justify-between animate-in fade-in">
+              <span className="flex items-center gap-2">
+                <Check className="w-4 h-4 text-[#D1EADB]" />
+                <strong>{addedItem}</strong> berhasil ditambahkan ke draf alokasi B2B.
+              </span>
+              <Link
+                href="/portal-mitra"
+                className="underline hover:text-[#D1EADB] ml-4 font-bold"
+              >
+                Lihat di Portal Mitra →
+              </Link>
+            </div>
+          )}
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            {/* Left Column: 60% Structured Product Table */}
+            <div className="lg:col-span-7 space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-[#E5E5DE] pb-4">
+                <div>
+                  <span className="text-[11px] font-mono uppercase tracking-wider text-[#7A4B2A] font-semibold">
+                    Katalog Pasokan Terverifikasi
+                  </span>
+                  <h2 className="font-serif text-2xl sm:text-3xl font-medium text-[#0F3D2E] mt-1">
+                    Alokasi Produk Minggu Ini
+                  </h2>
+                </div>
+                <div className="text-[11px] font-mono text-[#6B726C]">
+                  Status per Senin, 08:00 WIB
+                </div>
+              </div>
+
+              {/* Table Container */}
+              <div className="overflow-x-auto border border-[#E5E5DE] rounded-[4px] bg-white">
+                <table className="w-full text-left text-xs">
+                  <thead>
+                    <tr className="bg-[#F5F5F1] border-b border-[#E5E5DE] text-[11px] font-mono text-[#6B726C] uppercase">
+                      <th className="py-3 px-4 font-semibold">Produk</th>
+                      <th className="py-3 px-3 font-semibold">Stok</th>
+                      <th className="py-3 px-3 font-semibold">Harga B2B</th>
+                      <th className="py-3 px-3 font-semibold">Spesifikasi</th>
+                      <th className="py-3 px-4 font-semibold text-right">Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-[#E5E5DE]">
+                    {ALLOCATION_PRODUCTS.map((prod) => (
+                      <tr key={prod.id} className="hover:bg-[#FBFBF9] transition-colors">
+                        <td className="py-3.5 px-4">
+                          <span className="font-medium text-[#141A17] text-[13px] block">
+                            {prod.name}
+                          </span>
+                          <span className="text-[10px] font-mono text-[#6B726C]">
+                            {prod.category}
+                          </span>
+                        </td>
+                        <td className="py-3.5 px-3">
+                          <span className="inline-flex items-center px-2 py-0.5 rounded-[2px] bg-[#E8F3ED] text-[#0F3D2E] font-mono font-medium text-[11px]">
+                            {prod.stock}
+                          </span>
+                        </td>
+                        <td className="py-3.5 px-3 font-mono font-bold text-[#0F3D2E] text-[12px]">
+                          {prod.price}
+                          <span className="text-[10px] text-[#6B726C] font-normal">{prod.unit}</span>
+                        </td>
+                        <td className="py-3.5 px-3 text-[#4E5752] text-[11px]">
+                          {prod.spec}
+                        </td>
+                        <td className="py-3.5 px-4 text-right">
+                          <button
+                            type="button"
+                            onClick={() => handleAddToCart(prod)}
+                            className="inline-flex items-center justify-center px-3 py-1.5 rounded-[4px] bg-[#0F3D2E] hover:bg-[#08261C] text-white font-mono text-[11px] font-semibold tracking-wide transition-colors"
+                          >
+                            Tambah
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              <div className="pt-2 flex items-center justify-between text-xs">
+                <Link
+                  href="/portal-mitra"
+                  className="inline-flex items-center gap-1.5 text-[#0F3D2E] font-mono font-semibold hover:underline"
+                >
+                  <span>Lihat semua potongan &amp; spesifikasi teknis</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+                {cartCount > 0 && (
+                  <Link
+                    href="/portal-mitra"
+                    className="text-[11px] font-mono text-[#7A4B2A] font-semibold"
+                  >
+                    {cartCount} komoditas di draf pemesanan →
+                  </Link>
+                )}
+              </div>
+            </div>
+
+            {/* Right Column: 40% Mengapa MAN3 Berbeda */}
+            <div className="lg:col-span-5 bg-[#FBFBF9] border border-[#E5E5DE] p-6 sm:p-8 rounded-[4px] space-y-6">
+              <div>
+                <span className="text-[11px] font-mono uppercase tracking-wider text-[#7A4B2A] font-semibold">
+                  Keunggulan Suplai
+                </span>
+                <h3 className="font-serif text-2xl font-medium text-[#0F3D2E] mt-1">
+                  Mengapa MAN3 Berbeda
+                </h3>
+              </div>
+
+              <div className="space-y-4 divide-y divide-[#E5E5DE]">
+                <div className="pt-3 first:pt-0">
+                  <div className="flex items-start gap-3">
+                    <span className="font-mono text-xs font-bold text-[#0F3D2E] mt-0.5">01</span>
                     <div>
-                      <span className="text-xs text-on-surface-variant">Mulai dari</span>
-                      <p className="font-mono text-base font-bold text-primary">
-                        {prod.price} <span className="text-xs font-normal text-on-surface-variant">{prod.unit}</span>
+                      <h4 className="text-sm font-semibold text-[#141A17]">Single Estate + 4 Zona Konservasi</h4>
+                      <p className="text-xs text-[#4E5752] mt-0.5 leading-relaxed">
+                        Pengelolaan hulu terintegrasi memastikan kestabilan mutu pakan hijauan dan higienitas peternakan tanpa perantara tengkulak.
                       </p>
                     </div>
+                  </div>
+                </div>
 
-                    <Link
-                      href={`/produk/daging-sapi-pasture-fed`}
-                      className="p-2 rounded-lg bg-surface-container hover:bg-primary hover:text-white text-primary transition-colors"
-                      title="Lihat spesifikasi produk"
-                    >
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
+                <div className="pt-3">
+                  <div className="flex items-start gap-3">
+                    <span className="font-mono text-xs font-bold text-[#0F3D2E] mt-0.5">02</span>
+                    <div>
+                      <h4 className="text-sm font-semibold text-[#141A17]">Pengiriman Subuh Terjadwal (04:30–06:00)</h4>
+                      <p className="text-xs text-[#4E5752] mt-0.5 leading-relaxed">
+                        Armada berpendingin tiba sebelum dapur restoran beroperasi, menjaga kesegaran chilled tanpa fluktuasi suhu.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-3">
+                  <div className="flex items-start gap-3">
+                    <span className="font-mono text-xs font-bold text-[#0F3D2E] mt-0.5">03</span>
+                    <div>
+                      <h4 className="text-sm font-semibold text-[#141A17]">Ketertelusuran Lot Digital</h4>
+                      <p className="text-xs text-[#4E5752] mt-0.5 leading-relaxed">
+                        Setiap karkas dan panen dilengkapi batch ID transparan yang memuat riwayat padang gembala dan tanggal proses.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-3">
+                  <div className="flex items-start gap-3">
+                    <span className="font-mono text-xs font-bold text-[#0F3D2E] mt-0.5">04</span>
+                    <div>
+                      <h4 className="text-sm font-semibold text-[#141A17]">Kontrak Kuota dan Harga B2B</h4>
+                      <p className="text-xs text-[#4E5752] mt-0.5 leading-relaxed">
+                        Kepastian volume panen mingguan dan stabilitas harga kontrak semester untuk proteksi food cost mitra.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            ))}
+
+              <div className="pt-4 border-t border-[#E5E5DE]">
+                <button
+                  type="button"
+                  onClick={() => setShowComparisonModal(true)}
+                  className="w-full py-2.5 px-4 rounded-[4px] border border-[#0F3D2E] text-[#0F3D2E] hover:bg-[#0F3D2E] hover:text-white font-mono text-xs uppercase tracking-wider font-semibold transition-colors"
+                >
+                  Bandingkan dengan Supply Konvensional
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 5. NEWS / PUBLICATIONS SECTION */}
-      <section id="news" className="w-full py-16 sm:py-24 bg-surface-container-lowest">
+      {/* 3. AGRO-ECOLOGICAL ZONING TEASER */}
+      <section className="w-full py-16 lg:py-24 border-b border-[#E5E5DE] bg-[#FBFBF9]">
         <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-            <div>
-              <span className="font-mono text-xs uppercase tracking-wider text-secondary font-bold">
-                Warta &amp; Publikasi Lapangan
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-6 space-y-5">
+              <span className="text-[11px] font-mono uppercase tracking-wider text-[#7A4B2A] font-semibold">
+                Struktur Lanskap Kawasan
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium text-primary mt-2">
-                Wawasan Pangan &amp; Kelestarian Hayati
+              <h2 className="font-serif text-3xl sm:text-4xl font-medium text-[#0F3D2E] leading-tight">
+                Satu Koridor Agro-Ekologi dengan Empat Lapisan Fungsi
               </h2>
-            </div>
-            <p className="text-sm text-on-surface-variant max-w-md">
-              Artikel edukasi seputar agro-ekologi, sistem peternakan ramah alam, dan praktik konservasi berkelanjutan.
-            </p>
-          </div>
+              <p className="text-sm sm:text-base text-[#4E5752] leading-relaxed">
+                Produksi pangan MAN3 bertumpu pada lanskap 1.200 hektar yang memisahkan dan
+                menghubungkan zona konservasi rimba, agroforestri bertingkat, padang gembala rotasional,
+                dan pusat riset biologi.
+              </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {newsItems.map((item) => (
-              <article
-                key={item.id}
-                data-reveal
-                className="interactive-card flex flex-col bg-surface-container-low rounded-2xl overflow-hidden border border-surface-container shadow-sm hover:shadow-md transition-all group"
-              >
-                <div className="relative w-full aspect-[16/9] bg-surface-container overflow-hidden">
-                  <img
-                    src={item.thumbnail_path}
-                    alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              <div className="grid grid-cols-2 gap-4 pt-2">
+                <div className="p-3.5 bg-white border border-[#E5E5DE] rounded-[4px]">
+                  <span className="text-xs font-mono font-bold text-[#0F3D2E] block">420 ha</span>
+                  <span className="text-xs text-[#141A17] font-medium mt-0.5 block">Zona 01 — Rimba Inti</span>
+                  <span className="text-[11px] text-[#6B726C] mt-0.5 block">Buffer satwa &amp; resapan</span>
+                </div>
+                <div className="p-3.5 bg-white border border-[#E5E5DE] rounded-[4px]">
+                  <span className="text-xs font-mono font-bold text-[#0F3D2E] block">380 ha</span>
+                  <span className="text-xs text-[#141A17] font-medium mt-0.5 block">Zona 02 — Agroforestri</span>
+                  <span className="text-[11px] text-[#6B726C] mt-0.5 block">Vegetasi pangan berlapis</span>
+                </div>
+                <div className="p-3.5 bg-white border border-[#E5E5DE] rounded-[4px]">
+                  <span className="text-xs font-mono font-bold text-[#0F3D2E] block">300 ha</span>
+                  <span className="text-xs text-[#141A17] font-medium mt-0.5 block">Zona 03 — Padang Gembala</span>
+                  <span className="text-[11px] text-[#6B726C] mt-0.5 block">Rotasi pasture-fed alami</span>
+                </div>
+                <div className="p-3.5 bg-white border border-[#E5E5DE] rounded-[4px]">
+                  <span className="text-xs font-mono font-bold text-[#0F3D2E] block">100 ha</span>
+                  <span className="text-xs text-[#141A17] font-medium mt-0.5 block">Zona 04 — Bio-Hub</span>
+                  <span className="text-[11px] text-[#6B726C] mt-0.5 block">Riset &amp; pemantauan ekologis</span>
+                </div>
+              </div>
+
+              <div className="pt-2">
+                <Link
+                  href="/ekosistem-konservasi"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-[4px] bg-[#0F3D2E] hover:bg-[#08261C] text-white text-xs font-mono uppercase tracking-wider font-semibold transition-colors"
+                >
+                  <span>Buka Peta Interaktif &amp; Rincian Zonasi</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+
+            <div className="lg:col-span-6">
+              <div className="border border-[#E5E5DE] bg-white p-4 rounded-[4px] shadow-sm space-y-4">
+                <div className="relative aspect-[16/10] w-full bg-[#EFEFEA] rounded-[2px] overflow-hidden">
+                  <Image
+                    src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80"
+                    alt="Panorama lanskap pegunungan koridor konservasi"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover"
                   />
-                  <div className="absolute top-3 left-3">
-                    <span className="px-3 py-1 rounded-full bg-white/90 backdrop-blur-sm text-primary font-mono text-[10px] font-bold uppercase">
-                      {item.category}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4 text-white">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-[#D1EADB] font-bold">
+                      Spatial Overview
                     </span>
+                    <h4 className="font-serif text-lg font-medium text-white">
+                      Koridor Dataran Tinggi Jawa Barat
+                    </h4>
                   </div>
                 </div>
 
-                <div className="p-6 flex-1 flex flex-col justify-between">
-                  <div>
-                    <div className="flex items-center gap-3 text-xs text-on-surface-variant mb-2 font-mono">
-                      <span className="flex items-center gap-1">
-                        <Calendar className="w-3.5 h-3.5" />
-                        <time dateTime={item.created_at}>
-                          {new Date(item.created_at).toLocaleDateString("id-ID", {
-                            day: "numeric",
-                            month: "short",
-                            year: "numeric",
-                          })}
-                        </time>
-                      </span>
-                      <span>•</span>
-                      <span className="flex items-center gap-1">
-                        <User className="w-3.5 h-3.5" />
-                        {item.author_name}
-                      </span>
+                <div className="flex items-center justify-between text-xs font-mono text-[#6B726C] px-1">
+                  <span>Total Kawasan: <strong className="text-[#0F3D2E]">1.200 Hektar</strong></span>
+                  <span>Status: <strong className="text-[#0F3D2E]">Purwarupa Spasial</strong></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. ILMU & WARTA LAPANGAN SECTION */}
+      <section id="ilmu" className="w-full py-16 lg:py-24 border-b border-[#E5E5DE]">
+        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-[#E5E5DE] pb-4 mb-8">
+            <div>
+              <span className="text-[11px] font-mono uppercase tracking-wider text-[#7A4B2A] font-semibold">
+                Warta &amp; Edukasi Agro-Ekologi
+              </span>
+              <h2 className="font-serif text-2xl sm:text-3xl font-medium text-[#0F3D2E] mt-1">
+                Catatan Lapangan &amp; Sains Produksi
+              </h2>
+            </div>
+            <span className="text-xs font-mono text-[#6B726C]">
+              Publikasi editorial berkala
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {initialNews.map((article) => (
+              <article
+                key={article.id}
+                className="border border-[#E5E5DE] rounded-[4px] bg-white flex flex-col justify-between overflow-hidden hover:border-[#0F3D2E] transition-colors"
+              >
+                <div>
+                  <div className="relative aspect-[16/9] w-full bg-[#EFEFEA] overflow-hidden">
+                    <Image
+                      src={article.thumbnail_path}
+                      alt={article.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover"
+                    />
+                    <div className="absolute top-3 left-3 px-2 py-0.5 rounded-[2px] bg-white/95 text-[#0F3D2E] text-[10px] font-mono font-semibold uppercase">
+                      {article.category}
                     </div>
+                  </div>
 
-                    <h3 className="font-serif text-xl font-bold text-primary group-hover:text-primary-container leading-snug">
-                      {item.title}
+                  <div className="p-5 space-y-2">
+                    <span className="text-[11px] font-mono text-[#6B726C]">
+                      {article.created_at} • {article.author_name}
+                    </span>
+                    <h3 className="font-serif text-lg font-bold text-[#0F3D2E] leading-snug">
+                      {article.title}
                     </h3>
-
-                    <p className="text-sm text-on-surface-variant mt-3 line-clamp-3 leading-relaxed">
-                      {item.excerpt}
+                    <p className="text-xs text-[#4E5752] leading-relaxed line-clamp-3">
+                      {article.excerpt}
                     </p>
                   </div>
+                </div>
 
-                  <div className="mt-6 pt-4 border-t border-surface-container flex items-center justify-between text-xs font-mono font-bold">
-                    <button
-                      type="button"
-                      onClick={() => setSelectedArticle(item)}
-                      className="inline-flex items-center gap-1.5 text-primary hover:text-primary-container group-hover:translate-x-0.5 transition-transform"
-                    >
-                      <span>Baca Selengkapnya</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
+                <div className="p-5 pt-0">
+                  <button
+                    type="button"
+                    onClick={() => setSelectedArticle(article)}
+                    className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[#0F3D2E] hover:underline"
+                  >
+                    <span>Baca Selengkapnya</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
                 </div>
               </article>
             ))}
           </div>
-
-          {/* Article Detail Modal */}
-          {selectedArticle && (
-            <div
-              role="dialog"
-              aria-modal="true"
-              className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200"
-            >
-              <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl overflow-hidden border border-outline-variant max-h-[90vh] flex flex-col">
-                <div className="relative w-full aspect-[16/9] bg-surface-container shrink-0">
-                  <img
-                    src={selectedArticle.thumbnail_path}
-                    alt={selectedArticle.title}
-                    className="w-full h-full object-cover"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setSelectedArticle(null)}
-                    className="absolute top-4 right-4 p-2 rounded-full bg-black/60 hover:bg-black/80 text-white transition-colors"
-                    aria-label="Tutup artikel"
-                  >
-                    <X className="w-5 h-5" />
-                  </button>
-                  <div className="absolute bottom-4 left-4">
-                    <span className="px-3 py-1 rounded-full bg-primary text-white font-mono text-xs font-bold uppercase shadow-sm">
-                      {selectedArticle.category}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="p-6 sm:p-8 overflow-y-auto space-y-4">
-                  <div className="flex items-center gap-3 text-xs text-on-surface-variant font-mono">
-                    <span className="flex items-center gap-1">
-                      <Calendar className="w-3.5 h-3.5" />
-                      <time dateTime={selectedArticle.created_at}>
-                        {new Date(selectedArticle.created_at).toLocaleDateString("id-ID", {
-                          day: "numeric",
-                          month: "long",
-                          year: "numeric",
-                        })}
-                      </time>
-                    </span>
-                    <span>•</span>
-                    <span className="flex items-center gap-1">
-                      <User className="w-3.5 h-3.5" />
-                      {selectedArticle.author_name}
-                    </span>
-                  </div>
-
-                  <h3 className="font-serif text-2xl sm:text-3xl font-bold text-primary leading-snug">
-                    {selectedArticle.title}
-                  </h3>
-
-                  <p className="text-base text-on-surface-variant leading-relaxed font-medium">
-                    {selectedArticle.excerpt}
-                  </p>
-
-                  <div className="pt-2 border-t border-surface-container text-sm sm:text-base text-on-surface leading-relaxed space-y-3">
-                    <p>
-                      {selectedArticle.content || selectedArticle.excerpt}
-                    </p>
-                  </div>
-
-                  <div className="pt-4 flex justify-end">
-                    <button
-                      type="button"
-                      onClick={() => setSelectedArticle(null)}
-                      className="px-6 py-2.5 rounded-xl bg-primary text-white font-mono text-xs uppercase font-bold hover:bg-primary-container transition-colors"
-                    >
-                      Tutup Artikel
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
         </div>
       </section>
 
-      {/* 6. CONTACT & GOOGLE MAPS SECTION */}
-      <section id="contact" className="w-full py-16 sm:py-24 bg-surface">
-        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            {/* Contact Form & Info */}
-            <div className="lg:col-span-6 space-y-8">
+      {/* 5. B2B PARTNERSHIP CALLOUT */}
+      <section className="w-full py-16 lg:py-20 bg-[#FBFBF9]">
+        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl space-y-5">
+          <span className="text-[11px] font-mono uppercase tracking-wider text-[#7A4B2A] font-semibold">
+            Saluran Kerjasama B2B
+          </span>
+          <h2 className="font-serif text-3xl sm:text-4xl font-medium text-[#0F3D2E]">
+            Mulai Kemitraan Pasokan Langsung dengan MAN3
+          </h2>
+          <p className="text-sm sm:text-base text-[#4E5752] leading-relaxed">
+            Tersedia tiga jalur kemitraan: Alokasi Dapur Restoran &amp; Hotel, Kunjungan Evaluasi Lapangan,
+            atau Permintaan Sample Box untuk Chef &amp; F&amp;B Director.
+          </p>
+          <div className="pt-2 flex flex-wrap justify-center gap-4">
+            <Link
+              href="/kemitraan-b2b"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-[4px] bg-[#0F3D2E] hover:bg-[#08261C] text-white text-xs font-mono uppercase tracking-wider font-semibold transition-colors"
+            >
+              <span>Pilih Jalur Kemitraan</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link
+              href="/portal-mitra"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-[4px] border border-[#E5E5DE] bg-white hover:bg-[#F5F5F1] text-[#141A17] text-xs font-mono uppercase tracking-wider font-medium transition-colors"
+            >
+              <span>Buka Portal Pemesanan</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* MODAL 1: COMPARISON TABLE MODAL */}
+      {showComparisonModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in">
+          <div className="bg-white border border-[#E5E5DE] rounded-[4px] shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-6 border-b border-[#E5E5DE] flex items-center justify-between">
               <div>
-                <span className="font-mono text-xs uppercase tracking-wider text-secondary font-bold">
-                  Hubungi Kami &amp; Kerjasama
+                <span className="text-[10px] font-mono uppercase tracking-wider text-[#7A4B2A] font-bold">
+                  Komparasi Pasokan
                 </span>
-                <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium text-primary mt-2">
-                  Mulai Dialog Kolaborasi Pangan Sehat
-                </h2>
-                <p className="text-base text-on-surface-variant mt-4 leading-relaxed">
-                  Apakah Anda perwakilan restoran, hotel, komunitas pangan sehat, atau pelaku bisnis kuliner? Tim kemitraan MAN3 siap mendiskusikan kebutuhan pasokan Anda.
-                </p>
+                <h3 className="font-serif text-2xl font-bold text-[#0F3D2E]">
+                  MAN3 Single Estate vs. Supply Konvensional
+                </h3>
               </div>
-
-              {/* Direct Info */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="p-4 rounded-xl bg-white border border-outline-variant/40">
-                  <div className="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary mb-2">
-                    <Mail className="w-4 h-4" />
-                  </div>
-                  <span className="text-xs text-on-surface-variant font-mono">Email Kemitraan</span>
-                  <p className="text-sm font-semibold text-primary">{siteConfig.contact.email}</p>
-                </div>
-
-                <div className="p-4 rounded-xl bg-white border border-outline-variant/40">
-                  <div className="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary mb-2">
-                    <Phone className="w-4 h-4" />
-                  </div>
-                  <span className="text-xs text-on-surface-variant font-mono">Kontak WhatsApp</span>
-                  <p className="text-sm font-semibold text-primary">{siteConfig.contact.phone}</p>
-                </div>
-              </div>
-
-              {/* Interactive Contact Form */}
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setContactDemoSent(true);
-                }}
-                className="p-6 sm:p-8 rounded-2xl bg-white border border-outline-variant/40 shadow-sm space-y-4"
+              <button
+                type="button"
+                onClick={() => setShowComparisonModal(false)}
+                className="p-1.5 rounded-[4px] text-[#6B726C] hover:bg-[#F5F5F1] hover:text-[#141A17]"
               >
-                <h3 className="font-serif text-xl font-bold text-primary">Kirimkan Permintaan / Pertanyaan</h3>
-                <p className="text-xs text-on-surface-variant">
-                  Sampaikan jenis komoditas, kebutuhan kuota pasokan, atau pertanyaan mengenai kemitraan ekosistem kami.
-                </p>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="contact-name" className="block text-xs font-mono text-on-surface-variant mb-1">
-                      Nama Lengkap *
-                    </label>
-                    <input
-                      id="contact-name"
-                      type="text"
-                      required
-                      placeholder="Nama Anda"
-                      className="w-full px-3.5 py-2.5 rounded-lg border border-outline-variant focus:outline-none focus:ring-2 focus:ring-primary text-sm bg-surface-container-low"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="contact-entity" className="block text-xs font-mono text-on-surface-variant mb-1">
-                      Instansi / Usaha / Resto
-                    </label>
-                    <input
-                      id="contact-entity"
-                      type="text"
-                      placeholder="Nama usaha Anda"
-                      className="w-full px-3.5 py-2.5 rounded-lg border border-outline-variant focus:outline-none focus:ring-2 focus:ring-primary text-sm bg-surface-container-low"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="contact-email" className="block text-xs font-mono text-on-surface-variant mb-1">
-                      Email Aktif *
-                    </label>
-                    <input
-                      id="contact-email"
-                      type="email"
-                      required
-                      placeholder="nama@domain.com"
-                      className="w-full px-3.5 py-2.5 rounded-lg border border-outline-variant focus:outline-none focus:ring-2 focus:ring-primary text-sm bg-surface-container-low"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="contact-phone" className="block text-xs font-mono text-on-surface-variant mb-1">
-                      Nomor WhatsApp *
-                    </label>
-                    <input
-                      id="contact-phone"
-                      type="tel"
-                      required
-                      placeholder="08xx-xxxx-xxxx"
-                      className="w-full px-3.5 py-2.5 rounded-lg border border-outline-variant focus:outline-none focus:ring-2 focus:ring-primary text-sm bg-surface-container-low"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="contact-message" className="block text-xs font-mono text-on-surface-variant mb-1">
-                    Pesan / Kebutuhan Pasokan
-                  </label>
-                  <textarea
-                    id="contact-message"
-                    rows={4}
-                    required
-                    placeholder="Ceritakan jenis produk pangan, volume pasokan yang diharapkan, atau konsultasi kemitraan..."
-                    className="w-full px-3.5 py-2.5 rounded-lg border border-outline-variant focus:outline-none focus:ring-2 focus:ring-primary text-sm bg-surface-container-low"
-                  ></textarea>
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full py-3.5 rounded-lg bg-primary hover:bg-primary-container text-white font-mono text-xs uppercase tracking-wider font-semibold flex items-center justify-center gap-2 transition-colors shadow-sm"
-                >
-                  <Send className="w-4 h-4" />
-                  Kirim Permintaan Konsultasi
-                </button>
-                {contactDemoSent && (
-                  <div role="status" className="p-4 rounded-xl bg-primary/10 border border-primary/20 text-primary text-sm flex items-center gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
-                    <span>Terima kasih. Permintaan konsultasi kemitraan Anda telah kami terima. Tim MAN3 akan segera menghubungi Anda.</span>
-                  </div>
-                )}
-              </form>
+                <X className="w-5 h-5" />
+              </button>
             </div>
 
-            {/* Google Maps Embed & Location Details */}
-            <div className="lg:col-span-6 space-y-6">
-              <div className="p-6 sm:p-8 rounded-2xl bg-white border border-outline-variant/40 shadow-sm space-y-4">
-                <div className="flex items-center gap-2 text-xs font-mono text-secondary font-bold uppercase">
-                  <MapPin className="w-4 h-4 text-secondary" />
-                  Kawasan Konservasi &amp; Dataran Tinggi
-                </div>
-                <h3 className="font-serif text-2xl font-bold text-primary">
-                  Kawasan Agrikultur Terpadu Jawa Barat
-                </h3>
-                <p className="text-sm text-on-surface-variant leading-relaxed">
-                  {siteConfig.contact.address}
+            <div className="p-6 overflow-x-auto">
+              <table className="w-full text-left text-xs border border-[#E5E5DE]">
+                <thead>
+                  <tr className="bg-[#F5F5F1] border-b border-[#E5E5DE] font-mono text-[11px] uppercase">
+                    <th className="py-3 px-4 font-bold text-[#141A17] w-1/4">Parameter</th>
+                    <th className="py-3 px-4 font-bold text-[#0F3D2E] w-3/8 bg-[#E8F3ED]">
+                      MAN3 Single Estate
+                    </th>
+                    <th className="py-3 px-4 font-bold text-[#6B726C] w-3/8">
+                      Supply Komersial Konvensional
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-[#E5E5DE]">
+                  <tr>
+                    <td className="py-3 px-4 font-semibold text-[#141A17]">Metode Pakan</td>
+                    <td className="py-3 px-4 bg-[#FBFDFB] text-[#0F3D2E]">
+                      100% pasture-fed (hijauan alami dataran tinggi), tanpa pakan konsentrat olahan.
+                    </td>
+                    <td className="py-3 px-4 text-[#4E5752]">
+                      Feedlot berbasis butiran biji-bijian sintetis dan aditif pemicu bobot.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 px-4 font-semibold text-[#141A17]">Ketertelusuran Asal</td>
+                    <td className="py-3 px-4 bg-[#FBFDFB] text-[#0F3D2E]">
+                      Satu kawasan tunggal (single estate) dengan ID batch lot dan riwayat penggembalaan.
+                    </td>
+                    <td className="py-3 px-4 text-[#4E5752]">
+                      Agregasi multi-peternak tanpa catatan jelas asal-usul ternak per individu.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 px-4 font-semibold text-[#141A17]">Jadwal Distribusi</td>
+                    <td className="py-3 px-4 bg-[#FBFDFB] text-[#0F3D2E]">
+                      Pengiriman subuh (04:30–06:00) cold-chain langsung sebelum jam operasional dapur.
+                    </td>
+                    <td className="py-3 px-4 text-[#4E5752]">
+                      Pengiriman kurir reguler fluktuatif tanpa pemantauan suhu rantai dingin konstan.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 px-4 font-semibold text-[#141A17]">Stabilitas Harga</td>
+                    <td className="py-3 px-4 bg-[#FBFDFB] text-[#0F3D2E]">
+                      Kontrak alokasi kuota mingguan dengan harga tetap per periode (3–6 bulan).
+                    </td>
+                    <td className="py-3 px-4 text-[#4E5752]">
+                      Harga pasar harian yang fluktuatif mengikuti tren spekulasi pasar komoditas.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 px-4 font-semibold text-[#141A17]">Dampak Konservasi</td>
+                    <td className="py-3 px-4 bg-[#FBFDFB] text-[#0F3D2E]">
+                      Terintegrasi sabuk hijau 420 ha rimba dan koridor habitat satwa Gunung Gede–Pangrango.
+                    </td>
+                    <td className="py-3 px-4 text-[#4E5752]">
+                      Umumnya tidak memiliki program terukur terhadap restorasi habitat atau keanekaragaman hayati.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div className="p-6 pt-0 flex justify-end">
+              <button
+                type="button"
+                onClick={() => setShowComparisonModal(false)}
+                className="px-5 py-2 rounded-[4px] bg-[#0F3D2E] text-white text-xs font-mono font-semibold"
+              >
+                Tutup Komparasi
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* MODAL 2: ARTICLE DETAIL READER */}
+      {selectedArticle && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in">
+          <div className="bg-white border border-[#E5E5DE] rounded-[4px] shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="relative aspect-[16/9] w-full bg-[#EFEFEA]">
+              <Image
+                src={selectedArticle.thumbnail_path}
+                alt={selectedArticle.title}
+                fill
+                className="object-cover"
+              />
+              <button
+                type="button"
+                onClick={() => setSelectedArticle(null)}
+                className="absolute top-4 right-4 p-2 rounded-[4px] bg-black/70 text-white hover:bg-black transition-colors"
+                aria-label="Tutup artikel"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="p-6 sm:p-8 space-y-4">
+              <div className="flex items-center gap-2 text-xs font-mono text-[#6B726C]">
+                <span className="px-2 py-0.5 rounded-[2px] bg-[#E8F3ED] text-[#0F3D2E] font-bold uppercase">
+                  {selectedArticle.category}
+                </span>
+                <span>•</span>
+                <span>{selectedArticle.created_at}</span>
+                <span>•</span>
+                <span>{selectedArticle.author_name}</span>
+              </div>
+
+              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#0F3D2E] leading-tight">
+                {selectedArticle.title}
+              </h2>
+
+              <div className="text-sm text-[#4E5752] leading-relaxed space-y-3 pt-2 border-t border-[#E5E5DE]">
+                <p className="font-medium text-[#141A17]">{selectedArticle.excerpt}</p>
+                <p>
+                  {selectedArticle.content ||
+                    "Pendekatan regeneratif dalam ekosistem MAN3 memastikan bahwa setiap tahap produksi—dari pemilihan hijauan, rotasi padang gembala, hingga pemanfaatan sisa bahan organik—berfungsi saling melengkapi untuk memulihkan kesuburan tanah dan keseimbangan biologi kawasan."}
                 </p>
+                <p>
+                  Melalui sistem tertutup ini, kebutuhan input sintetis ditekan sepenuhnya, sekaligus menghasilkan mutu daging dan sayuran yang memiliki profil nutrisi optimal serta keamanan konsumsi prima bagi para mitra kuliner.
+                </p>
+              </div>
 
-                {/* Google Maps Iframe Embed with accessibility & lazy loading */}
-                <div className="w-full h-[380px] rounded-xl overflow-hidden border border-outline-variant/60 shadow-inner relative bg-surface-container">
-                  <iframe
-                    title="Peta Lokasi Kawasan Konservasi MAN3 Jawa Barat"
-                    aria-label="Peta kawasan agrikultur dan konservasi MAN3"
-                    src={siteConfig.contact.googleMapsEmbedUrl}
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen={false}
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    className="w-full h-full"
-                  ></iframe>
-                </div>
-
-                <div className="pt-2 flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs font-mono text-on-surface-variant gap-2">
-                  <span>
-                    Akses lokasi terintegrasi dengan jalur distribusi strategis ke wilayah Jabodetabek.
-                  </span>
-                  <a
-                    href="https://www.google.com/maps/search/?api=1&query=Gunung+Gede+Pangrango"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-primary font-bold hover:underline"
-                  >
-                    Buka di Aplikasi Google Maps
-                    <ExternalLink className="w-3.5 h-3.5" />
-                  </a>
-                </div>
+              <div className="pt-4 border-t border-[#E5E5DE] flex justify-end">
+                <button
+                  type="button"
+                  onClick={() => setSelectedArticle(null)}
+                  className="px-5 py-2 rounded-[4px] bg-[#0F3D2E] text-white font-mono text-xs font-semibold"
+                >
+                  Selesai Membaca
+                </button>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      )}
     </div>
   );
 }

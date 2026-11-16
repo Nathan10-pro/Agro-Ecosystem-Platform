@@ -2,139 +2,126 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { siteConfig } from "@/config/site";
-import { Menu, X, ArrowUpRight, Leaf } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   const navLinks = [
-    { label: "Tentang Kami", href: "/#about" },
-    { label: "Ekosistem Konservasi", href: "/ekosistem-konservasi" },
-    { label: "Produk Pangan", href: "/produk/daging-sapi-pasture-fed" },
-    { label: "Mengapa MAN3", href: "/why-choose-man3" },
-    { label: "Kemitraan B2B", href: "/kemitraan-b2b" },
+    { label: "Produk", href: "/#alokasi" },
+    { label: "Zona", href: "/ekosistem-konservasi" },
+    { label: "Kemitraan", href: "/kemitraan-b2b" },
+    { label: "Ilmu", href: "/#ilmu" },
     { label: "Portal Mitra", href: "/portal-mitra" },
-    { label: "Berita", href: "/#news" },
-    { label: "Kontak", href: "/#contact" },
   ];
 
-  return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md border-b border-surface-container-high transition-all">
-      <div className="bg-surface-container-high text-on-surface-variant text-[11px] sm:text-xs py-1.5 px-4 text-center font-mono border-b border-surface-container">
-        Website ini merupakan purwarupa digital MAN3 yang menampilkan konsep ekosistem bio-agri dan konservasi.
-      </div>
+  const isActive = (href: string) => {
+    if (href.startsWith("/#")) {
+      return pathname === "/" && typeof window !== "undefined" && window.location.hash === href.replace("/", "");
+    }
+    return pathname === href;
+  };
 
-      {/* Main Navbar */}
-      <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
-        {/* Brand Logo */}
-        <Link href="/" className="flex items-center gap-3 group text-left">
-          <div className="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-primary-fixed shadow-sm group-hover:scale-105 transition-transform">
-            <Leaf className="w-5 h-5 text-primary" />
+  return (
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#E5E5DE] transition-colors">
+      <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-6">
+        {/* Left: Brand Logo + Short Descriptor */}
+        <Link href="/" className="flex items-center gap-3 text-left group">
+          <div className="w-8 h-8 rounded-[4px] bg-[#0F3D2E] flex items-center justify-center text-white font-serif font-bold text-lg leading-none">
+            M
           </div>
           <div className="flex flex-col">
-            <span className="font-serif text-2xl font-bold text-primary leading-tight tracking-tight">
-              {siteConfig.name}
+            <span className="font-serif text-xl font-bold tracking-tight text-[#0F3D2E] leading-tight">
+              MAN3
             </span>
-            <span className="font-mono text-[10px] tracking-wider text-on-surface-variant uppercase font-medium">
-              {siteConfig.tagline}
+            <span className="text-[10px] font-mono tracking-wider text-[#6B726C] uppercase font-medium">
+              Ekosistem Pertanian, Peternakan &amp; Konservasi
             </span>
           </div>
         </Link>
 
-        {/* Desktop Navigation Links */}
-        <nav className="hidden xl:flex items-center gap-6" aria-label="Navigasi Utama">
-          {navLinks.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-[14px] font-medium text-on-surface-variant hover:text-primary transition-colors py-1 relative hover:after:content-[''] hover:after:absolute hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-primary"
-            >
-              {item.label}
-            </Link>
-          ))}
+        {/* Center: Clean B2B Navigation */}
+        <nav className="hidden lg:flex items-center gap-8" aria-label="Navigasi Utama">
+          {navLinks.map((item) => {
+            const active = isActive(item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`text-[13px] font-medium tracking-wide transition-colors py-1 relative ${
+                  active
+                    ? "text-[#0F3D2E] font-semibold"
+                    : "text-[#4E5752] hover:text-[#0F3D2E]"
+                }`}
+              >
+                {item.label}
+                {active && (
+                  <span className="absolute bottom-[-18px] left-0 right-0 h-[2px] bg-[#0F3D2E]" />
+                )}
+              </Link>
+            );
+          })}
         </nav>
 
-        {/* Header Action CTA */}
-        <div className="hidden sm:flex items-center gap-3">
+        {/* Right: Primary CTA */}
+        <div className="hidden lg:flex items-center gap-4">
           <Link
             href="/login"
-            className="inline-flex items-center justify-center px-4 py-2.5 rounded-lg bg-surface-container-high hover:bg-surface-variant text-primary font-mono text-xs uppercase font-semibold transition-colors"
+            className="text-[12px] font-mono font-medium text-[#4E5752] hover:text-[#0F3D2E] px-2 py-1.5 transition-colors"
           >
-            Masuk
+            Masuk Portal
           </Link>
           <Link
             href="/kemitraan-b2b"
-            className="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-lg bg-primary hover:bg-primary-container text-white font-mono text-xs uppercase font-semibold transition-all hover:shadow-md"
+            className="inline-flex items-center justify-center px-4 py-2 rounded-[4px] bg-[#0F3D2E] hover:bg-[#08261C] text-white text-[12px] font-mono uppercase tracking-wider font-semibold transition-colors"
           >
-            Kemitraan B2B
+            Mulai Kemitraan
           </Link>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Trigger */}
         <button
           type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="xl:hidden p-2 rounded-lg text-primary hover:bg-surface-container focus:outline-none focus:ring-2 focus:ring-primary"
+          className="lg:hidden p-2 text-[#0F3D2E] hover:bg-[#F5F5F1] rounded-[4px] focus:outline-none"
           aria-expanded={mobileMenuOpen}
-          aria-label={mobileMenuOpen ? "Tutup menu navigasi" : "Buka menu navigasi"}
+          aria-label={mobileMenuOpen ? "Tutup navigasi" : "Buka navigasi"}
         >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
       </div>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="xl:hidden bg-surface-container-lowest border-b border-outline-variant/30 px-6 py-6 shadow-xl animate-in slide-in-from-top-4 duration-200">
-          <nav className="flex flex-col space-y-3 pb-6 border-b border-surface-container">
+        <div className="lg:hidden bg-white border-b border-[#E5E5DE] px-4 py-5 shadow-lg space-y-4 animate-in slide-in-from-top-2">
+          <nav className="flex flex-col space-y-2">
             {navLinks.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-medium text-on-surface hover:text-primary py-2 px-3 rounded-lg hover:bg-surface-container transition-colors"
+                className="text-[14px] font-medium text-[#141A17] hover:text-[#0F3D2E] py-2 px-2 rounded-[4px] hover:bg-[#F5F5F1] transition-colors"
               >
                 {item.label}
               </Link>
             ))}
           </nav>
-          <div className="pt-6 flex flex-col gap-3">
-            <Link
-              href="/corporate-profile"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-xs font-mono text-on-surface-variant hover:text-primary flex items-center justify-between px-3 py-1.5"
-            >
-              <span>Profil Perusahaan (ID / EN)</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </Link>
-            <Link
-              href="/bio-conservation"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-xs font-mono text-on-surface-variant hover:text-primary flex items-center justify-between px-3 py-1.5"
-            >
-              <span>Panduan Konsep</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </Link>
+          <div className="pt-3 border-t border-[#E5E5DE] flex flex-col gap-2.5">
             <Link
               href="/login"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full text-center py-3 rounded-lg bg-surface-container-high text-primary font-mono text-xs uppercase font-bold"
+              className="w-full text-center py-2 text-[13px] font-mono text-[#4E5752] border border-[#E5E5DE] rounded-[4px]"
             >
-              Masuk / Daftar
+              Masuk Portal Mitra
             </Link>
             <Link
-              href="/portal-mitra"
+              href="/kemitraan-b2b"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full text-center py-3 rounded-lg bg-surface-container-high text-primary font-mono text-xs uppercase font-bold"
+              className="w-full text-center py-2.5 text-[13px] font-mono uppercase tracking-wider font-semibold text-white bg-[#0F3D2E] rounded-[4px]"
             >
-              Masuk Portal Mitra B2B
-            </Link>
-            <Link
-              href="/#contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full text-center py-3 rounded-lg bg-primary text-white font-mono text-xs uppercase font-bold"
-            >
-              Lihat Kemitraan B2B
+              Mulai Kemitraan
             </Link>
           </div>
         </div>
