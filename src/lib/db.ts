@@ -49,7 +49,7 @@ const INITIAL_LOCAL_DATA = {
     {
       id: "news-1",
       title: "Mengenal Rancangan Agro-Ekologi MAN3",
-      slug: "sertifikasi-single-estate-organik-gede-pangrango",
+      slug: "rancangan-agro-ekologi-man3",
       excerpt:
         "Gambaran awal tentang pendekatan agro-pangan dan konservasi yang sedang dikembangkan dalam konsep MAN3.",
       content:
@@ -65,14 +65,14 @@ const INITIAL_LOCAL_DATA = {
     {
       id: "news-2",
       title: "Meninjau Pilihan Hijauan Tropis untuk Padang Gembala",
-      slug: "inovasi-padang-gembala-rotasional-pasture-fed",
+      slug: "pilihan-hijauan-tropis",
       excerpt:
         "Contoh catatan pengembangan tentang pemilihan hijauan yang sesuai kondisi lahan dan kebutuhan ternak.",
       content:
-        "Brachiaria, Indigofera, dan Paspalum dapat menjadi kandidat hijauan tropis bergantung pada kondisi lokasi. Artikel ini adalah materi prototipe, bukan klaim penggunaan aktual.",
+        "Brachiaria dan Paspalum merupakan rumput pakan; Indigofera termasuk legum pakan. Kesesuaiannya perlu dinilai berdasarkan kondisi lahan dan kebutuhan ternak. Ini materi contoh, bukan catatan praktik MAN3.",
       thumbnail_path:
         "https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&w=800&q=80",
-      category: "Peternakan Berkelanjutan",
+      category: "Rencana Peternakan",
       status: "published",
       author_id: "user-admin-default",
       created_at: new Date().toISOString(),
@@ -81,9 +81,9 @@ const INITIAL_LOCAL_DATA = {
     {
       id: "news-3",
       title: "Konsep Kemitraan Pangan untuk Usaha Kuliner",
-      slug: "ekspansi-kemitraan-restoran-b2b-fine-dining",
+      slug: "konsep-kemitraan-pangan",
       excerpt:
-        "Pratinjau alur kerja sama untuk restoran dan usaha kuliner yang sedang dirancang.",
+        "Contoh alur kerja sama untuk restoran dan usaha kuliner yang masih dirancang.",
       content:
         "Konsep kemitraan ini masih dalam tahap desain. Ketersediaan produk, standar penanganan, wilayah layanan, dan mekanisme pemesanan akan diumumkan setelah operasional siap.",
       thumbnail_path:
@@ -95,58 +95,7 @@ const INITIAL_LOCAL_DATA = {
       updated_at: new Date().toISOString(),
     },
   ],
-  Orders: [
-    {
-      id: "order-demo-1",
-      customer_name: "Rina Suryani",
-      company_name: "PT Sumber Sehat",
-      email: "rina@sumbersehat.co",
-      phone: "081234567890",
-      delivery_slot: "subuh",
-      items: [
-        {
-          id: "p1",
-          name: "Pasture-Fed Tenderloin",
-          spec: "Whole Muscle Vacuum",
-          price: 385000,
-          quantity: 10,
-          unit: "kg",
-        },
-      ],
-      subtotal: 3850000,
-      tax: 423500,
-      total: 4273500,
-      notes: "Butuh estimasi pengiriman sebelum 10 pagi.",
-      status: "pending",
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-    },
-    {
-      id: "order-demo-2",
-      customer_name: "Dimas Pratama",
-      company_name: "Restaurant Atlas",
-      email: "dimas@atlasresto.id",
-      phone: "082345678901",
-      delivery_slot: "siang",
-      items: [
-        {
-          id: "p4",
-          name: "Heirloom Microgreens Mix",
-          spec: "Fresh Crisp Harvest",
-          price: 45000,
-          quantity: 8,
-          unit: "pack",
-        },
-      ],
-      subtotal: 360000,
-      tax: 39600,
-      total: 399600,
-      notes: "Packaging perlu lebih kuat untuk ekspedisi satu hari.",
-      status: "confirmed",
-      created_at: new Date(Date.now() - 86400000).toISOString(),
-      updated_at: new Date(Date.now() - 86400000).toISOString(),
-    },
-  ],
+  Orders: [],
 };
 
 function readLocalDb(): Record<string, DatabaseRecord[]> {

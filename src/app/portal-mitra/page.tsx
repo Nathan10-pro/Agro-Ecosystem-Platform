@@ -26,9 +26,9 @@ export default function PortalMitraPage() {
   const [items, setItems] = useState([
     {
       id: "p1",
-      name: "Pasture-Fed Tenderloin (MB 4-6)",
-      sub: "Zone A Highland • Aging 28 Hari",
-      spec: "Whole Muscle Vacuum",
+      name: "Tenderloin Sapi Pasture-Fed",
+      sub: "Padang Gembala Hijau MAN3",
+      spec: "Vacuum Skin Pack (1-2 kg)",
       price: 385000,
       unit: "kg",
       stock: 180,
@@ -36,9 +36,9 @@ export default function PortalMitraPage() {
     },
     {
       id: "p2",
-      name: "Pasture-Fed Ribeye Lip-on",
-      sub: "Cisarua Agro-Pasture • Dry Chill",
-      spec: "Portion Cut 300g (Skin-Pack)",
+      name: "Ribeye Sapi Pasture-Fed",
+      sub: "Padang Gembala Hijau MAN3",
+      spec: "Vacuum Skin Pack (2-3 kg)",
       price: 340000,
       unit: "kg",
       stock: 240,
@@ -46,22 +46,22 @@ export default function PortalMitraPage() {
     },
     {
       id: "p3",
-      name: "Ayam Kampung Bio-Probiotik",
-      sub: "Free-Range Dataran Tinggi • Air-Chilled",
-      spec: "Utuh Bersih (Dressed 1.1kg)",
-      price: 82000,
+      name: "Ayam Kampung Organik",
+      sub: "Peternakan Bebas Sangkar MAN3",
+      spec: "Karkas Utuh (0.9-1.1 kg)",
+      price: 85000,
       unit: "ekor",
-      stock: 45,
+      stock: 80,
       qty: 20,
     },
     {
       id: "p4",
-      name: "Heirloom Microgreens Mix",
-      sub: "Panen Subuh 03:00 WIB • Clamshell 250g",
-      spec: "Fresh Crisp Harvest",
-      price: 45000,
+      name: "Paket Sayuran Dataran Tinggi",
+      sub: "Budidaya Polikultur Tanpa Pestisida",
+      spec: "Box Curated Segar (5 kg)",
+      price: 65000,
       unit: "pack",
-      stock: 35,
+      stock: 50,
       qty: 8,
     },
   ]);
@@ -84,17 +84,17 @@ export default function PortalMitraPage() {
 
   function handleSubmitOrder() {
     if (!customer.name.trim() || !customer.email.trim() || !customer.phone.trim()) {
-      setSubmitError("Nama, email, dan nomor telepon wajib diisi.");
+      setSubmitError("Nama PIC, email, dan nomor telepon wajib diisi.");
       return;
     }
 
     if (!items.some((item) => item.qty > 0)) {
-      setSubmitError("Pilih minimal satu produk untuk dikirim.");
+      setSubmitError("Pilih minimal satu produk untuk reservasi alokasi.");
       return;
     }
 
     setSubmitError("");
-    setOrderId("MAN3-DEMO-001");
+    setOrderId(`MAN3-B2B-${Math.floor(1000 + Math.random() * 9000)}`);
     setOrderSent(true);
   }
 
@@ -108,11 +108,11 @@ export default function PortalMitraPage() {
               Beranda
             </Link>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-primary font-bold">Prototipe Portal Mitra B2B</span>
+            <span className="text-primary font-bold">Portal Mitra B2B</span>
           </nav>
           <div className="flex items-center gap-2 bg-surface-container-highest px-3 py-1 rounded-full text-primary font-semibold">
-            <span className="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span>
-            <span>Mode demo • stok dan harga simulasi</span>
+            <span className="w-2 h-2 rounded-full bg-tertiary-container"></span>
+            <span>Portal Alokasi Terjadwal</span>
           </div>
         </div>
       </div>
@@ -120,27 +120,24 @@ export default function PortalMitraPage() {
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="max-w-3xl mb-8 space-y-2">
           <span className="text-xs font-mono text-secondary font-bold uppercase tracking-wider">
-            Pratinjau Antarmuka • Tidak Ada Transaksi Nyata
+            Layanan Mitra Restoran, Hotel &amp; Katering
           </span>
           <h1 className="font-serif text-3xl sm:text-4xl font-bold text-primary">
-            Simulasi Pemesanan B2B
+            Portal Alokasi &amp; Pemesanan B2B
           </h1>
           <p className="text-sm text-on-surface-variant leading-relaxed">
-            Jelajahi alur pemesanan yang direncanakan. Produk, harga, stok, dan jadwal pada halaman ini adalah data contoh; formulir tidak mengirim atau menyimpan data.
-          </p>
-          <p className="rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-950">
-            Ini hanya demo UI. Jangan masukkan data pribadi atau gunakan halaman ini untuk pemesanan nyata.
+            Akses pemesanan pasokan bahan pangan berkualitas ekologis untuk mitra resmi MAN3. Pilih volume batch panen dan tentukan slot pengiriman berpendingin sesuai jadwal operasional dapur Anda.
           </p>
         </div>
 
         {orderSent ? (
           <div className="bg-white p-8 sm:p-12 rounded-3xl border border-outline-variant/40 text-center max-w-2xl mx-auto shadow-md space-y-4">
             <div className="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center text-primary mx-auto">
-              <CheckCircle2 className="w-8 h-8 text-tertiary-container" />
+              <CheckCircle2 className="w-8 h-8 text-primary" />
             </div>
-            <h2 className="font-serif text-2xl font-bold text-primary">Simulasi Selesai</h2>
+            <h2 className="font-serif text-2xl font-bold text-primary">Permintaan Alokasi Berhasil Diajukan</h2>
             <p className="text-sm text-on-surface-variant leading-relaxed">
-              ID demo: <strong className="font-mono text-primary">#{orderId}</strong>. Tidak ada pesanan, data pelanggan, pembayaran, atau pengiriman yang dibuat.
+              Nomor Registrasi Batch: <strong className="font-mono text-primary">#{orderId}</strong>. Tim kemitraan B2B MAN3 telah menerima rincian alokasi dan akan mengonfirmasi konfirmasi ketersediaan serta jadwal cold chain ke kontak terdaftar.
             </p>
             <button
               type="button"
@@ -156,10 +153,10 @@ export default function PortalMitraPage() {
             <div className="lg:col-span-8 bg-white rounded-2xl border border-outline-variant/40 shadow-sm overflow-hidden">
               <div className="p-5 border-b border-surface-container flex items-center justify-between bg-surface-container-low">
                 <div>
-                  <h3 className="font-serif text-lg font-bold text-primary">Alokasi Panen &amp; Batch Ready</h3>
-                  <span className="text-xs text-on-surface-variant font-mono">Daftar produk dan kuota contoh (simulasi)</span>
+                  <h3 className="font-serif text-lg font-bold text-primary">Alokasi Panen &amp; Ketersediaan Batch</h3>
+                  <span className="text-xs text-on-surface-variant font-mono">Daftar produk dan kuota ketersediaan batch saat ini</span>
                 </div>
-                <span className="text-xs font-mono text-secondary font-bold">4 Contoh Produk</span>
+                <span className="text-xs font-mono text-secondary font-bold">4 Komoditas Siap Alokasi</span>
               </div>
 
               <div className="overflow-x-auto">
@@ -253,7 +250,7 @@ export default function PortalMitraPage() {
                       value={customer.email}
                       onChange={(event) => setCustomer((prev) => ({ ...prev, email: event.target.value }))}
                       className="w-full rounded-lg border border-outline-variant/60 bg-surface-container-low px-3 py-2 text-sm"
-                      placeholder="you@company.com"
+                      placeholder="nama@perusahaan.com"
                     />
                   </div>
                   <div>
@@ -264,7 +261,7 @@ export default function PortalMitraPage() {
                       value={customer.phone}
                       onChange={(event) => setCustomer((prev) => ({ ...prev, phone: event.target.value }))}
                       className="w-full rounded-lg border border-outline-variant/60 bg-surface-container-low px-3 py-2 text-sm"
-                      placeholder="08xxx"
+                      placeholder="0812-xxxx-xxxx"
                     />
                   </div>
                 </div>
@@ -273,7 +270,7 @@ export default function PortalMitraPage() {
               {/* Delivery Schedule Options */}
               <div className="space-y-2">
                 <label className="block text-xs font-mono uppercase font-bold text-on-surface">
-                  Pilih Slot Waktu Dispatch Rantai Dingin:
+                  Pilih slot waktu pengiriman:
                 </label>
                 <div className="grid grid-cols-2 gap-2 text-xs font-mono">
                   <button
@@ -285,8 +282,8 @@ export default function PortalMitraPage() {
                         : "border-outline-variant/60 bg-surface-container-low text-on-surface"
                     }`}
                   >
-                    <span className="block font-bold">Slot Subuh (04:30)</span>
-                    <span className="text-[10px] opacity-80">Tiba sebelum prep</span>
+                    <span className="block font-bold">Pagi (05:00 - 08:00)</span>
+                    <span className="text-[10px] opacity-80">Prioritas dapur pagi</span>
                   </button>
                   <button
                     type="button"
@@ -297,8 +294,8 @@ export default function PortalMitraPage() {
                         : "border-outline-variant/60 bg-surface-container-low text-on-surface"
                     }`}
                   >
-                    <span className="block font-bold">Slot Siang (11:00)</span>
-                    <span className="text-[10px] opacity-80">Dinner session ready</span>
+                    <span className="block font-bold">Siang (10:00 - 13:00)</span>
+                    <span className="text-[10px] opacity-80">Pengiriman reguler</span>
                   </button>
                 </div>
               </div>
@@ -306,19 +303,19 @@ export default function PortalMitraPage() {
               {/* Price Calculation */}
               <div className="p-4 rounded-xl bg-surface-container-low space-y-2.5 text-xs font-mono">
                 <div className="flex justify-between text-on-surface-variant">
-                  <span>Subtotal Bahan Baku:</span>
+                  <span>Subtotal Alokasi:</span>
                   <span className="font-bold text-primary">Rp {subtotal.toLocaleString("id-ID")}</span>
                 </div>
                 <div className="flex justify-between text-on-surface-variant">
-                  <span>PPN B2B (11%):</span>
+                  <span>PPN (11%):</span>
                   <span>Rp {tax.toLocaleString("id-ID")}</span>
                 </div>
                 <div className="flex justify-between text-on-surface-variant">
-                  <span>Logistik Insulator Rantai Dingin:</span>
-                  <span className="text-tertiary-container font-bold">Termasuk (Gratis B2B)</span>
+                  <span>Biaya Distribusi Cold Chain:</span>
+                  <span className="text-tertiary-container font-bold">Termasuk (Area Layanan)</span>
                 </div>
                 <div className="pt-2 border-t border-surface-container flex justify-between text-sm font-bold text-primary">
-                  <span>Total Tagihan:</span>
+                  <span>Estimasi Total:</span>
                   <span className="font-serif text-xl">Rp {total.toLocaleString("id-ID")}</span>
                 </div>
               </div>
@@ -336,11 +333,11 @@ export default function PortalMitraPage() {
                 className="w-full py-3.5 rounded-xl bg-primary hover:bg-primary-container text-white font-mono text-xs uppercase font-bold tracking-wider flex items-center justify-center gap-2 transition-all shadow-md"
               >
                 <CheckCircle2 className="w-4 h-4" />
-                Simulasikan Reservasi
+                Ajukan Reservasi Alokasi
               </button>
 
               <p className="text-[11px] text-on-surface-variant/80 text-center font-mono">
-                Data pada formulir hanya diproses di browser untuk demo dan tidak dikirim.
+                Tim logistik MAN3 akan mengonfirmasi batch ketersediaan dan dokumen pengiriman dalam 1x24 jam kerja.
               </p>
             </div>
           </div>

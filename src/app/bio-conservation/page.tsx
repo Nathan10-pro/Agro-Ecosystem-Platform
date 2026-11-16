@@ -23,11 +23,11 @@ export default function BioConservationPage() {
               Beranda
             </Link>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-primary font-bold">Organic Modernism &amp; Bio-Conservation</span>
+            <span className="text-primary font-bold">Panduan Konsep</span>
           </nav>
           <div className="flex items-center gap-2 bg-surface-container-highest px-3 py-1 rounded-full text-primary font-semibold">
-            <span className="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span>
-            <span>Design System &amp; Ecological Manifesto</span>
+            <span className="w-2 h-2 rounded-full bg-primary/60"></span>
+            <span>Standar Desain & Konsep</span>
           </div>
         </div>
       </div>
@@ -36,28 +36,28 @@ export default function BioConservationPage() {
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20">
         <div className="max-w-3xl space-y-4">
           <span className="text-xs font-mono text-secondary font-bold uppercase tracking-wider">
-            Filosofi Desain &amp; Landasan Ekologis
+            Panduan Konsep
           </span>
           <h1 className="font-serif text-4xl sm:text-5xl font-medium text-primary tracking-tight leading-tight">
-            Organic Modernism &amp; Editorial Bio-Tech
+            Prinsip Desain & Komunikasi MAN3
           </h1>
           <p className="text-base sm:text-lg text-on-surface-variant leading-relaxed">
-            Sistem desain MAN3 merefleksikan perpaduan antara kearifan biologi tanah purba dengan presisi sains modern. Kami menolak tampilan teknologi yang steril maupun estetika agrikultur yang usang — menghadirkan keanggunan editorial majalah dunia dengan visualisasi data hayati yang terukur.
+            Panduan prinsip komunikasi visual dan integritas informasi dalam ekosistem MAN3 — mengedepankan kejelasan, kejujuran ilmiah, dan kesederhanaan bahasa bagi konsumen maupun mitra.
           </p>
         </div>
 
-        {/* 3 Core Aesthetic Principles */}
+        {/* Content principles */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-14">
           <div className="bg-white p-6 sm:p-8 rounded-2xl border border-outline-variant/40 shadow-sm space-y-4">
             <div className="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary">
-              <span className="material-symbols-outlined text-[28px]">nature</span>
+              <Leaf className="w-6 h-6 text-primary" />
             </div>
-            <h3 className="font-serif text-2xl font-bold text-primary">Authoritative &amp; Grounded</h3>
+            <h3 className="font-serif text-2xl font-bold text-primary">Jelas</h3>
             <p className="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
-              Berakar pada pemulihan mikrobioma tanah humus, konservasi air pegunungan, dan integritas ketertelusuran rantai pasok yang tidak dapat dikompromikan.
+              Gunakan kalimat langsung untuk menjelaskan kegiatan, lokasi, dan status informasi.
             </p>
             <div className="pt-2 text-xs font-mono text-secondary font-bold">
-              • Menolak Greenwashing &amp; Klaim Hampa
+              • Hindari klaim tanpa bukti
             </div>
           </div>
 
@@ -65,12 +65,12 @@ export default function BioConservationPage() {
             <div className="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary">
               <Microscope className="w-6 h-6 text-primary" />
             </div>
-            <h3 className="font-serif text-2xl font-bold text-primary">Innovative &amp; Progressive</h3>
+            <h3 className="font-serif text-2xl font-bold text-primary">Terbuka</h3>
             <p className="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
-              Menghadirkan transparansi metrik telemetri tanah, kode lot lot QR digital, dan kontrol suhu logistik rantai dingin tanpa kehilangan kehangatan nilai-nilai organik.
+              Tandai data contoh dan jelaskan bila suatu fitur atau layanan belum tersedia.
             </p>
             <div className="pt-2 text-xs font-mono text-secondary font-bold">
-              • Sains Presisi Berpadu Alam Hayati
+              • Tautkan data yang dapat diperiksa
             </div>
           </div>
 
@@ -78,12 +78,12 @@ export default function BioConservationPage() {
             <div className="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary">
               <Sparkles className="w-6 h-6 text-primary" />
             </div>
-            <h3 className="font-serif text-2xl font-bold text-primary">Sensory &amp; Natural</h3>
+            <h3 className="font-serif text-2xl font-bold text-primary">Sederhana</h3>
             <p className="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
-              Membangkitkan aroma tanah humus basah, dedaunan segar di ketinggian 1.400 mdpl, dan kemurnian rasa bahan pangan yang dirawat secara bermartabat.
+              Hindari istilah teknis yang tidak membantu pembaca memahami produk atau cara kerja.
             </p>
             <div className="pt-2 text-xs font-mono text-secondary font-bold">
-              • Pengalaman Rasa &amp; Integritas Estetika
+              • Utamakan informasi yang relevan
             </div>
           </div>
         </div>
@@ -92,39 +92,39 @@ export default function BioConservationPage() {
       {/* Palette & Tokens Showcase */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-surface-container-high">
         <h2 className="font-serif text-3xl font-medium text-primary mb-8">
-          Palet Warna Berbasis Siklus Kehidupan Agraria
+          Palet Warna MAN3
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <div className="p-5 rounded-2xl bg-primary text-white space-y-3">
             <span className="text-xs font-mono uppercase text-primary-fixed">Primary Color</span>
-            <h4 className="font-serif text-xl font-bold">#1B4332 • Deep Forest Green</h4>
+            <h4 className="font-serif text-xl font-bold">#1B4332 • Hijau tua</h4>
             <p className="text-xs text-primary-fixed-dim/90 leading-relaxed">
-              Warna kanopi hutan lebat lereng gunung. Melambangkan otoritas, naungan hayati, dan keteguhan prinsip regeneratif.
+              Warna utama untuk judul, tombol, dan elemen navigasi.
             </p>
           </div>
 
           <div className="p-5 rounded-2xl bg-secondary text-white space-y-3">
             <span className="text-xs font-mono uppercase text-secondary-fixed">Secondary Color</span>
-            <h4 className="font-serif text-xl font-bold">#885039 • Terracotta Soil</h4>
+            <h4 className="font-serif text-xl font-bold">#885039 • Cokelat tanah</h4>
             <p className="text-xs text-secondary-fixed-dim/90 leading-relaxed">
-              Warna tanah mineral subur dan pot semai terakota. Digunakan untuk indikator B2B dan aksen gastronomi panggang.
+              Warna aksen untuk label dan penekanan informasi.
             </p>
           </div>
 
           <div className="p-5 rounded-2xl bg-surface-container-high text-primary border border-surface-container space-y-3">
             <span className="text-xs font-mono uppercase text-secondary font-bold">Tertiary Color</span>
-            <h4 className="font-serif text-xl font-bold">#52B788 • Vibrant Sprout Green</h4>
+            <h4 className="font-serif text-xl font-bold">#52B788 • Hijau muda</h4>
             <p className="text-xs text-on-surface-variant leading-relaxed">
-              Warna tunas pertama pasca-semai. Melambangkan vitalitas aktif, kepatuhan audit hijau, dan kesegaran seluler panen.
+              Warna pendukung untuk elemen antarmuka.
             </p>
           </div>
 
           <div className="p-5 rounded-2xl bg-surface-container-low text-primary border border-surface-container space-y-3">
             <span className="text-xs font-mono uppercase text-on-surface-variant">Neutral Surface</span>
-            <h4 className="font-serif text-xl font-bold">#E8FFEF • Soft Canvas Alabaster</h4>
+            <h4 className="font-serif text-xl font-bold">#E8FFEF • Latar terang</h4>
             <p className="text-xs text-on-surface-variant leading-relaxed">
-              Latar belakang bernapas lembut yang menggantikan warna putih silau, memberikan kenyamanan membaca laporan data ilmiah.
+              Warna latar untuk area konten.
             </p>
           </div>
         </div>

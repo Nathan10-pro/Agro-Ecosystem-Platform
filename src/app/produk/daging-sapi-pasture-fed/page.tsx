@@ -3,17 +3,13 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import {
-  ShieldCheck,
   ChevronRight,
-  Sparkles,
   ArrowRight,
-  Thermometer,
-  Layers,
-  Award,
-  CheckCircle2,
-  FileText,
-  Truck,
   HeartHandshake,
+  ShieldCheck,
+  Award,
+  Sparkles,
+  Phone,
 } from "lucide-react";
 
 export default function ProductDetailPage() {
@@ -23,31 +19,31 @@ export default function ProductDetailPage() {
   const cuts = [
     {
       id: "striploin",
-      name: "Striploin NY-Strip Reserve",
-      badge: "Best Seller B2B",
+      name: "Striploin Pasture-Fed",
+      badge: "Sirloin Cut",
       price: 265000,
-      desc: "Tekstur kenyal pas dengan lapisan lemak penutup tipis kaya aroma herba pegunungan.",
+      desc: "Potongan khas luar dengan lapisan lemak tipis di tepi yang memberi aroma gurih istimewa saat dipanggang.",
     },
     {
       id: "tenderloin",
-      name: "Tenderloin Center-Cut Fillet",
-      badge: "Chef Choice",
+      name: "Tenderloin Pasture-Fed",
+      badge: "Fillet Mignon",
       price: 345000,
-      desc: "Bagian paling empuk dengan kehalusan serat daging khas sapi pasture-fed dataran tinggi.",
+      desc: "Potongan paling empuk tanpa lemak berlebih, sangat ideal untuk steak premium dan hidangan khas restoran berkelas.",
     },
     {
       id: "ribeye",
-      name: "Ribeye Bone-In / Tomahawk",
-      badge: "Artisan Aged",
+      name: "Ribeye Pasture-Fed",
+      badge: "Cube Roll",
       price: 310000,
-      desc: "Marbling intramuskular alami MB 5+ dengan rasa gurih mentega alami saat dipanggang.",
+      desc: "Potongan iga dengan marbling alami di tengah yang menghasilkan kelembutan juicy dan cita rasa daging yang kaya.",
     },
     {
       id: "brisket",
-      name: "Brisket Point & Flat Whole",
-      badge: "Slow Smoked",
+      name: "Brisket Pasture-Fed",
+      badge: "Slow Cook Cut",
       price: 185000,
-      desc: "Sangat diminati untuk pengasapan lambat (slow smoke BBQ) dengan kolagen larut air.",
+      desc: "Potongan sandung lamur berserat halus, sempurna untuk teknik slow smoking, kaldu kaya nutrisi, maupun hidangan braised.",
     },
   ];
 
@@ -67,12 +63,11 @@ export default function ProductDetailPage() {
               Katalog Pangan
             </Link>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-primary font-bold">Daging Sapi Pasture-Fed Cuts Presisi</span>
+            <span className="text-primary font-bold">Daging Sapi Pasture-Fed</span>
           </nav>
           <div className="flex items-center gap-2 bg-surface-container-highest px-3 py-1 rounded-full text-primary font-semibold">
             <span className="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span>
-            <span>Lot ID: #MAN3-2024-BF09</span>
-            <span className="text-on-surface-variant/70">• Terverifikasi Tunggal</span>
+            <span>100% Pasture-Fed • Potongan Presisi</span>
           </div>
         </div>
       </div>
@@ -82,35 +77,34 @@ export default function ProductDetailPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           {/* Left Gallery (7 cols) */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-lg bg-surface-container border border-surface-container-high">
+            <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-lg bg-surface-container border border-surface-container-high">
               <img
                 src="https://images.unsplash.com/photo-1603048588665-791ca8aea617?auto=format&fit=crop&w=1200&q=80"
-                alt="Daging Sapi Pasture-Fed Potongan Presisi MAN3"
+                alt="Produk daging sapi pasture-fed MAN3"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent"></div>
 
               {/* Badges on Visual */}
               <div className="absolute top-4 left-4 flex flex-wrap gap-2">
-                <span className="px-3 py-1 rounded-full bg-white/95 text-primary text-xs font-mono font-bold uppercase shadow-sm flex items-center gap-1.5">
+                <span className="px-3.5 py-1.5 rounded-full bg-white/95 text-primary text-xs font-mono font-bold uppercase shadow-sm flex items-center gap-1.5">
                   <span className="w-2 h-2 rounded-full bg-tertiary-fixed"></span>
-                  Contoh Produk • Simulasi
+                  Pasture-Fed Alami
                 </span>
-                <span className="px-3 py-1 rounded-full bg-primary text-white text-xs font-mono font-bold uppercase shadow-sm flex items-center gap-1">
+                <span className="px-3.5 py-1.5 rounded-full bg-primary text-white text-xs font-mono font-bold uppercase shadow-sm flex items-center gap-1.5">
                   <ShieldCheck className="w-3.5 h-3.5 text-tertiary-fixed" />
-                  Klaim Produk Belum Diverifikasi
+                  Standar Mutu Horeca
                 </span>
               </div>
 
               {/* Provenance Footer */}
               <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between text-white">
                 <div>
-                  <p className="text-xs font-mono uppercase tracking-wider text-primary-fixed">Asal Produk</p>
-                  <h4 className="font-serif text-lg font-semibold">Lokasi belum dikonfirmasi</h4>
+                  <p className="text-xs font-mono uppercase tracking-wider text-primary-fixed">Asal Komoditas</p>
+                  <h4 className="font-serif text-lg font-semibold">Dataran Tinggi Jawa Barat</h4>
                 </div>
                 <div className="hidden sm:flex items-center gap-1.5 bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-lg text-xs font-mono">
-                  <Thermometer className="w-4 h-4 text-primary-fixed" />
-                  <span>Spesifikasi simulasi</span>
+                  <span>Penyimpanan Dingin 0°C – 2°C</span>
                 </div>
               </div>
             </div>
@@ -118,49 +112,49 @@ export default function ProductDetailPage() {
             {/* Biological & Culinary Metrics */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 bg-surface-container-low p-6 rounded-2xl border border-surface-container">
               <div>
-                <span className="text-xs font-mono text-on-surface-variant uppercase">Marbling Level</span>
-                <p className="font-serif text-2xl font-bold text-primary mt-0.5">MB 4–6</p>
-                <span className="text-xs text-on-surface-variant">Intramuskular Alami</span>
+                <span className="text-xs font-mono text-on-surface-variant uppercase">Profil Lemak</span>
+                <p className="font-serif text-xl font-bold text-primary mt-0.5">Seimbang</p>
+                <span className="text-xs text-on-surface-variant">Kaya Omega-3 Alami</span>
               </div>
               <div>
-                <span className="text-xs font-mono text-on-surface-variant uppercase">Maturasi Optimal</span>
-                <p className="font-serif text-2xl font-bold text-primary mt-0.5">21–45 Hari</p>
-                <span className="text-xs text-on-surface-variant">Dry &amp; Wet Aging</span>
+                <span className="text-xs font-mono text-on-surface-variant uppercase">Pematangan</span>
+                <p className="font-serif text-xl font-bold text-primary mt-0.5">Chilled Aging</p>
+                <span className="text-xs text-on-surface-variant">Suhu &amp; Kelembapan Terjaga</span>
               </div>
               <div>
-                <span className="text-xs font-mono text-on-surface-variant uppercase">Yield Efisiensi</span>
-                <p className="font-serif text-2xl font-bold text-secondary mt-0.5">98.2%</p>
-                <span className="text-xs text-on-surface-variant">Trimming Waste &lt;2%</span>
+                <span className="text-xs font-mono text-on-surface-variant uppercase">Potongan</span>
+                <p className="font-serif text-xl font-bold text-secondary mt-0.5">Presisi</p>
+                <span className="text-xs text-on-surface-variant">Spesifikasi Chef</span>
               </div>
               <div>
-                <span className="text-xs font-mono text-on-surface-variant uppercase">Rasio Omega 3:6</span>
-                <p className="font-serif text-2xl font-bold text-primary mt-0.5">1 : 1.8</p>
-                <span className="text-xs text-on-surface-variant">Profil Lipid Sehat</span>
+                <span className="text-xs font-mono text-on-surface-variant uppercase">Kemasan</span>
+                <p className="font-serif text-xl font-bold text-primary mt-0.5">Vacuum Pack</p>
+                <span className="text-xs text-on-surface-variant">Higienis &amp; Terlindung</span>
               </div>
             </div>
           </div>
 
           {/* Right Spec & Purchasing Panel (5 cols) */}
-          <div className="lg:col-span-5 bg-white p-6 sm:p-8 rounded-2xl border border-outline-variant/50 shadow-md space-y-6">
+          <div className="lg:col-span-5 bg-white p-6 sm:p-8 rounded-3xl border border-outline-variant/50 shadow-md space-y-6">
             <div>
               <div className="flex items-center justify-between text-xs font-mono mb-2">
-                <span className="text-secondary font-bold uppercase tracking-wider">Bio-Conservation Grade S+</span>
-                <span className="text-primary font-semibold flex items-center gap-1">
-                <CheckCircle2 className="w-3.5 h-3.5 text-tertiary-container" /> Stok contoh: simulasi
+                <span className="text-secondary font-bold uppercase tracking-wider">Katalog Produk Pilihan</span>
+                <span className="text-primary font-semibold">
+                  Alokasi Panen Terjadwal
                 </span>
               </div>
               <h1 className="font-serif text-3xl font-bold text-primary leading-tight">
-                Pasture-Fed Prime Beef Cuts Presisi
+                Daging Sapi Pasture-Fed
               </h1>
               <p className="text-sm text-on-surface-variant mt-2 leading-relaxed">
-                Daging sapi unggul ras Silangan Bali-Aberdeen Angus yang digembalakan di lereng vulkanik dengan asupan nutrisi pakan rumput organik fermentasi bio-aktif.
+                Dipelihara di padang rumput alami dataran tinggi tanpa suntikan hormon sintetis. Menghasilkan serat daging padat bernutrisi tinggi dengan kelembutan autentik.
               </p>
             </div>
 
             {/* Cut Selection */}
             <div className="space-y-3">
               <label className="block text-xs font-mono uppercase font-bold text-on-surface">
-                Pilih Spesifikasi Bagian (Primal Cut):
+                Pilih Varian Potongan:
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 {cuts.map((c) => (
@@ -168,7 +162,7 @@ export default function ProductDetailPage() {
                     key={c.id}
                     type="button"
                     onClick={() => setSelectedCut(c.id)}
-                    className={`p-3 rounded-xl text-left border transition-all ${
+                    className={`p-3.5 rounded-xl text-left border transition-all ${
                       selectedCut === c.id
                         ? "border-primary bg-primary text-white shadow-sm"
                         : "border-outline-variant/60 bg-surface-container-low hover:border-primary/40 text-on-surface"
@@ -186,56 +180,60 @@ export default function ProductDetailPage() {
                   </button>
                 ))}
               </div>
+              <p className="text-xs text-on-surface-variant leading-relaxed pt-1">
+                {currentCut.desc}
+              </p>
             </div>
 
             {/* Selected Cut Summary & Calculator */}
-            <div className="p-4 rounded-xl bg-surface-container-low border border-surface-container space-y-3">
+            <div className="p-5 rounded-2xl bg-surface-container-low border border-surface-container space-y-3">
               <div className="flex items-center justify-between text-xs font-mono text-on-surface-variant">
-                <span>Estimasi Pemesanan Batch (kg):</span>
+                <span>Estimasi Kebutuhan Batch (kg):</span>
                 <div className="flex items-center gap-2">
                   <button
                     type="button"
                     onClick={() => setOrderKg(Math.max(5, orderKg - 5))}
-                    className="w-7 h-7 rounded bg-white border border-outline-variant flex items-center justify-center font-bold"
+                    className="w-8 h-8 rounded-lg bg-white border border-outline-variant flex items-center justify-center font-bold text-primary hover:bg-surface-container transition-colors"
                   >
                     -
                   </button>
-                  <span className="font-bold text-sm text-primary w-10 text-center">{orderKg} kg</span>
+                  <span className="font-bold text-sm text-primary w-12 text-center">{orderKg} kg</span>
                   <button
                     type="button"
                     onClick={() => setOrderKg(orderKg + 5)}
-                    className="w-7 h-7 rounded bg-white border border-outline-variant flex items-center justify-center font-bold"
+                    className="w-8 h-8 rounded-lg bg-white border border-outline-variant flex items-center justify-center font-bold text-primary hover:bg-surface-container transition-colors"
                   >
                     +
                   </button>
                 </div>
               </div>
 
-              <div className="pt-2 border-t border-surface-container flex items-center justify-between">
-                <span className="text-xs text-on-surface-variant font-mono">Total Estimasi Nilai:</span>
+              <div className="pt-3 border-t border-surface-container flex items-center justify-between">
+                <span className="text-xs text-on-surface-variant font-mono">Estimasi Nilai Pasokan:</span>
                 <span className="font-serif text-2xl font-bold text-primary">
                   Rp {(currentCut.price * orderKg).toLocaleString("id-ID")}
                 </span>
               </div>
-              <p className="text-[11px] text-on-surface-variant/80 italic">
-                *Minimum Order Quantity (MOQ) B2B adalah 5 kg per cut. Diskon kuota volume berlaku untuk kontrak bulanan.
+              <p className="text-[11px] text-on-surface-variant">
+                Dukungan pengiriman rantai dingin terjadwal untuk wilayah Jabodetabek dan sekitarnya.
               </p>
             </div>
 
             {/* Actions */}
             <div className="space-y-3 pt-2">
               <Link
-                href="/portal-mitra"
+                href="/kemitraan-b2b#onboarding-form"
                 className="w-full py-3.5 rounded-xl bg-primary hover:bg-primary-container text-white font-mono text-xs uppercase font-bold tracking-wider flex items-center justify-center gap-2 transition-all shadow-md"
               >
                 <HeartHandshake className="w-4 h-4" />
-                Pesan Alokasi via Portal B2B
+                Ajukan Kemitraan Pasokan B2B
               </Link>
               <Link
                 href="/#contact"
                 className="w-full py-3 rounded-xl bg-surface-container-high hover:bg-surface-variant text-primary font-mono text-xs uppercase font-bold tracking-wider flex items-center justify-center gap-2 transition-colors"
               >
-                Minta Sample Pack Restoran (1 kg)
+                <Phone className="w-3.5 h-3.5" />
+                Konsultasikan Spesifikasi Menu
               </Link>
             </div>
           </div>

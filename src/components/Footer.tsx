@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
-import { ShieldCheck, Mountain, MapPin, Mail, Phone, ArrowUp } from "lucide-react";
+import { ShieldCheck, Mountain, MapPin, Mail, Phone, ArrowUp, Leaf, PackageCheck } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -14,9 +14,9 @@ export default function Footer() {
               <Mountain className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="font-serif text-lg font-semibold text-primary-fixed">Konsep Agro-Ekologi</h4>
+              <h4 className="font-serif text-lg font-semibold text-primary-fixed">Sistem Agro-Ekologi Terpadu</h4>
               <p className="text-sm text-primary-fixed-dim/80 mt-1 leading-relaxed">
-                Rancangan ekosistem pangan dan konservasi. Lokasi dan kondisi lahan masih menunggu konfirmasi.
+                Penerapan sistem pertanian terpadu yang menjaga kesuburan tanah dan keseimbangan alami di dataran tinggi.
               </p>
             </div>
           </div>
@@ -26,21 +26,21 @@ export default function Footer() {
               <ShieldCheck className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="font-serif text-lg font-semibold text-primary-fixed">Praktik Budidaya</h4>
+              <h4 className="font-serif text-lg font-semibold text-primary-fixed">Praktik Budidaya Alami</h4>
               <p className="text-sm text-primary-fixed-dim/80 mt-1 leading-relaxed">
-                Prinsip budidaya bertanggung jawab sedang dirancang dan belum menjadi klaim operasional atau sertifikasi.
+                Mengutamakan pupuk kompos organik, pengelolaan pakan padang rumput alami, dan perlindungan keanekaragaman hayati.
               </p>
             </div>
           </div>
 
           <div className="flex items-start gap-4">
             <div className="w-12 h-12 rounded-xl bg-primary-container flex items-center justify-center text-tertiary-fixed shrink-0">
-              <span className="material-symbols-outlined text-[26px]">precision_manufacturing</span>
+              <PackageCheck className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="font-serif text-lg font-semibold text-primary-fixed">Penanganan Pangan</h4>
+              <h4 className="font-serif text-lg font-semibold text-primary-fixed">Standar Mutu &amp; Higienitas</h4>
               <p className="text-sm text-primary-fixed-dim/80 mt-1 leading-relaxed">
-                Alur pasokan, fasilitas, dan standar keamanan pangan akan dijelaskan setelah proses operasional terverifikasi.
+                Pengawasan mutu terpadu, pemotongan presisi untuk kebutuhan kuliner, dan rantai pasokan dingin yang higienis.
               </p>
             </div>
           </div>
@@ -54,16 +54,19 @@ export default function Footer() {
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-primary-fixed">
-                <span className="material-symbols-outlined text-[24px]">nest_eco_leaf</span>
+                <Leaf className="w-5 h-5 text-tertiary-fixed" />
               </div>
-              <span className="font-serif text-2xl font-bold text-white tracking-tight">MAN3</span>
+              <div className="flex flex-col">
+                <span className="font-serif text-2xl font-bold text-white tracking-tight leading-none">MAN3</span>
+                <span className="font-mono text-[10px] text-primary-fixed-dim uppercase tracking-wider mt-1">Ekosistem Bio-Agri &amp; Konservasi</span>
+              </div>
             </div>
             <p className="text-sm text-primary-fixed-dim/80 leading-relaxed max-w-sm">
               {siteConfig.description}
             </p>
             <div className="pt-2 text-xs font-mono text-tertiary-fixed flex items-center gap-2">
               <span className="inline-block w-2 h-2 rounded-full bg-tertiary-fixed"></span>
-              Prototipe pengembangan • Data simulasi
+              Pertanian • Peternakan • Konservasi
             </div>
           </div>
 
@@ -83,10 +86,10 @@ export default function Footer() {
                 <Link href="/produk/daging-sapi-pasture-fed" className="hover:text-white transition-colors">Katalog Produk Pangan</Link>
               </li>
               <li>
-                <Link href="/why-choose-man3" className="hover:text-white transition-colors">Why Choose MAN3</Link>
+                <Link href="/why-choose-man3" className="hover:text-white transition-colors">Mengapa MAN3</Link>
               </li>
               <li>
-                <Link href="/#news" className="hover:text-white transition-colors">Warta &amp; Publikasi Riset</Link>
+                <Link href="/#news" className="hover:text-white transition-colors">Warta &amp; Publikasi Lapangan</Link>
               </li>
             </ul>
           </div>
@@ -101,13 +104,13 @@ export default function Footer() {
                 <Link href="/kemitraan-b2b" className="hover:text-white transition-colors">Kemitraan B2B Restoran</Link>
               </li>
               <li>
-                <Link href="/portal-mitra" className="hover:text-white transition-colors">Portal Pemesanan Terpadu</Link>
+                <Link href="/portal-mitra" className="hover:text-white transition-colors">Portal Mitra B2B</Link>
               </li>
               <li>
-                <Link href="/corporate-profile" className="hover:text-white transition-colors">Corporate Profile</Link>
+                <Link href="/corporate-profile" className="hover:text-white transition-colors">Profil Perusahaan</Link>
               </li>
               <li>
-                <Link href="/bio-conservation" className="hover:text-white transition-colors">Bio-Conservation Science</Link>
+                <Link href="/bio-conservation" className="hover:text-white transition-colors">Panduan Konsep</Link>
               </li>
             </ul>
           </div>
@@ -124,7 +127,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-tertiary-fixed shrink-0" />
-                <span>{siteConfig.contact.email} (simulasi)</span>
+                <span>{siteConfig.contact.email}</span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-tertiary-fixed shrink-0" />
@@ -135,10 +138,10 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-14 pt-8 border-t border-primary-container flex flex-col sm:flex-row items-center justify-between text-xs text-primary-fixed-dim/60 gap-4 font-mono">
-          <p>© {new Date().getFullYear()} MAN3 Agro-Ecosystem Platform. All rights reserved.</p>
+        <div className="mt-14 pt-8 border-t border-primary-container flex flex-col sm:flex-row items-center justify-between text-xs text-primary-fixed-dim/70 gap-4 font-mono">
+          <p>© {new Date().getFullYear()} MAN3. Seluruh hak cipta dilindungi.</p>
           <div className="flex items-center gap-6">
-            <span>Pratinjau prototipe</span>
+            <span>Bio-Agri &amp; Conservation</span>
             <span>•</span>
             <a href="#top" className="hover:text-white transition-colors flex items-center gap-1">
               Kembali ke atas <ArrowUp className="w-3.5 h-3.5" />

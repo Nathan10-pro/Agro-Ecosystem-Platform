@@ -1,99 +1,98 @@
 import React from "react";
 import Link from "next/link";
 import {
-  ShieldCheck,
   ChevronRight,
+  ShieldCheck,
   CheckCircle2,
-  XCircle,
-  TrendingUp,
-  Clock,
-  Award,
-  Lock,
-  QrCode,
-  Globe,
   ArrowRight,
+  Sparkles,
+  HeartHandshake,
+  Leaf,
+  Layers,
+  ThermometerSnowflake,
+  Award,
 } from "lucide-react";
 
 export default function WhyChooseMan3Page() {
   const comparisonRows = [
     {
-      parameter: "Metode Budidaya & Pakan",
-      sub: "Standar agronomi hulu & pemeliharaan hewan",
-      man3: "Konsep rotasi paddock & pemilihan hijauan sesuai lokasi",
-      man3Desc: "Rancangan praktik masih perlu disesuaikan dengan kondisi lahan dan kebutuhan ternak.",
-      conventional: "Praktik berbeda menurut produsen",
-      conventionalDesc: "Metode produksi perlu dinilai berdasarkan informasi masing-masing pemasok.",
+      parameter: "Metode Budidaya & Tanah",
+      sub: "Pendekatan agronomi dan kesuburan lahan",
+      man3: "Sistem Agro-Ekologi Terpadu",
+      man3Desc: "Menggunakan pupuk kompos alami, tanaman penutup tanah, dan refugia berbunga untuk menyuburkan tanah dan menjaga keseimbangan ekosistem secara alami.",
+      conventional: "Monokultur Intensif Konvensional",
+      conventionalDesc: "Ketergantungan tinggi pada pupuk kimia buatan dan pestisida sintetis yang berisiko menurunkan kegemburan tanah jangka panjang.",
     },
     {
-      parameter: "Ketertelusuran (Traceability)",
-      sub: "Asal usul lot dan transparansi data panen",
-      man3: "Rancangan pencatatan lot digital (belum aktif)",
-      man3Desc: "Alur ketertelusuran masih dalam tahap desain dan belum dapat diverifikasi.",
-      conventional: "Skema ketertelusuran bergantung pada pemasok",
-      conventionalDesc: "Informasi asal produk sebaiknya dikonfirmasi langsung kepada pemasok terkait.",
+      parameter: "Pakan & Kesejahteraan Ternak",
+      sub: "Kondisi pemeliharaan dan nutrisi hewan",
+      man3: "100% Pasture-Fed & Penggembalaan Bergilir",
+      man3Desc: "Ternak bebas merumput di padang rumput alami dengan rotasi petak berkala, bebas stres, dan tidak diberikan hormon pertumbuhan sintetis.",
+      conventional: "Sistem Penggemukan Kandang (Feedlot)",
+      conventionalDesc: "Pakan dominan konsentrat biji-bijian olahan dengan ruang gerak ternak terbatas, rentan memicu stres pada ternak.",
     },
     {
-      parameter: "Yield Dapur & Standar Potongan",
-      sub: "Toleransi gramasi dan pembersihan silverskin",
-      man3: "Spesifikasi produk dalam pengembangan",
-      man3Desc: "Ukuran, mutu, dan hasil potong akan ditetapkan berdasarkan produk aktual.",
-      conventional: "Spesifikasi bervariasi",
-      conventionalDesc: "Bandingkan mutu berdasarkan spesifikasi produk dan kebutuhan usaha Anda.",
+      parameter: "Kualitas & Keamanan Pangan",
+      sub: "Karakter nutrisi dan kebersihan bahan",
+      man3: "Pangan Bernutrisi Utuh & Higienis",
+      man3Desc: "Daging dengan profil asam lemak alami seimbang, tekstur padat empuk alami, serta sayuran segar tanpa residu zat kimia berbahaya.",
+      conventional: "Standar Kuantitas Komoditas",
+      conventionalDesc: "Fokus pada bobot panen cepat, sering kali menghasilkan kadar lemak jenuh lebih tinggi dan risiko residu kimia pada produk akhir.",
     },
     {
-      parameter: "Stabilitas Harga & Pasokan",
-      sub: "Kontrak jangka panjang dan mitigasi inflasi pangan",
-      man3: "Model kemitraan sedang dirancang",
-      man3Desc: "Harga, kuota, dan jadwal pasokan belum tersedia untuk pemesanan nyata.",
-      conventional: "Skema harga berbeda menurut pemasok",
-      conventionalDesc: "Konfirmasikan harga dan ketersediaan langsung kepada pemasok.",
+      parameter: "Dampak Lingkungan & Alam",
+      sub: "Hubungan kegiatan produksi dengan alam",
+      man3: "Konservasi Hayati & Pelestarian Air",
+      man3Desc: "Menjaga koridor hijau alami, memulihkan siklus air pegunungan, dan menyediakan habitat aman bagi fauna serta mikroorganisme lokal.",
+      conventional: "Eksploitasi Lahan Tanpa Koridor",
+      conventionalDesc: "Pembukaan lahan monokultur skala luas tanpa zona penyangga konservasi, mempercepat risiko erosi dan kepunahan keanekaragaman hayati.",
     },
     {
-      parameter: "Dampak Ekologis & Nilai ESG",
-      sub: "Keberlanjutan tanah, air, dan masyarakat",
-      man3: "Konsep konservasi belum diverifikasi",
-      man3Desc: "Lokasi, luas, dan dampak program belum dikonfirmasi.",
-      conventional: "Praktik berbeda menurut produsen",
-      conventionalDesc: "Klaim dampak lingkungan memerlukan bukti dan konteks yang dapat diperiksa.",
+      parameter: "Transparansi & Ketertelusuran",
+      sub: "Asal-usul produk dan kepastian pasokan",
+      man3: "Ketertelusuran Berbasis Batch",
+      man3Desc: "Pencatatan lot terstruktur dari padang gembala hingga pemotongan presisi, memudahkan verifikasi mutu oleh para mitra chef dan restoran.",
+      conventional: "Rantai Pasok Perantara Panjang",
+      conventionalDesc: "Asal-usul komoditas sering bercampur di berbagai perantara pasar, sehingga riwayat pemeliharaan sulit ditelusuri dengan pasti.",
     },
   ];
 
   const pillars = [
     {
       num: "01",
-      title: "Presisi Trimming & Yield Dapur Maksimal",
-      desc: "Parameter pemotongan dan seleksi produk akan ditentukan setelah produk dan fasilitas terverifikasi.",
-      stat: "Spesifikasi dalam pengembangan",
+      title: "Nutrisi Alami Berkualitas Tinggi",
+      desc: "Hasil panen segar dan daging sapi pasture-fed kaya nutrisi alami yang dihasilkan dari tanah sehat dan pakan rumput pegunungan pilihan.",
+      icon: Leaf,
     },
     {
       num: "02",
-      title: "Pengiriman Subuh Terjadwal (04:30 - 06:00 WIB)",
-      desc: "Rute, armada, dan jadwal pengiriman belum tersedia.",
-      stat: "Logistik belum aktif",
+      title: "Rantai Dingin & Higienitas Terjaga",
+      desc: "Proses penanganan pascapanen higienis dengan kontrol suhu rantai dingin presisi untuk menjaga kesegaran optimal hingga ke tangan konsumen.",
+      icon: ThermometerSnowflake,
     },
     {
       num: "03",
-      title: "Sertifikasi & Kepatuhan",
-      desc: "Belum ada sertifikasi yang diklaim pada prototipe ini. Informasi lembaga dan nomor sertifikat akan ditambahkan setelah diverifikasi.",
-      stat: "Belum diverifikasi",
+      title: "Pemotongan Presisi Standar Kuliner",
+      desc: "Potongan daging presisi sesuai spesifikasi dapur komersial, hotel, dan restoran untuk efisiensi preparasi serta konsistensi rasa.",
+      icon: Award,
     },
     {
       num: "04",
-      title: "Kontrak Kuota Terkunci & Harga Stabil",
-      desc: "Ketentuan harga dan volume pasokan akan diumumkan setelah program kemitraan tersedia.",
-      stat: "Belum tersedia",
+      title: "Ketertelusuran Asal Produk",
+      desc: "Setiap batch komoditas memiliki riwayat pencatatan lot yang jelas, memberikan rasa aman dan kepercayaan bagi mitra kuliner.",
+      icon: Layers,
     },
     {
       num: "05",
-      title: "Traceability Digital Single-Estate",
-      desc: "Fitur ketertelusuran berbasis lot masih berupa rancangan dan belum dapat digunakan.",
-      stat: "Rancangan fitur",
+      title: "Komitmen Nyata Konservasi Lingkungan",
+      desc: "Setiap pembelian mendukung perlindungan koridor hijau pegunungan, konservasi mata air, dan pemulihan keanekaragaman hayati.",
+      icon: Sparkles,
     },
     {
       num: "06",
-      title: "Kontribusi Nyata pada Konservasi Alam",
-      desc: "Rencana konservasi dan mekanisme dukungannya masih dalam pengembangan.",
-      stat: "Program belum aktif",
+      title: "Kemitraan B2B yang Fleksibel & Andal",
+      desc: "Dukungan pasokan terjadwal, alokasi panen berkala, dan konsultasi spesifikasi khusus yang disesuaikan dengan kebutuhan usaha kuliner Anda.",
+      icon: HeartHandshake,
     },
   ];
 
@@ -107,50 +106,56 @@ export default function WhyChooseMan3Page() {
               Beranda
             </Link>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-primary font-bold">Why Choose MAN3</span>
+            <span className="text-primary font-bold">Mengapa MAN3</span>
           </nav>
           <div className="flex items-center gap-2 bg-surface-container-highest px-3 py-1 rounded-full text-primary font-semibold">
             <span className="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span>
-            <span>Nilai Komparatif &amp; Standar Mutu Industri</span>
+            <span>Standar Keunggulan Agro-Ekologi</span>
           </div>
         </div>
       </div>
 
       {/* Hero Header */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 py-14">
-        <div className="max-w-3xl space-y-3">
+        <div className="max-w-3xl space-y-4">
           <span className="text-xs font-mono text-secondary font-bold uppercase tracking-wider">
-            Komparasi &amp; Integritas Pasokan
+            Keunggulan Kompetitif &amp; Nilai Inti
           </span>
           <h1 className="font-serif text-4xl sm:text-5xl font-medium text-primary tracking-tight leading-tight">
-            Standar Keunggulan yang Membedakan MAN3
+            Mengapa Memilih Ekosistem MAN3?
           </h1>
           <p className="text-base sm:text-lg text-on-surface-variant leading-relaxed">
-            Di tengah maraknya klaim organik tanpa verifikasi, MAN3 menawarkan kepastian ilmiah, yield penggunaan bahan yang superior, dan komitmen perlindungan ekosistem yang terukur.
+            MAN3 menghadirkan pendekatan terpadu antara peternakan ramah alam berbasis padang rumput, budidaya tanaman alami, dan pelestarian koridor konservasi hayati. Kami memastikan setiap bahan pangan yang Anda sajikan tidak hanya bermutu unggul, tetapi juga selaras dengan kelestarian alam.
           </p>
         </div>
 
         {/* Comparison Table */}
-        <div className="mt-12 bg-white rounded-2xl border border-outline-variant/40 shadow-sm overflow-hidden">
-          <div className="p-6 bg-surface-container-low border-b border-surface-container">
-            <h2 className="font-serif text-xl sm:text-2xl font-bold text-primary">
-              Tabel Komparasi: MAN3 vs Pasokan Konvensional
-            </h2>
-            <p className="text-xs text-on-surface-variant font-mono mt-1">
-              Parameter kunci yang dinilai oleh para Director of Culinary dan Tim Purchasing Perhotelan.
-            </p>
+        <div className="mt-12 bg-white rounded-3xl border border-outline-variant/50 shadow-sm overflow-hidden">
+          <div className="p-6 sm:p-8 bg-surface-container-low border-b border-surface-container flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <h2 className="font-serif text-2xl font-bold text-primary">
+                Perbandingan Pendekatan MAN3 vs Pertanian Konvensional
+              </h2>
+              <p className="text-xs text-on-surface-variant font-mono mt-1">
+                Komparasi nilai dan dampak antara sistem regeneratif holistik MAN3 dan sistem industri konvensional.
+              </p>
+            </div>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary text-white font-mono text-xs font-bold shrink-0">
+              <ShieldCheck className="w-4 h-4 text-tertiary-fixed" />
+              Nilai Berkelanjutan
+            </div>
           </div>
 
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="border-b border-surface-container text-xs font-mono uppercase bg-surface-container-low/60">
-                  <th className="py-4 px-6 w-1/4 font-bold text-on-surface-variant">Parameter Kunci</th>
-                  <th className="py-4 px-6 w-3/8 font-bold text-primary bg-surface-container/60">
-                    MAN3 Agro-Ecosystem Platform
+                  <th className="py-4 px-6 w-1/4 font-bold text-on-surface-variant">Parameter Utama</th>
+                  <th className="py-4 px-6 w-3/8 font-bold text-primary bg-primary/5">
+                    Pendekatan Terpadu MAN3
                   </th>
                   <th className="py-4 px-6 w-3/8 font-bold text-on-surface-variant">
-                    Suplai Konvensional Pasar Induk
+                    Sistem Konvensional Biasa
                   </th>
                 </tr>
               </thead>
@@ -161,8 +166,8 @@ export default function WhyChooseMan3Page() {
                       <p className="font-bold text-sm text-primary">{row.parameter}</p>
                       <span className="text-[11px] text-on-surface-variant block mt-1">{row.sub}</span>
                     </td>
-                    <td className="py-5 px-6 align-top bg-surface-container-low/20">
-                      <div className="flex items-start gap-2">
+                    <td className="py-5 px-6 align-top bg-primary/5">
+                      <div className="flex items-start gap-2.5">
                         <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" />
                         <div>
                           <p className="font-bold text-sm text-primary">{row.man3}</p>
@@ -171,8 +176,8 @@ export default function WhyChooseMan3Page() {
                       </div>
                     </td>
                     <td className="py-5 px-6 align-top text-on-surface-variant">
-                      <div className="flex items-start gap-2">
-                        <XCircle className="w-4 h-4 text-outline shrink-0 mt-0.5" />
+                      <div className="flex items-start gap-2.5">
+                        <ArrowRight className="w-4 h-4 text-outline-variant shrink-0 mt-0.5" />
                         <div>
                           <p className="font-semibold text-sm text-on-surface">{row.conventional}</p>
                           <p className="text-xs text-on-surface-variant mt-1 leading-relaxed">
@@ -189,39 +194,64 @@ export default function WhyChooseMan3Page() {
         </div>
       </section>
 
-      {/* 6 Core Pillars */}
+      {/* 6 Pillars of Excellence */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 py-14 border-t border-surface-container-high">
         <div className="max-w-2xl mb-12">
           <span className="text-xs font-mono text-secondary font-bold uppercase tracking-wider">
-            Standard of Excellence
+            Pilar Keunggulan
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl font-medium text-primary mt-1">
-            6 Pilar Mengapa MAN3 Menjadi Tolok Ukur Baru Industri Pangan B2B
+            Enam Pilar Nilai Tambah MAN3
           </h2>
           <p className="text-sm text-on-surface-variant mt-2 leading-relaxed">
-            Dirancang khusus untuk memangkas ketidakpastian operasional para Executive Chef, F&amp;B Director, dan tim purchasing korporat.
+            Bagaimana ekosistem bio-agri MAN3 memberikan manfaat langsung bagi bisnis kuliner, konsumen, dan kelestarian bumi.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {pillars.map((p) => (
-            <div
-              key={p.num}
-              className="bg-white p-7 rounded-2xl border border-outline-variant/40 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
-            >
-              <div>
-                <span className="text-xs font-mono text-secondary font-bold uppercase tracking-wider">
-                  Pilar {p.num}
-                </span>
-                <h3 className="font-serif text-xl font-bold text-primary mt-1.5">{p.title}</h3>
-                <p className="text-xs sm:text-sm text-on-surface-variant mt-3 leading-relaxed">{p.desc}</p>
+          {pillars.map((p) => {
+            const Icon = p.icon;
+            return (
+              <div
+                key={p.num}
+                className="bg-white p-7 rounded-2xl border border-outline-variant/40 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
+              >
+                <div>
+                  <div className="w-12 h-12 rounded-xl bg-surface-container-low flex items-center justify-center text-primary mb-5">
+                    <Icon className="w-6 h-6" />
+                  </div>
+                  <span className="text-xs font-mono text-secondary font-bold uppercase tracking-wider">
+                    Pilar {p.num}
+                  </span>
+                  <h3 className="font-serif text-xl font-bold text-primary mt-1.5">{p.title}</h3>
+                  <p className="text-xs sm:text-sm text-on-surface-variant mt-3 leading-relaxed">{p.desc}</p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-surface-container flex items-center justify-between text-xs font-mono font-bold text-primary">
+                  <span>Standar MAN3</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </div>
               </div>
-              <div className="mt-6 pt-4 border-t border-surface-container flex items-center justify-between text-xs font-mono font-bold text-primary">
-                <span>{p.stat}</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </div>
-            </div>
-          ))}
+            );
+          })}
+        </div>
+
+        {/* CTA Banner */}
+        <div className="mt-14 p-8 sm:p-10 rounded-3xl bg-primary text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+          <div className="space-y-2 text-center md:text-left">
+            <h3 className="font-serif text-2xl sm:text-3xl font-bold">
+              Siap Bermitra dengan Ekosistem Pangan Berkelanjutan?
+            </h3>
+            <p className="text-sm text-primary-fixed-dim/90 max-w-xl">
+              Hubungi tim kemitraan kami untuk mendapatkan katalog spesifikasi, jadwal ketersediaan panen, dan penawaran kerja sama B2B.
+            </p>
+          </div>
+          <Link
+            href="/kemitraan-b2b#onboarding-form"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-white text-primary hover:bg-tertiary-fixed font-mono text-xs uppercase font-bold tracking-wider transition-all shadow-md shrink-0"
+          >
+            Mulai Kemitraan B2B
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </section>
     </div>
