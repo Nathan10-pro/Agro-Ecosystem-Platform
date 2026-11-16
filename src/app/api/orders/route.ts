@@ -1,88 +1,24 @@
 import { NextRequest, NextResponse } from "next/server";
-import { db } from "@/lib/db";
+import { getPortalApiContext } from "@/lib/supabase/api";
 
-function isValidEmail(value: string) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-}
+export async function POST(request: NextRequest) {
+  const context = await getPortalApiContext();
+  if (!context) return NextResponse.json({ error: "Masuk ke portal sebagai mitra untuk mengajukan pesanan." }, { status: 401 });
+  if (context.profile.role !== "mitra") return NextResponse.json({ error: "Hanya mitra yang dapat mengajukan pesanan." }, { status: 403 });
 
-export async function POST(req: NextRequest) {
-  const body = await req.json();
-  const {
-    customer_name,
-    company_name,
-    email,
-    phone,
-    delivery_slot,
-    items,
-    notes,
-  } = body;
-
-  if (typeof customer_name !== "string" || !customer_name.trim()) {
-    return NextResponse.json({ error: "Nama pelanggan wajib diisi." }, { status: 400 });
-  }
-  if (typeof email !== "string" || !isValidEmail(email.trim())) {
-    return NextResponse.json({ error: "Email tidak valid." }, { status: 400 });
-  }
-  if (typeof phone !== "string" || !phone.trim()) {
-    return NextResponse.json({ error: "Nomor telepon wajib diisi." }, { status: 400 });
-  }
-  if (typeof delivery_slot !== "string" || !["subuh", "siang"].includes(delivery_slot)) {
-    return NextResponse.json({ error: "Slot pengiriman tidak valid." }, { status: 400 });
-  }
-  if (!Array.isArray(items) || items.length === 0) {
-    return NextResponse.json({ error: "Minimal pilih satu produk." }, { status: 400 });
+  const body = await request.json().catch(() => null);
+  if (!body || !Array.isArray(body.items) || body.items.length === 0 || body.items.length > 50 ||
+      typeof body.delivery_slot !== "string" ||
+      body.items.some((item: any) => typeof (item?.product_id || item?.id) !== "string" ||
+        !Number.isFinite(Number(item?.quantity)) || Number(item.quantity) <= 0)) {
+    return NextResponse.json({ error: "Detail pesanan tidak valid." }, { status: 400 });
   }
 
-  let normalizedItems;
-  try {
-    normalizedItems = items.map((item: any) => {
-      const quantity = Number(item.quantity ?? 0);
-      const price = Number(item.price ?? 0);
-      if (!item || typeof item.name !== "string" || !item.name.trim()) {
-        throw new Error("Detail produk tidak valid.");
-      }
-      if (!Number.isFinite(quantity) || quantity <= 0) {
-        throw new Error("Kuantitas produk harus lebih dari 0.");
-      }
-      if (!Number.isFinite(price) || price < 0) {
-        throw new Error("Harga produk tidak valid.");
-      }
-      return {
-        id: String(item.id || item.name),
-        name: String(item.name).trim(),
-        spec: item.spec ? String(item.spec).trim() : "",
-        price,
-        quantity,
-        unit: item.unit ? String(item.unit).trim() : "pcs",
-      };
-    });
-  } catch (error) {
-    return NextResponse.json({
-      error: error instanceof Error ? error.message : "Detail produk tidak valid.",
-    }, { status: 400 });
-  }
-
-  const subtotal = normalizedItems.reduce((sum: number, item: any) => sum + item.price * item.quantity, 0);
-  const tax = subtotal * 0.11;
-  const total = subtotal + tax;
-
-  const order = await db.table("Orders").create({
-    customer_name: customer_name.trim(),
-    company_name: company_name && typeof company_name === "string" ? company_name.trim() : "",
-    email: email.trim().toLowerCase(),
-    phone: phone.trim(),
-    delivery_slot,
-    items: normalizedItems,
-    subtotal,
-    tax,
-    total,
-    notes: typeof notes === "string" ? String(notes).trim() : "",
-    status: "pending",
+  const { data, error } = await context.supabase.rpc("submit_partner_order", {
+    items: body.items.map((item: any) => ({ product_id: item.product_id || item.id, quantity: Number(item.quantity) })),
+    requested_slot: body.delivery_slot,
+    order_notes: typeof body.notes === "string" ? body.notes.slice(0, 1000) : "",
   });
-
-  return NextResponse.json({
-    success: true,
-    message: "Pemesanan berhasil dikirim.",
-    order,
-  });
+  if (error) return NextResponse.json({ error: error.message }, { status: 400 });
+  return NextResponse.json({ success: true, order_id: data }, { status: 201 });
 }

@@ -57,15 +57,16 @@ Posisi saat ini: **Step 4 - Deploy & maintenance (persiapan production selesai; 
 - `/kemitraan-b2b` : Program Kemitraan Dapur Restoran & HoReCa
 - `/corporate-profile` : Profil Korporasi & Tata Kelola
 - `/bio-conservation` : Landasan Sains Bio-Agro & Desain Modernisme Organik
-- `/portal-mitra` : Portal Pemesanan Terpadu B2B dengan Jadwal Cold-Chain
+- `/portal-mitra` : entry point portal B2B; pemesanan melalui `/mitra/products`
 - `/why-choose-man3` : Komparasi Nilai & 6 Pilar Standar Keunggulan
 - `/dashboard` : Ringkasan admin dan ganti password
 - `/dashboard/users` : Manajemen akun pengguna
 - `/dashboard/roles` : Manajemen role dan permission
 - `/dashboard/berita` : CRUD berita dan unggah thumbnail
 - `/dashboard/pemesanan` : daftar pesanan dan perubahan status
-- `/api/orders` : pengiriman pesanan dari Portal Mitra
+- `/api/orders` : pesanan hanya dari mitra terautentikasi; harga dan stok dibaca database
 - `/api/admin/orders` : pengelolaan pesanan oleh admin
+- `/mitra/*`, `/admin/*` : portal B2B dengan Supabase Auth dan RLS
 
 ## Cara Menjalankan
 Jalankan dev server di terminal:
@@ -95,3 +96,15 @@ Untuk konfigurasi `.env.local`, database lokal, dan deployment Apps Script, liha
 - Tabel `Orders` yang dibuat Apps Script tidak diisi pesanan contoh agar data dummy tidak muncul di production.
 - Deployment Vercel masih pending: akun pemilik belum terhubung, dan Google Apps Script/Spreadsheet aktual belum dikonfigurasi. Ikuti [`SETUP.md`](./SETUP.md); jangan memasukkan secrets ke chat atau repository.
 - Perubahan kode Apps Script (`code.gs`, `setup.gs`) harus disalin ke project Apps Script dan dideploy ulang sebagai versi baru.
+
+## MAN3 Portal B2B Authentication & Management
+- [x] Audit Next.js architecture, existing Apps Script/JSON storage, auth APIs, and legacy B2B order form.
+- [x] Documented Supabase Auth/PostgreSQL/RLS decision in [`MAN3_PORTAL_ARCHITECTURE.md`](./MAN3_PORTAL_ARCHITECTURE.md).
+- [x] Added Supabase schema, RLS policies, transactional order/status/inventory functions, and append-only operational activity records.
+- [x] Added Supabase session-based login, pending partner registration, logout, and recovery/reset flow.
+- [x] Added partner dashboard, profile, partnership, order history/tracking, catalog, and server-priced order submission.
+- [x] Added admin overview, partner approval, order workflow, product/inventory controls, reports, and activity log views.
+- [x] Added opt-in local demo seed script with production/Vercel guard and demo data markers.
+- [x] Replaced the old public mock-order API with an authenticated Supabase order request.
+- [ ] Apply migration to an owned Supabase project, configure email SMTP, and run seed/auth/RLS integration tests.
+- [ ] Configure production Supabase, email provider, and deploy; no external credentials or deployment are available in this workspace.

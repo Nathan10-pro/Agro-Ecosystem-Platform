@@ -1,9 +1,19 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import { ArrowUp, MapPin, Mail, Phone } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
+  const pathname = usePathname();
+  if (
+    pathname.startsWith("/admin") ||
+    pathname.startsWith("/mitra") ||
+    ["/login", "/register", "/forgot-password", "/reset-password"].includes(pathname)
+  ) return null;
+
   return (
     <footer className="bg-[#08261C] text-white border-t border-[#1C5944]">
       {/* Three Pillars Summary Bar */}

@@ -17,6 +17,12 @@ export default function Navbar() {
     { label: "Portal Mitra", href: "/portal-mitra" },
   ];
 
+  if (
+    pathname.startsWith("/admin") ||
+    pathname.startsWith("/mitra") ||
+    ["/login", "/register", "/forgot-password", "/reset-password"].includes(pathname)
+  ) return null;
+
   const isActive = (href: string) => {
     if (href.startsWith("/#")) {
       return pathname === "/" && typeof window !== "undefined" && window.location.hash === href.replace("/", "");
