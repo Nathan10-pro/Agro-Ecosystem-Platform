@@ -81,22 +81,22 @@ export default function CorporateProfilePage() {
                 <span className="text-xs font-mono text-on-surface-variant">
                   {lang === "id" ? "Didirikan" : "Established"}
                 </span>
-                <p className="font-serif text-xl font-bold text-primary">2021</p>
-                <span className="text-[11px] text-on-surface-variant">Gunung Gede-Pangrango</span>
+                <p className="font-serif text-xl font-bold text-primary">Prototipe</p>
+                <span className="text-[11px] text-on-surface-variant">Tahun operasional belum dikonfirmasi</span>
               </div>
               <div>
                 <span className="text-xs font-mono text-on-surface-variant">
                   {lang === "id" ? "Legalitas" : "Accreditation"}
                 </span>
-                <p className="font-serif text-xl font-bold text-primary">PT &amp; Yayasan</p>
-                <span className="text-[11px] text-on-surface-variant">HACCP &amp; SNI Organik</span>
+                <p className="font-serif text-xl font-bold text-primary">Dalam validasi</p>
+                <span className="text-[11px] text-on-surface-variant">Legalitas dan sertifikasi belum dikonfirmasi</span>
               </div>
               <div className="col-span-2 sm:col-span-1">
                 <span className="text-xs font-mono text-on-surface-variant">
                   {lang === "id" ? "Fokus Inti" : "Core Focus"}
                 </span>
                 <p className="font-serif text-xl font-bold text-secondary">Soil to Plate</p>
-                <span className="text-[11px] text-on-surface-variant">100% Traceable</span>
+                <span className="text-[11px] text-on-surface-variant">Ketertelusuran masih berupa rancangan</span>
               </div>
             </div>
           </div>
@@ -125,51 +125,51 @@ export default function CorporateProfilePage() {
         <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-xl mx-auto mb-12">
             <span className="font-mono text-xs uppercase tracking-wider text-primary-fixed block mb-1">
-              {lang === "id" ? "Verifikasi Empiris Lapangan" : "Empirical Verification"}
+              {lang === "id" ? "Pratinjau Data Simulasi" : "Development Preview"}
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl font-medium">
-              {lang === "id" ? "Divalidasi Sains & Standar Mutu Mandiri" : "Measured by Nature and Precision Science"}
+              {lang === "id" ? "Data Operasional Belum Tersedia" : "Operational Data Not Yet Available"}
             </h2>
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
             <div className="p-6 rounded-2xl bg-primary-container/40 border border-primary-container">
-              <span className="font-serif text-4xl sm:text-5xl font-bold text-tertiary-fixed block">1.200+</span>
+              <span className="font-serif text-4xl sm:text-5xl font-bold text-tertiary-fixed block">—</span>
               <span className="text-xs font-mono uppercase tracking-wider text-primary-fixed block mt-2 font-bold">
-                {lang === "id" ? "Hektar Terlindungi" : "Hectares Protected"}
+                {lang === "id" ? "Luas Kawasan" : "Area"}
               </span>
               <p className="text-xs text-primary-fixed-dim/80 mt-1">
-                {lang === "id" ? "Zonasi konservasi permanen" : "Under active conservation easement"}
+                {lang === "id" ? "Menunggu data terverifikasi" : "Awaiting verified data"}
               </p>
             </div>
 
             <div className="p-6 rounded-2xl bg-primary-container/40 border border-primary-container">
-              <span className="font-serif text-4xl sm:text-5xl font-bold text-tertiary-fixed block">0.0%</span>
+              <span className="font-serif text-4xl sm:text-5xl font-bold text-tertiary-fixed block">—</span>
               <span className="text-xs font-mono uppercase tracking-wider text-primary-fixed block mt-2 font-bold">
-                {lang === "id" ? "Residu Kimia Sintetis" : "Chemical Residue"}
+                {lang === "id" ? "Hasil Uji Produk" : "Product Test Results"}
               </span>
               <p className="text-xs text-primary-fixed-dim/80 mt-1">
-                {lang === "id" ? "Diuji laboratorium independen" : "Independent laboratory tested"}
+                {lang === "id" ? "Belum ada hasil uji yang dipublikasikan" : "No results published"}
               </p>
             </div>
 
             <div className="p-6 rounded-2xl bg-primary-container/40 border border-primary-container">
-              <span className="font-serif text-4xl sm:text-5xl font-bold text-tertiary-fixed block">45+</span>
+              <span className="font-serif text-4xl sm:text-5xl font-bold text-tertiary-fixed block">—</span>
               <span className="text-xs font-mono uppercase tracking-wider text-primary-fixed block mt-2 font-bold">
-                {lang === "id" ? "Mitra Kuliner HoReCa" : "Hospitality Partners"}
+                {lang === "id" ? "Mitra Usaha" : "Business Partners"}
               </span>
               <p className="text-xs text-primary-fixed-dim/80 mt-1">
-                {lang === "id" ? "Pasokan terjadwal tiap minggu" : "Supplying leading kitchens weekly"}
+                {lang === "id" ? "Program kemitraan dalam pengembangan" : "Partnership program in development"}
               </p>
             </div>
 
             <div className="p-6 rounded-2xl bg-primary-container/40 border border-primary-container">
-              <span className="font-serif text-4xl sm:text-5xl font-bold text-tertiary-fixed block">ISO 22000</span>
+              <span className="font-serif text-4xl sm:text-5xl font-bold text-tertiary-fixed block">Belum ada</span>
               <span className="text-xs font-mono uppercase tracking-wider text-primary-fixed block mt-2 font-bold">
-                {lang === "id" ? "Sistem Manajemen Pangan" : "Food Safety Management"}
+                {lang === "id" ? "Sertifikasi Terverifikasi" : "Verified Certifications"}
               </span>
               <p className="text-xs text-primary-fixed-dim/80 mt-1">
-                {lang === "id" ? "Fasilitas higienitas Grade A" : "Full certified processing facility"}
+                {lang === "id" ? "Nama lembaga dan nomor sertifikat belum tersedia" : "Issuer and certificate number unavailable"}
               </p>
             </div>
           </div>
@@ -187,7 +187,7 @@ export default function CorporateProfilePage() {
               {lang === "id" ? "Sertifikasi Nasional & Global" : "National & Global Accreditation"}
             </h3>
             <p className="text-xs text-on-surface-variant leading-relaxed">
-              Memenuhi standar SNI Organik Indonesia, Halal BPJPH, HACCP keamanan pangan internasional, dan protokol Good Agricultural Practices (GAP).
+              Sertifikasi belum diklaim pada prototipe ini. Nama lembaga dan nomor sertifikat akan dicantumkan setelah diverifikasi.
             </p>
           </div>
 
@@ -199,7 +199,7 @@ export default function CorporateProfilePage() {
               {lang === "id" ? "Transparansi Rantai Pasok" : "End-to-End Traceability"}
             </h3>
             <p className="text-xs text-on-surface-variant leading-relaxed">
-              Setiap batch produk pangan membawa ID lot tunggal yang dapat diverifikasi oleh konsumen maupun chef guna memastikan keaslian asal terroir.
+              Ketertelusuran per lot merupakan fitur yang sedang dirancang dan belum tersedia untuk digunakan atau diverifikasi.
             </p>
           </div>
 
@@ -211,7 +211,7 @@ export default function CorporateProfilePage() {
               {lang === "id" ? "Dampak Sosial Komunitas" : "Community Social Impact"}
             </h3>
             <p className="text-xs text-on-surface-variant leading-relaxed">
-              Memberdayakan lebih dari 120 kepala keluarga petani dan peternak lokal di Cisarua melalui pelatihan teknik bio-agro dan bagi hasil yang adil.
+              Rincian program komunitas dan data dampak akan ditambahkan setelah rencana dan mitra pelaksana dikonfirmasi.
             </p>
           </div>
         </div>

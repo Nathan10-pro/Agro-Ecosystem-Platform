@@ -14,9 +14,9 @@ export default function Footer() {
               <Mountain className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="font-serif text-lg font-semibold text-primary-fixed">Terroir 1.400m MDPL</h4>
+              <h4 className="font-serif text-lg font-semibold text-primary-fixed">Konsep Agro-Ekologi</h4>
               <p className="text-sm text-primary-fixed-dim/80 mt-1 leading-relaxed">
-                Lereng vulkanik Gunung Gede-Pangrango, Cisarua, Jawa Barat. Memastikan iklim mikro sejuk dan kesuburan tanah humus alami.
+                Rancangan ekosistem pangan dan konservasi. Lokasi dan kondisi lahan masih menunggu konfirmasi.
               </p>
             </div>
           </div>
@@ -26,9 +26,9 @@ export default function Footer() {
               <ShieldCheck className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="font-serif text-lg font-semibold text-primary-fixed">100% Bebas Kimia Sintetis</h4>
+              <h4 className="font-serif text-lg font-semibold text-primary-fixed">Praktik Budidaya</h4>
               <p className="text-sm text-primary-fixed-dim/80 mt-1 leading-relaxed">
-                Nol hormon pertumbuhan, bebas antibiotik profilaksis pada ternak, dan perlindungan hama tanaman berbasis refugia nabati.
+                Prinsip budidaya bertanggung jawab sedang dirancang dan belum menjadi klaim operasional atau sertifikasi.
               </p>
             </div>
           </div>
@@ -38,9 +38,9 @@ export default function Footer() {
               <span className="material-symbols-outlined text-[26px]">precision_manufacturing</span>
             </div>
             <div>
-              <h4 className="font-serif text-lg font-semibold text-primary-fixed">Rantai Dingin &amp; Cuts Presisi</h4>
+              <h4 className="font-serif text-lg font-semibold text-primary-fixed">Penanganan Pangan</h4>
               <p className="text-sm text-primary-fixed-dim/80 mt-1 leading-relaxed">
-                Fasilitas pemotongan berstandar HACCP &amp; Halal dengan logistik suhu terkontrol untuk menjaga integritas selular bahan pangan.
+                Alur pasokan, fasilitas, dan standar keamanan pangan akan dijelaskan setelah proses operasional terverifikasi.
               </p>
             </div>
           </div>
@@ -63,7 +63,7 @@ export default function Footer() {
             </p>
             <div className="pt-2 text-xs font-mono text-tertiary-fixed flex items-center gap-2">
               <span className="inline-block w-2 h-2 rounded-full bg-tertiary-fixed"></span>
-              Single-Estate Traceability System Active
+              Prototipe pengembangan • Data simulasi
             </div>
           </div>
 
@@ -124,9 +124,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-tertiary-fixed shrink-0" />
-                <a href={`mailto:${siteConfig.contact.email}`} className="hover:text-white transition-colors">
-                  {siteConfig.contact.email}
-                </a>
+                <span>{siteConfig.contact.email} (simulasi)</span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-tertiary-fixed shrink-0" />
@@ -140,7 +138,7 @@ export default function Footer() {
         <div className="mt-14 pt-8 border-t border-primary-container flex flex-col sm:flex-row items-center justify-between text-xs text-primary-fixed-dim/60 gap-4 font-mono">
           <p>© {new Date().getFullYear()} MAN3 Agro-Ecosystem Platform. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <span>Standar Pangan Lestari Indonesia</span>
+            <span>Pratinjau prototipe</span>
             <span>•</span>
             <a href="#top" className="hover:text-white transition-colors flex items-center gap-1">
               Kembali ke atas <ArrowUp className="w-3.5 h-3.5" />

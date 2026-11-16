@@ -94,23 +94,23 @@ export default function ProductDetailPage() {
               <div className="absolute top-4 left-4 flex flex-wrap gap-2">
                 <span className="px-3 py-1 rounded-full bg-white/95 text-primary text-xs font-mono font-bold uppercase shadow-sm flex items-center gap-1.5">
                   <span className="w-2 h-2 rounded-full bg-tertiary-fixed"></span>
-                  100% Grass-Fed Padang Alami
+                  Contoh Produk • Simulasi
                 </span>
                 <span className="px-3 py-1 rounded-full bg-primary text-white text-xs font-mono font-bold uppercase shadow-sm flex items-center gap-1">
                   <ShieldCheck className="w-3.5 h-3.5 text-tertiary-fixed" />
-                  Zero Hormon &amp; Antibiotik
+                  Klaim Produk Belum Diverifikasi
                 </span>
               </div>
 
               {/* Provenance Footer */}
               <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between text-white">
                 <div>
-                  <p className="text-xs font-mono uppercase tracking-wider text-primary-fixed">Terroir Provenance</p>
-                  <h4 className="font-serif text-lg font-semibold">Lereng Gn. Gede-Pangrango (Alt. 1.400 mdpl)</h4>
+                  <p className="text-xs font-mono uppercase tracking-wider text-primary-fixed">Asal Produk</p>
+                  <h4 className="font-serif text-lg font-semibold">Lokasi belum dikonfirmasi</h4>
                 </div>
                 <div className="hidden sm:flex items-center gap-1.5 bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-lg text-xs font-mono">
                   <Thermometer className="w-4 h-4 text-primary-fixed" />
-                  <span>Rantai Dingin: 1.4°C Rata-rata</span>
+                  <span>Spesifikasi simulasi</span>
                 </div>
               </div>
             </div>
@@ -146,7 +146,7 @@ export default function ProductDetailPage() {
               <div className="flex items-center justify-between text-xs font-mono mb-2">
                 <span className="text-secondary font-bold uppercase tracking-wider">Bio-Conservation Grade S+</span>
                 <span className="text-primary font-semibold flex items-center gap-1">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-tertiary-container" /> Stok Batch Ready: 380 kg
+                <CheckCircle2 className="w-3.5 h-3.5 text-tertiary-container" /> Stok contoh: simulasi
                 </span>
               </div>
               <h1 className="font-serif text-3xl font-bold text-primary leading-tight">

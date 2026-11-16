@@ -37,6 +37,7 @@ export default function HomePage() {
   const [newsItems, setNewsItems] = useState<NewsArticle[]>([]);
   const [newsLoading, setNewsLoading] = useState(true);
   const [newsError, setNewsError] = useState("");
+  const [contactDemoSent, setContactDemoSent] = useState(false);
 
   useEffect(() => {
     let active = true;
@@ -102,21 +103,21 @@ export default function HomePage() {
               <div className="pt-6 grid grid-cols-2 sm:grid-cols-3 gap-6 border-t border-surface-container-high">
                 <div>
                   <span className="block font-mono text-xl sm:text-2xl font-bold text-primary">
-                    1.400m MDPL
+                    Konsep
                   </span>
-                  <span className="text-xs text-on-surface-variant">Terroir Dingin Pegunungan</span>
+                  <span className="text-xs text-on-surface-variant">Lokasi dalam validasi</span>
                 </div>
                 <div>
                   <span className="block font-mono text-xl sm:text-2xl font-bold text-primary">
-                    100% Traceable
+                    Rancangan
                   </span>
-                  <span className="text-xs text-on-surface-variant">Single-Estate Bersertifikat</span>
+                  <span className="text-xs text-on-surface-variant">Ketertelusuran lot</span>
                 </div>
                 <div className="col-span-2 sm:col-span-1">
                   <span className="block font-mono text-xl sm:text-2xl font-bold text-secondary">
-                    Zero Synthetic
+                    Tahap demo
                   </span>
-                  <span className="text-xs text-on-surface-variant">Bebas Hormon &amp; Pestisida</span>
+                  <span className="text-xs text-on-surface-variant">Praktik operasional belum diklaim</span>
                 </div>
               </div>
             </div>
@@ -154,14 +155,14 @@ export default function HomePage() {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
             <div>
               <span className="font-mono text-xs uppercase tracking-wider text-secondary font-bold">
-                Navigasi Khusus Platform
+                Pratinjau Halaman
               </span>
               <h2 className="font-serif text-2xl sm:text-3xl font-medium text-primary mt-1">
-                7 Modul &amp; Layar Desain Khusus MAN3
+                Jelajahi konsep ekosistem MAN3
               </h2>
             </div>
             <p className="text-xs sm:text-sm text-on-surface-variant max-w-md">
-              Akses cepat seluruh modul platform yang dirancang dengan sistem desain Organic Modernism &amp; Bio-Conservation.
+              Halaman berikut adalah prototipe antarmuka. Data produk, sertifikasi, lokasi, stok, dan harga masih berupa simulasi.
             </p>
           </div>
 
@@ -266,7 +267,7 @@ export default function HomePage() {
               className="p-5 rounded-xl bg-white border border-outline-variant/40 hover:border-tertiary-container shadow-sm hover:shadow-md transition-all group flex flex-col justify-between"
             >
               <div>
-                <span className="text-xs font-mono text-secondary font-bold">06 / PORTAL B2B</span>
+                <span className="text-xs font-mono text-secondary font-bold">06 / PROTOTIPE B2B</span>
                 <h3 className="font-serif text-lg font-semibold text-primary mt-1 group-hover:text-primary-container">
                   Portal Mitra Pemesanan
                 </h3>
@@ -275,7 +276,7 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="mt-4 flex items-center text-xs font-mono font-semibold text-primary gap-1 group-hover:translate-x-1 transition-transform">
-                <span>Buka Portal</span>
+                <span>Lihat Simulasi</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </div>
             </Link>
@@ -400,7 +401,7 @@ export default function HomePage() {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>
               <span className="font-mono text-xs uppercase tracking-wider text-secondary font-bold">
-                Katalog Produk Pangan Utama
+                Katalog Konsep • Data Simulasi
               </span>
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium text-primary mt-2">
                 Panen Dataran Tinggi &amp; Daging Terstandar
@@ -410,7 +411,7 @@ export default function HomePage() {
               href="/portal-mitra"
               className="inline-flex items-center gap-2 text-sm font-mono font-bold text-primary hover:text-primary-container"
             >
-              <span>Lihat Alokasi B2B Lengkap</span>
+              <span>Lihat Prototipe B2B</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -460,7 +461,7 @@ export default function HomePage() {
 
                   <div className="mt-6 pt-4 border-t border-surface-container flex items-center justify-between">
                     <div>
-                      <span className="text-xs text-on-surface-variant">Harga Acuan</span>
+                      <span className="text-xs text-on-surface-variant">Harga contoh (simulasi)</span>
                       <p className="font-mono text-base font-bold text-primary">
                         {prod.price} <span className="text-xs font-normal text-on-surface-variant">{prod.unit}</span>
                       </p>
@@ -494,7 +495,7 @@ export default function HomePage() {
               </h2>
             </div>
             <p className="text-sm text-on-surface-variant max-w-md">
-              Update berkala mengenai audit regeneratif, hasil panen seasonal, dan perkembangan inisiatif agro-ekologi kami.
+              Contoh tampilan artikel untuk pratinjau desain. Konten dan tanggal mengikuti data simulasi pengembangan.
             </p>
           </div>
 
@@ -534,11 +535,13 @@ export default function HomePage() {
                     <div className="flex items-center gap-3 text-xs text-on-surface-variant mb-2 font-mono">
                       <span className="flex items-center gap-1">
                         <Calendar className="w-3.5 h-3.5" />
-                        {new Date(item.created_at).toLocaleDateString("id-ID", {
+                        <time dateTime={item.created_at}>
+                          {new Date(item.created_at).toLocaleDateString("id-ID", {
                           day: "numeric",
                           month: "short",
                           year: "numeric",
-                        })}
+                          })}
+                        </time>
                       </span>
                       <span>•</span>
                       <span className="flex items-center gap-1">
@@ -594,7 +597,7 @@ export default function HomePage() {
                   <div className="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary mb-2">
                     <Mail className="w-4 h-4" />
                   </div>
-                  <span className="text-xs text-on-surface-variant font-mono">Email Kantor</span>
+                  <span className="text-xs text-on-surface-variant font-mono">Email prototipe</span>
                   <p className="text-sm font-semibold text-primary">{siteConfig.contact.email}</p>
                 </div>
 
@@ -602,7 +605,7 @@ export default function HomePage() {
                   <div className="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary mb-2">
                     <Phone className="w-4 h-4" />
                   </div>
-                  <span className="text-xs text-on-surface-variant font-mono">Layanan WhatsApp B2B</span>
+                  <span className="text-xs text-on-surface-variant font-mono">Kontak prototipe</span>
                   <p className="text-sm font-semibold text-primary">{siteConfig.contact.phone}</p>
                 </div>
               </div>
@@ -611,11 +614,14 @@ export default function HomePage() {
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
-                  alert("Pesan Anda telah kami terima! Tim representatif MAN3 akan segera menghubungi Anda.");
+                  setContactDemoSent(true);
                 }}
                 className="p-6 sm:p-8 rounded-2xl bg-white border border-outline-variant/40 shadow-sm space-y-4"
               >
                 <h3 className="font-serif text-xl font-bold text-primary">Kirimkan Permintaan / Pertanyaan</h3>
+                <p className="text-xs text-on-surface-variant">
+                  Formulir demo: data tidak dikirim atau disimpan. Kontak resmi akan ditambahkan setelah tersedia.
+                </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
@@ -688,8 +694,13 @@ export default function HomePage() {
                   className="w-full py-3.5 rounded-lg bg-primary hover:bg-primary-container text-white font-mono text-xs uppercase tracking-wider font-semibold flex items-center justify-center gap-2 transition-colors shadow-sm"
                 >
                   <Send className="w-4 h-4" />
-                  Kirim Pesan Kerjasama
+                  Simulasikan Pengiriman
                 </button>
+                {contactDemoSent && (
+                  <p role="status" className="text-sm text-primary">
+                    Simulasi berhasil. Tidak ada pesan yang dikirim.
+                  </p>
+                )}
               </form>
             </div>
 
@@ -698,10 +709,10 @@ export default function HomePage() {
               <div className="p-6 sm:p-8 rounded-2xl bg-white border border-outline-variant/40 shadow-sm space-y-4">
                 <div className="flex items-center gap-2 text-xs font-mono text-secondary font-bold uppercase">
                   <MapPin className="w-4 h-4 text-secondary" />
-                  Kawasan Terpadu Lapangan
+                  Peta Referensi • Lokasi Simulasi
                 </div>
                 <h3 className="font-serif text-2xl font-bold text-primary">
-                  Kawasan Konservasi Dataran Tinggi Gede-Pangrango
+                  Kawasan Gunung Gede-Pangrango
                 </h3>
                 <p className="text-sm text-on-surface-variant leading-relaxed">
                   {siteConfig.contact.address}
@@ -711,6 +722,7 @@ export default function HomePage() {
                 <div className="w-full h-[380px] rounded-xl overflow-hidden border border-outline-variant/60 shadow-inner relative bg-surface-container">
                   <iframe
                     title="Peta Lokasi Kawasan Konservasi MAN3 Gunung Gede-Pangrango"
+                    aria-label="Peta referensi kawasan Gunung Gede-Pangrango; bukan lokasi operasional MAN3 yang terverifikasi"
                     src={siteConfig.contact.googleMapsEmbedUrl}
                     width="100%"
                     height="100%"
@@ -723,9 +735,11 @@ export default function HomePage() {
                 </div>
 
                 <div className="pt-2 flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs font-mono text-on-surface-variant gap-2">
-                  <span>Koordinat: -6.7118, 106.9190 (Zona Inti Konservasi)</span>
+                  <span>
+                    Peta hanya referensi kawasan umum; lokasi operasional MAN3 belum dikonfirmasi.
+                  </span>
                   <a
-                    href="https://maps.google.com"
+                    href="https://www.google.com/maps/search/?api=1&query=Gunung+Gede+Pangrango"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1 text-primary font-bold hover:underline"

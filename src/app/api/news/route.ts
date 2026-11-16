@@ -3,10 +3,7 @@ import { db } from "@/lib/db";
 
 export async function GET() {
   try {
-    const [allNews, users] = await Promise.all([
-      db.table("News").list(),
-      db.table("Users").list(),
-    ]);
+    const allNews = await db.table("News").list();
     const published = allNews.filter((n) => n.status === "published");
     // Sort descending by created_at
     published.sort(
@@ -19,7 +16,7 @@ export async function GET() {
       thumbnail_path: item.thumbnail_path || "",
       category: item.category || "Umum",
       created_at: item.created_at,
-      author_name: users.find((user) => user.id === item.author_id)?.name || "Tim MAN3",
+      author_name: "Tim Editorial (simulasi)",
     }));
     return NextResponse.json({ news });
   } catch (err: any) {

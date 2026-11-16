@@ -23,7 +23,6 @@ export default function PortalMitraPage() {
     phone: "",
   });
   const [submitError, setSubmitError] = useState("");
-  const [submitting, setSubmitting] = useState(false);
   const [items, setItems] = useState([
     {
       id: "p1",
@@ -83,56 +82,20 @@ export default function PortalMitraPage() {
   const tax = subtotal * 0.11;
   const total = subtotal + tax;
 
-  async function handleSubmitOrder() {
+  function handleSubmitOrder() {
     if (!customer.name.trim() || !customer.email.trim() || !customer.phone.trim()) {
       setSubmitError("Nama, email, dan nomor telepon wajib diisi.");
       return;
     }
 
-    const orderItems = items
-      .filter((item) => item.qty > 0)
-      .map((item) => ({
-        id: item.id,
-        name: item.name,
-        spec: item.spec,
-        price: item.price,
-        quantity: item.qty,
-        unit: item.unit,
-      }));
-
-    if (orderItems.length === 0) {
+    if (!items.some((item) => item.qty > 0)) {
       setSubmitError("Pilih minimal satu produk untuk dikirim.");
       return;
     }
 
-    setSubmitting(true);
     setSubmitError("");
-
-    try {
-      const response = await fetch("/api/orders", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          customer_name: customer.name,
-          company_name: customer.company,
-          email: customer.email,
-          phone: customer.phone,
-          delivery_slot: deliverySlot,
-          items: orderItems,
-          notes: "Reservasi portal mitra B2B",
-        }),
-      });
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.error || "Pemesanan gagal dikirim.");
-      }
-      setOrderId(data.order?.id || "MAN3-BATCH-NEW");
-      setOrderSent(true);
-    } catch (error) {
-      setSubmitError(error instanceof Error ? error.message : "Pemesanan gagal dikirim.");
-    } finally {
-      setSubmitting(false);
-    }
+    setOrderId("MAN3-DEMO-001");
+    setOrderSent(true);
   }
 
   return (
@@ -145,11 +108,11 @@ export default function PortalMitraPage() {
               Beranda
             </Link>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-primary font-bold">Portal Mitra B2B Pemesanan Terpadu</span>
+            <span className="text-primary font-bold">Prototipe Portal Mitra B2B</span>
           </nav>
           <div className="flex items-center gap-2 bg-surface-container-highest px-3 py-1 rounded-full text-primary font-semibold">
             <span className="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span>
-            <span>Live Stock Allocation Active • Jabodetabek &amp; Bandung</span>
+            <span>Mode demo • stok dan harga simulasi</span>
           </div>
         </div>
       </div>
@@ -157,13 +120,16 @@ export default function PortalMitraPage() {
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="max-w-3xl mb-8 space-y-2">
           <span className="text-xs font-mono text-secondary font-bold uppercase tracking-wider">
-            Sistem Alokasi Terjadwal HoReCa
+            Pratinjau Antarmuka • Tidak Ada Transaksi Nyata
           </span>
           <h1 className="font-serif text-3xl sm:text-4xl font-bold text-primary">
-            Portal Pemesanan Batch &amp; Alokasi Panen
+            Simulasi Pemesanan B2B
           </h1>
           <p className="text-sm text-on-surface-variant leading-relaxed">
-            Pilih alokasi komoditas dan potongan presisi untuk pengiriman dapur restoran Anda. Seluruh pesanan dijamin suhu rantai dingin konstan dari docking ke docking.
+            Jelajahi alur pemesanan yang direncanakan. Produk, harga, stok, dan jadwal pada halaman ini adalah data contoh; formulir tidak mengirim atau menyimpan data.
+          </p>
+          <p className="rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-950">
+            Ini hanya demo UI. Jangan masukkan data pribadi atau gunakan halaman ini untuk pemesanan nyata.
           </p>
         </div>
 
@@ -172,9 +138,9 @@ export default function PortalMitraPage() {
             <div className="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center text-primary mx-auto">
               <CheckCircle2 className="w-8 h-8 text-tertiary-container" />
             </div>
-            <h2 className="font-serif text-2xl font-bold text-primary">Pesanan Batch Diterima</h2>
+            <h2 className="font-serif text-2xl font-bold text-primary">Simulasi Selesai</h2>
             <p className="text-sm text-on-surface-variant leading-relaxed">
-              ID Reservasi: <strong className="font-mono text-primary">#{orderId}</strong>. Surat jalan dan faktur proforma telah dikirimkan ke email PIC restoran Anda. Armada logistik akan diberangkatkan pada slot yang Anda tentukan.
+              ID demo: <strong className="font-mono text-primary">#{orderId}</strong>. Tidak ada pesanan, data pelanggan, pembayaran, atau pengiriman yang dibuat.
             </p>
             <button
               type="button"
@@ -191,9 +157,9 @@ export default function PortalMitraPage() {
               <div className="p-5 border-b border-surface-container flex items-center justify-between bg-surface-container-low">
                 <div>
                   <h3 className="font-serif text-lg font-bold text-primary">Alokasi Panen &amp; Batch Ready</h3>
-                  <span className="text-xs text-on-surface-variant font-mono">Daftar produk dengan kuota panen aktif</span>
+                  <span className="text-xs text-on-surface-variant font-mono">Daftar produk dan kuota contoh (simulasi)</span>
                 </div>
-                <span className="text-xs font-mono text-secondary font-bold">4 Komoditas Tersedia</span>
+                <span className="text-xs font-mono text-secondary font-bold">4 Contoh Produk</span>
               </div>
 
               <div className="overflow-x-auto">
@@ -367,15 +333,14 @@ export default function PortalMitraPage() {
               <button
                 type="button"
                 onClick={handleSubmitOrder}
-                disabled={submitting}
-                className="w-full py-3.5 rounded-xl bg-primary hover:bg-primary-container text-white font-mono text-xs uppercase font-bold tracking-wider flex items-center justify-center gap-2 transition-all shadow-md disabled:opacity-70"
+                className="w-full py-3.5 rounded-xl bg-primary hover:bg-primary-container text-white font-mono text-xs uppercase font-bold tracking-wider flex items-center justify-center gap-2 transition-all shadow-md"
               >
                 <CheckCircle2 className="w-4 h-4" />
-                {submitting ? "Mengirim…" : "Konfirmasi Reservasi Batch"}
+                Simulasikan Reservasi
               </button>
 
               <p className="text-[11px] text-on-surface-variant/80 text-center font-mono">
-                *Faktur pajak dan konfirmasi alokasi akan langsung dikirimkan ke kontak WhatsApp pengelola restoran.
+                Data pada formulir hanya diproses di browser untuk demo dan tidak dikirim.
               </p>
             </div>
           </div>

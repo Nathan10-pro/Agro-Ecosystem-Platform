@@ -36,8 +36,8 @@ export default function EkosistemKonservasiPage() {
       name: "Padang Gembala Rotasional (Pasture Paddock)",
       area: "300 Hektar",
       role: "Habitat Etis Kawanan Ternak",
-      desc: "Padang rumput berlereng dengan rumput alami alfalfa dan clover. Pola rotasi 21 petak gembala memastikan tanah tidak mengalami pemadatan (soil compaction) dan mendapat pupuk alami secara merata.",
-      highlights: ["Rotasi 21 paddock", "Bebas pakan sintetis", "Siklus hidup hewan sejahtera"],
+      desc: "Rancangan padang gembala dengan rotasi petak. Jenis hijauan akan ditentukan sesuai kondisi lahan dan kebutuhan ternak; contoh kandidat lokal mencakup Brachiaria, Indigofera, atau Paspalum.",
+      highlights: ["Konsep rotasi petak", "Hijauan disesuaikan lokasi", "Rancangan kesejahteraan ternak"],
     },
     {
       num: "Zona 04",
@@ -63,7 +63,7 @@ export default function EkosistemKonservasiPage() {
           </nav>
           <div className="flex items-center gap-2 bg-surface-container-highest px-3 py-1 rounded-full text-primary font-semibold">
             <span className="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span>
-            <span>Total Area: 1.200 Hektar Terlindungi</span>
+            <span>Data luas kawasan belum tersedia</span>
           </div>
         </div>
       </div>
@@ -75,7 +75,7 @@ export default function EkosistemKonservasiPage() {
             Tata Kelola Spasial Berkelanjutan
           </span>
           <h1 className="font-serif text-4xl sm:text-5xl font-medium text-primary tracking-tight leading-tight">
-            Koridor Biosfer 1.200 Hektar Cisarua-Pangrango
+            Konsep Koridor Agro-Ekologi
           </h1>
           <p className="text-base sm:text-lg text-on-surface-variant leading-relaxed">
             Struktur zonasi ilmiah membagi wilayah konservasi kami ke dalam empat ranah terpadu untuk menjamin kontinuitas habitat satwa liar sekaligus menyediakan bahan pangan berdensitas nutrisi tertinggi bagi masyarakat.

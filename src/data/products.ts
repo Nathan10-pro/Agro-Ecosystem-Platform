@@ -27,14 +27,14 @@ export const initialProducts: ProductItem[] = [
     origin: "Zone A Terroir Reserve (Gede-Pangrango, 1.400 mdpl)",
     image:
       "https://images.unsplash.com/photo-1603048588665-791ca8aea617?auto=format&fit=crop&w=800&q=80",
-    badges: ["100% Grass-Fed", "Zero Hormones", "Halal & HACCP"],
+    badges: ["Contoh UI", "Data simulasi"],
     description:
-      "Daging sapi murni dari kawanan ternak yang dibesarkan di padang rumput alami Gunung Gede-Pangrango. Pemotongan presisi dengan penuaan terkontrol (controlled dry/wet aging) menghasilkan tekstur empuk, kelembapan seimbang, dan aroma herba alami.",
+      "Contoh deskripsi produk untuk rancangan katalog. Asal, metode pemeliharaan, spesifikasi, dan ketersediaan produk belum diverifikasi.",
     specifications: [
       { label: "Grade Aging", value: "21 Hari Dry-Aged / Custom Wet-Aged" },
-      { label: "Pakan", value: "100% Rumput Highland Alfalfa & Fodder Alami" },
-      { label: "Ketertelusuran", value: "ID Lot Tunggal via QR Code" },
-      { label: "Suhu Simpan", value: "-18°C Frozen / 0-4°C Chilled" },
+      { label: "Pakan", value: "Hijauan tropis (contoh; belum dikonfirmasi)" },
+      { label: "Ketertelusuran", value: "Konsep ID lot (belum aktif)" },
+      { label: "Suhu Simpan", value: "Ditentukan berdasarkan produk aktual" },
     ],
   },
   {
@@ -49,13 +49,13 @@ export const initialProducts: ProductItem[] = [
     origin: "Paddock 03, Cisarua Highland",
     image:
       "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80",
-    badges: ["Prime Cut", "Single Paddock", "Chef Selected"],
+    badges: ["Contoh UI", "Data simulasi"],
     description:
       "Potongan daging bagian paling lembut dengan serat halus khas sapi pasture-fed dataran tinggi. Sangat ideal untuk steakhouse premium dan menu artisan fine-dining.",
     specifications: [
       { label: "Kadar Lemak Intramuskular", value: "Marbling Alami Seimbang" },
       { label: "Kemasan", value: "Vacuum Skin Packaging (VSP)" },
-      { label: "Sertifikasi", value: "NKP, Halal Kemenag, Bebas Residu" },
+      { label: "Sertifikasi", value: "Belum diverifikasi" },
     ],
   },
   {
@@ -70,7 +70,7 @@ export const initialProducts: ProductItem[] = [
     origin: "Kebun Konservasi Blok Timur",
     image:
       "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80",
-    badges: ["Non-Pestisida", "Air Vulkanik Murni", "Panen Subuh"],
+    badges: ["Contoh UI", "Data simulasi"],
     description:
       "Kombinasi sayuran dataran tinggi seperti Kale Tuscan, Baby Carrot, Selada Romaine, dan Wild Herbs yang dibudidayakan secara regeneratif bersama predator serangga refugia alami.",
     specifications: [
@@ -91,7 +91,7 @@ export const initialProducts: ProductItem[] = [
     origin: "Seluruh Kawasan Terpadu MAN3",
     image:
       "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80",
-    badges: ["Impact Audit", "Carbon Credit", "Mitra Konservasi"],
+    badges: ["Konsep program", "Belum tersedia"],
     description:
       "Inisiatif kolaboratif bagi perusahaan kuliner dan organisasi yang ingin mendanai restorasi 1 hektar sabuk hijau dan mendapatkan alokasi panen eksklusif setiap bulannya.",
     specifications: [

@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
-import { Menu, X, ArrowUpRight, ShieldCheck, PhoneCall } from "lucide-react";
+import { Menu, X, ArrowUpRight, PhoneCall } from "lucide-react";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -21,30 +21,10 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md border-b border-surface-container-high transition-all">
-      {/* Top micro bar for elevation and terroir badge */}
-      <div className="bg-primary text-primary-fixed text-xs py-1.5 px-4 hidden md:flex items-center justify-between font-mono">
-        <div className="max-w-[1360px] mx-auto w-full flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <span className="flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-tertiary-fixed animate-pulse"></span>
-              Kawasan Konservasi Gede-Pangrango (1.400 mdpl)
-            </span>
-            <span className="text-primary-fixed-dim">|</span>
-            <span className="flex items-center gap-1">
-              <ShieldCheck className="w-3.5 h-3.5 text-tertiary-fixed" />
-              100% Single-Estate Regeneratif
-            </span>
-          </div>
-          <div className="flex items-center gap-4 text-primary-fixed-dim">
-            <Link href="/corporate-profile" className="hover:text-white transition-colors">
-              Corporate Profile
-            </Link>
-            <span>•</span>
-            <Link href="/bio-conservation" className="hover:text-white transition-colors">
-              Bio-Conservation Science
-            </Link>
-          </div>
-        </div>
+      <div className="bg-amber-100 text-amber-950 text-[11px] sm:text-xs py-2 px-4 text-center font-mono border-b border-amber-200">
+        <span className="font-bold">PRATINJAU PROTOTIPE</span>
+        <span className="hidden sm:inline"> — Konten, angka, harga, lokasi, dan transaksi pada situs ini adalah simulasi.</span>
+        <span className="sm:hidden"> — Data dan transaksi adalah simulasi.</span>
       </div>
 
       {/* Main Navbar */}

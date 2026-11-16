@@ -67,7 +67,7 @@ export default function RootLayout({
           Lewati ke konten utama
         </a>
         <Navbar />
-        <main id="main-content" className="flex-1 pt-28">
+        <main id="main-content" className="flex-1 pt-32">
           {children}
         </main>
         <Footer />
