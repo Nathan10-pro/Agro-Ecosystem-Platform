@@ -80,6 +80,16 @@ export default function LoginPage() {
             </button>
           </form>
           <p className="mt-6 text-sm text-[#66736A]">Belum menjadi mitra? <Link href="/register" className="font-semibold text-[#0F3D2E] underline underline-offset-4">Daftar sekarang</Link></p>
+          {(!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) && (
+            <div className="mt-8 border-t border-[#E8ECE8] pt-5">
+              <p className="text-sm font-semibold text-[#27362D]">Coba pratinjau portal</p>
+              <p className="mt-1 text-xs text-[#66736A]">Akses demo tidak memerlukan akun. Semua informasi hanya data contoh.</p>
+              <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                <Link href="/mitra/dashboard" className="border border-[#BFCABF] px-3 py-2.5 text-center text-sm font-medium text-[#0F3D2E] hover:bg-[#F2F7F2]">Pratinjau Mitra</Link>
+                <Link href="/admin/dashboard" className="bg-[#0F3D2E] px-3 py-2.5 text-center text-sm font-medium text-white hover:bg-[#174D3B]">Pratinjau Admin</Link>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>

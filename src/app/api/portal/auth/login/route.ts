@@ -6,6 +6,9 @@ export async function POST(request: NextRequest) {
   if (typeof body?.email !== "string" || typeof body?.password !== "string") {
     return NextResponse.json({ error: "Email dan password wajib diisi." }, { status: 400 });
   }
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+    return NextResponse.json({ error: "Login belum dikonfigurasi. Gunakan tombol pratinjau demo." }, { status: 503 });
+  }
 
   const supabase = await createSupabaseServerClient();
   const { data, error } = await supabase.auth.signInWithPassword({

@@ -5,10 +5,18 @@ import { useEffect, useState } from "react";
 import { formatCurrency } from "@/lib/portal-format";
 
 type Metrics = { total_partners: number; active_partners: number; pending_partners: number; total_orders: number; active_orders: number; completed_orders: number; total_order_value: number; available_products: number; action_required: number; demo_records: number };
+const demoMode = !process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+const demoMetrics: Metrics = {
+  total_partners: 12, active_partners: 9, pending_partners: 3, total_orders: 28,
+  active_orders: 6, completed_orders: 22, total_order_value: 48500000,
+  available_products: 14, action_required: 4, demo_records: 0,
+};
+
 export default function AdminDashboard() {
-  const [metrics, setMetrics] = useState<Metrics | null>(null);
+  const [metrics, setMetrics] = useState<Metrics | null>(demoMode ? demoMetrics : null);
   const [error, setError] = useState("");
   useEffect(() => {
+    if (demoMode) return;
     fetch("/api/admin/portal/dashboard").then(async (response) => {
       const result = await response.json();
       if (!response.ok) throw new Error(result.error);

@@ -11,10 +11,27 @@ type Summary = {
   metrics: { total_orders: number; active_orders: number; total_value: number };
 };
 
+const demoMode = !process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+const demoSummary: Summary = {
+  profile: { full_name: "Mitra Demo MAN3", account_status: "active", is_demo: true },
+  partner: {
+    company_name: "Restoran Contoh",
+    business_type: "Restoran",
+    partnership_status: "active",
+    partnership_start_date: "2025-01-15",
+  },
+  orders: [
+    { id: "demo-order-1", order_number: "DEMO-MAN3-001", order_status: "confirmed", total_amount: 490000, created_at: "2026-11-16T08:00:00.000Z" },
+    { id: "demo-order-2", order_number: "DEMO-MAN3-002", order_status: "in_delivery", total_amount: 850000, created_at: "2026-11-12T08:00:00.000Z" },
+  ],
+  metrics: { total_orders: 2, active_orders: 1, total_value: 1340000 },
+};
+
 export default function PartnerDashboard() {
-  const [data, setData] = useState<Summary | null>(null);
+  const [data, setData] = useState<Summary | null>(demoMode ? demoSummary : null);
   const [error, setError] = useState("");
   useEffect(() => {
+    if (demoMode) return;
     fetch("/api/portal/summary").then(async (response) => {
       const result = await response.json();
       if (!response.ok) throw new Error(result.error);

@@ -26,9 +26,15 @@ export default function PortalShell({ user, children }: { user: PortalIdentity; 
   const pathname = usePathname();
   const router = useRouter();
   const isAdmin = user.role === "admin";
-  const links = isAdmin ? adminLinks : partnerLinks;
+  const links = user.is_demo
+    ? (isAdmin ? adminLinks.slice(0, 1) : partnerLinks.slice(0, 1))
+    : isAdmin ? adminLinks : partnerLinks;
 
   async function logout() {
+    if (user.is_demo) {
+      router.replace("/login");
+      return;
+    }
     const response = await fetch("/api/portal/auth/logout", { method: "POST" });
     if (!response.ok) {
       window.alert("Sesi belum dapat ditutup. Silakan coba kembali.");
@@ -56,7 +62,10 @@ export default function PortalShell({ user, children }: { user: PortalIdentity; 
             <div><p className="text-xs text-[#66736A]">MAN3 Management Dashboard</p><p className="mt-1 text-sm font-semibold text-[#0F3D2E]">Operasional B2B {user.is_demo && <span className="ml-1 border border-[#D7C6A0] px-1.5 py-0.5 text-[10px] text-[#80543A]">AKUN DEMO</span>}</p></div>
             <button onClick={logout} className="text-sm text-[#0F3D2E] underline underline-offset-4 md:hidden">Keluar</button>
           </header>
-          <main className="px-4 py-6 sm:px-8 sm:py-8">{children}</main>
+          <main className="px-4 py-6 sm:px-8 sm:py-8">
+            {user.is_demo && <DemoNotice />}
+            {user.is_demo && pathname !== "/admin/dashboard" ? <DemoPlaceholder /> : children}
+          </main>
         </div>
       </div>
     ) : (
@@ -70,8 +79,24 @@ export default function PortalShell({ user, children }: { user: PortalIdentity; 
             </nav>
           </div>
         </header>
-        <main className="mx-auto max-w-7xl px-4 py-7 sm:px-6 sm:py-10">{children}</main>
+        <main className="mx-auto max-w-7xl px-4 py-7 sm:px-6 sm:py-10">
+          {user.is_demo && <DemoNotice />}
+          {user.is_demo && pathname !== "/mitra/dashboard" ? <DemoPlaceholder /> : children}
+        </main>
       </>
     )}
   </div>;
+}
+
+function DemoNotice() {
+  return <p className="mb-6 border border-[#D7C6A0] bg-[#FCF8ED] p-3 text-xs text-[#705A2A]">
+    MODE DEMO — semua informasi di portal ini adalah data contoh. Tidak ada data operasional atau tindakan nyata.
+  </p>;
+}
+
+function DemoPlaceholder() {
+  return <section className="border border-[#DDE3DD] bg-white p-6">
+    <h1 className="font-serif text-2xl text-[#0F3D2E]">Halaman ini tersedia setelah portal dikonfigurasi</h1>
+    <p className="mt-2 text-sm text-[#66736A]">Pratinjau saat ini hanya menampilkan ringkasan dashboard menggunakan data contoh.</p>
+  </section>;
 }
