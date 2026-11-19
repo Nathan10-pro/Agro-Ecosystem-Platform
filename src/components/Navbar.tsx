@@ -120,7 +120,7 @@ export default function Navbar() {
               onClick={() => setMobileMenuOpen(false)}
               className="w-full text-center py-2 text-[13px] font-mono text-[#4E5752] border border-[#E5E5DE] rounded-[4px]"
             >
-              Masuk Portal Mitra
+              Masuk Portal
             </Link>
             <Link
               href="/kemitraan-b2b"

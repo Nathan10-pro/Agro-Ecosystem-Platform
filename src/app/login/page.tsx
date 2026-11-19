@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
+import { loginToDemoPortal } from "@/lib/portal/browser-session";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -11,33 +12,22 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
-  const [notice, setNotice] = useState("");
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    if (params.get("reset") === "success") setNotice("Password berhasil diperbarui. Silakan masuk dengan password baru.");
-    if (params.get("error") === "account-inactive") setError("Akun administrator tidak aktif. Hubungi pengelola MAN3.");
-    else if (params.get("error")) setError("Tautan verifikasi atau pemulihan tidak valid atau telah kedaluwarsa.");
-  }, []);
 
   async function submit(event: FormEvent) {
     event.preventDefault();
     setBusy(true);
     setError("");
     try {
-      const response = await fetch("/api/portal/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
-      const result = await response.json();
-      if (!response.ok) throw new Error(result.error || "Login gagal.");
+      const session = loginToDemoPortal(email, password);
       const requestedPath = new URLSearchParams(window.location.search).get("redirect");
-      const allowedPrefix = result.user.role === "admin" ? "/admin/" : "/mitra/";
-      const destination = requestedPath?.startsWith(allowedPrefix) ? requestedPath : result.destination;
+      const allowedPrefix = session.role === "admin" ? "/admin/" : "/mitra/";
+      const destination = requestedPath?.startsWith(allowedPrefix)
+        ? requestedPath
+        : session.role === "admin" ? "/admin/dashboard" : "/mitra/dashboard";
       router.replace(destination);
       router.refresh();
     } catch (cause) {
-      setError(cause instanceof Error ? cause.message : "Tidak dapat menghubungi server.");
+      setError(cause instanceof Error ? cause.message : "Sesi demo tidak dapat disimpan di browser ini.");
     } finally {
       setBusy(false);
     }
@@ -57,8 +47,10 @@ export default function LoginPage() {
         <div className="p-7 sm:p-10">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#66736A]">Portal MAN3</p>
           <h2 className="mt-3 font-serif text-3xl text-[#0F3D2E]">Masuk ke akun Anda</h2>
-          <p className="mt-2 text-sm text-[#66736A]">Gunakan akun mitra atau administrator.</p>
-          {notice && <p role="status" className="mt-5 border border-[#A9C6B1] bg-[#F2F7F2] px-4 py-3 text-sm text-[#0F3D2E]">{notice}</p>}
+          <p className="mt-2 text-sm text-[#66736A]">Masuk ke portal MAN3.</p>
+          <p className="mt-4 rounded-sm bg-[#F7F7F2] px-3 py-2.5 text-xs leading-5 text-[#536158]">
+            Akun pratinjau: <strong>admin@demo.man3</strong> atau <strong>mitra@demo.man3</strong> · Password: <strong>demo123</strong>
+          </p>
           {error && <p role="alert" className="mt-6 border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">{error}</p>}
           <form onSubmit={submit} className="mt-7 space-y-5">
             <label className="block text-sm font-medium text-[#27362D]">
@@ -76,20 +68,10 @@ export default function LoginPage() {
               <Link href="/forgot-password" className="text-sm text-[#0F3D2E] underline underline-offset-4">Lupa password?</Link>
             </div>
             <button disabled={busy} className="w-full bg-[#0F3D2E] px-4 py-3 font-semibold text-white hover:bg-[#174D3B] disabled:opacity-60">
-              {busy ? "Memverifikasi..." : "Masuk"}
+              {busy ? "Membuka portal..." : "Masuk Portal"}
             </button>
           </form>
           <p className="mt-6 text-sm text-[#66736A]">Belum menjadi mitra? <Link href="/register" className="font-semibold text-[#0F3D2E] underline underline-offset-4">Daftar sekarang</Link></p>
-          {(!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) && (
-            <div className="mt-8 border-t border-[#E8ECE8] pt-5">
-              <p className="text-sm font-semibold text-[#27362D]">Coba pratinjau portal</p>
-              <p className="mt-1 text-xs text-[#66736A]">Akses demo tidak memerlukan akun. Semua informasi hanya data contoh.</p>
-              <div className="mt-4 grid gap-2 sm:grid-cols-2">
-                <Link href="/mitra/dashboard" className="border border-[#BFCABF] px-3 py-2.5 text-center text-sm font-medium text-[#0F3D2E] hover:bg-[#F2F7F2]">Pratinjau Mitra</Link>
-                <Link href="/admin/dashboard" className="bg-[#0F3D2E] px-3 py-2.5 text-center text-sm font-medium text-white hover:bg-[#174D3B]">Pratinjau Admin</Link>
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </section>

@@ -31,26 +31,16 @@
 
 Login CMS lama (`/dashboard`) tetap menggunakan autentikasi legacy bcrypt/JWT dan penyimpanan Apps Script atau JSON untuk pengguna CMS, role, berita, dan konten lama. Fitur tersebut terpisah dari Portal B2B baru. Jangan gunakan akun CMS lama sebagai akun mitra atau anggap database JSON/Sheets sebagai database portal.
 
-## 5. Portal B2B Mitra & Admin (Supabase)
+## 5. Portal Mitra & Admin (browser-only)
 
-1. Buat project Supabase dan terapkan `supabase/migrations/202611160001_man3_b2b_portal.sql` melalui Supabase SQL Editor (atau Supabase CLI migration workflow).
-2. Salin `.env.example` menjadi `.env.local` dan isi `NEXT_PUBLIC_SUPABASE_URL` serta `NEXT_PUBLIC_SUPABASE_ANON_KEY` dari Project Settings > API. Keduanya adalah konfigurasi publik, bukan secret.
-3. Jangan pernah menambahkan `SUPABASE_SERVICE_ROLE_KEY` ke variabel `NEXT_PUBLIC_*`, bundle browser, atau route aplikasi. Key service-role hanya diperlukan sementara oleh script seed lokal.
-4. Di Supabase Authentication, tambahkan URL callback aplikasi seperti `http://localhost:3000/auth/callback` ke daftar redirect yang diizinkan. Konfigurasikan SMTP provider dan sender email untuk pemulihan password; tanpa SMTP, reset email tidak dapat dikirim.
-5. Untuk membuat admin di luar seed demo, buat user melalui Supabase Auth/dashboard, lalu set `role='admin'` dan `account_status='active'` pada row profilnya di lingkungan administrasi database yang tepercaya. Registrasi publik selalu menghasilkan mitra `pending_review`.
-6. Jalankan `npm run dev`, lalu kunjungi `/register` atau `/login`. Mitra baru dapat melihat status setelah masuk, namun baru dapat mengirim pesanan setelah admin mengaktifkan akunnya.
+Portal demo tidak memakai Supabase, API autentikasi, atau database server. Klik **Masuk Portal** pada navigasi situs untuk membuka `/login`, lalu gunakan salah satu akun contoh berikut:
 
-### Akun dan data demo lokal
+- Admin: `admin@demo.man3` / `demo123`
+- Mitra: `mitra@demo.man3` / `demo123`
+- Mitra kedua: `rina@demo.man3` / `demo123`
+- Mitra ketiga: `budi@demo.man3` / `demo123`
 
-Seed demo memerlukan Supabase project development dan bersifat opt-in. Pada `.env.local`, isi `SUPABASE_SERVICE_ROLE_KEY`, `MAN3_DEMO_SEED=true`, `MAN3_DEMO_ADMIN_PASSWORD=admin123`, dan `MAN3_DEMO_MITRA_PASSWORD=mitra123`, lalu jalankan `npm run seed:demo`.
-
-- Admin: `admin@gmail.com` / `admin123`
-- Mitra: `mitra@gmail.com` / `mitra123`
-- Password dibaca dari environment, tidak disimpan dalam source code. Supabase Auth menangani hashing.
-- Akun serta produk/pesanan/timeline/pergerakan stok sampel ditandai sebagai data demo. Script menolak berjalan di production atau Vercel dan tidak berjalan tanpa `MAN3_DEMO_SEED=true`.
-- Script dapat dijalankan ulang untuk menyelaraskan kredensial dan membangun ulang pesanan demo. Jangan menggunakan email/password demo pada production.
-
-Tanpa konfigurasi Supabase, route portal menampilkan status setup dan tidak berpindah diam-diam ke JSON/Google Sheets.
+Pengguna dapat mendaftar akun mitra demo tambahan di `/register`; admin demo dapat meninjau dan mengaktifkan akun tersebut. Katalog, pemesanan, status pesanan, profil, laporan, dan log dapat dicoba di portal. Sesi, akun baru, dan perubahan data hanya tersimpan di `localStorage` browser yang sedang dipakai, tidak disinkronkan ke perangkat lain, dan dapat diatur ulang pada menu Pengaturan. Tidak ada perubahan yang dikirim ke MAN3. Password lokal tidak dienkripsi; jangan gunakan email, password, atau informasi pribadi sungguhan.
 
 ### Menghubungkan Google Spreadsheet (CMS lama)
 
@@ -68,7 +58,7 @@ Browser hanya berkomunikasi dengan API Next.js. Server Next.js yang meneruskan p
 10. Isi `APPS_SCRIPT_URL` dengan URL deployment dan `APPS_SCRIPT_SECRET` dengan secret yang sama di `.env.local`. Restart server setelah mengubah konfigurasi.
 11. Jika kode Apps Script berubah, pilih **Deploy > Manage deployments > Edit > New version > Deploy**, lalu pastikan URL deployment tetap sesuai.
 
-Jangan isi contoh URL/secret palsu. Apps Script digunakan untuk data CMS lama; data Portal B2B disimpan di PostgreSQL Supabase. Jika koneksi gagal, aplikasi menampilkan error dan tidak diam-diam beralih ke database lokal.
+Jangan isi contoh URL/secret palsu. Apps Script digunakan oleh CMS lama. Portal mitra/admin berjalan terpisah sebagai pratinjau lokal di browser.
 
 ## 6. Upload Media dan Batasan Deploy
 
@@ -84,11 +74,9 @@ Tanpa Apps Script, development lokal menyimpan thumbnail di `public/uploads/` de
    - `JWT_SECRET`: rahasia acak minimal 32 karakter.
    - `APPS_SCRIPT_URL`: URL Web App Apps Script.
    - `APPS_SCRIPT_SECRET`: nilai yang sama dengan Script Property `APPS_SCRIPT_SECRET`.
-   - `NEXT_PUBLIC_SUPABASE_URL` dan `NEXT_PUBLIC_SUPABASE_ANON_KEY` untuk portal B2B.
-   - Konfigurasikan SMTP/redirect URLs pada Supabase Auth untuk pemulihan email.
 4. Deploy. Di production, aplikasi menolak memakai JSON database lokal; konfigurasi Apps Script harus tersedia.
-5. Jangan set `MAN3_DEMO_SEED=true` dan jangan tambahkan service-role key ke deployment aplikasi. Buat akun admin production melalui alur administrasi Supabase yang tepercaya.
-6. Setelah deploy, uji login portal, pendaftaran/persetujuan mitra, submit pesanan, perubahan status, CRUD berita, upload dan penghapusan thumbnail, serta akses halaman publik.
+5. Portal mitra/admin pada versi ini hanya pratinjau browser lokal, bukan autentikasi atau pengelolaan operasional production.
+6. Setelah deploy, uji akses portal demo, CRUD berita, upload dan penghapusan thumbnail, serta halaman publik.
 7. Jangan simpan `.env.local`, secret, atau data lokal di repository. Jangan pernah mengisi environment variables dengan nilai contoh.
 
 Deployment langsung belum dijalankan dari workspace ini karena akun Vercel dan Google pemilik belum dikonfigurasi. Jangan kirim secret melalui chat; isi sendiri pada dashboard environment Vercel dan Script Properties Apps Script.

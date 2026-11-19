@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { jwtVerify } from "jose/jwt/verify";
-import { createServerClient } from "@supabase/ssr";
 
 function getJwtSecret() {
   const secret = process.env.JWT_SECRET;
@@ -12,30 +11,6 @@ const COOKIE_NAME = "man3_session";
 
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
-  let response = NextResponse.next({ request: req });
-
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  if (supabaseUrl && supabaseAnonKey) {
-    const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
-      cookieOptions: {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
-        path: "/",
-        maxAge: 60 * 60 * 24 * 7,
-      },
-      cookies: {
-        getAll: () => req.cookies.getAll(),
-        setAll: (cookiesToSet) => {
-          cookiesToSet.forEach(({ name, value }) => req.cookies.set(name, value));
-          response = NextResponse.next({ request: req });
-          cookiesToSet.forEach(({ name, value, options }) => response.cookies.set(name, value, options));
-        },
-      },
-    });
-    await supabase.auth.getUser();
-  }
 
   const token = req.cookies.get(COOKIE_NAME)?.value;
 
@@ -66,19 +41,9 @@ export async function middleware(req: NextRequest) {
     }
   }
 
-  // 2. Proteksi Halaman Login & Register (jika sudah login, alihkan otomatis)
-  if (pathname === "/login" || pathname === "/register") {
-    if (sessionUser) {
-      if (sessionUser.role === "admin") {
-        return NextResponse.redirect(new URL("/dashboard", req.url));
-      }
-      return NextResponse.redirect(new URL("/", req.url));
-    }
-  }
-
-  return response;
+  return NextResponse.next({ request: req });
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/mitra/:path*", "/admin/:path*", "/api/portal/:path*", "/auth/:path*", "/login", "/register"],
+  matcher: ["/dashboard/:path*"],
 };

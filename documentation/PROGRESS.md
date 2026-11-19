@@ -39,9 +39,8 @@ Posisi saat ini: **Step 4 - Deploy & maintenance (persiapan production selesai; 
   - [x] Ganti password admin dari dashboard
   - [ ] Dikonfirmasi pengguna
 - [x] STEP 3 - Pemesanan B2B
-  - [x] Portal mitra mengirim pesanan ke API dan menyimpan ke Orders
-  - [x] Admin dapat melihat pesanan, mengubah status, dan menghapus
-  - [x] Ringkasan pesanan pada dashboard
+  - [x] Pratinjau dashboard mitra/admin berjalan lokal di browser dengan data contoh
+  - [x] Portal B2B tidak mengirim pesanan atau perubahan operasional
 - [ ] STEP 4 - Deploy & maintenance
   - [x] Upload thumbnail menggunakan Google Drive melalui Apps Script
   - [x] Aplikasi production menolak fallback ke database dan upload lokal
@@ -64,9 +63,8 @@ Posisi saat ini: **Step 4 - Deploy & maintenance (persiapan production selesai; 
 - `/dashboard/roles` : Manajemen role dan permission
 - `/dashboard/berita` : CRUD berita dan unggah thumbnail
 - `/dashboard/pemesanan` : daftar pesanan dan perubahan status
-- `/api/orders` : pesanan hanya dari mitra terautentikasi; harga dan stok dibaca database
 - `/api/admin/orders` : pengelolaan pesanan oleh admin
-- `/mitra/*`, `/admin/*` : portal B2B dengan Supabase Auth dan RLS
+- `/mitra/*`, `/admin/*` : portal demo browser-only dengan sesi localStorage
 
 ## Cara Menjalankan
 Jalankan dev server di terminal:
@@ -97,14 +95,9 @@ Untuk konfigurasi `.env.local`, database lokal, dan deployment Apps Script, liha
 - Deployment Vercel masih pending: akun pemilik belum terhubung, dan Google Apps Script/Spreadsheet aktual belum dikonfigurasi. Ikuti [`SETUP.md`](./SETUP.md); jangan memasukkan secrets ke chat atau repository.
 - Perubahan kode Apps Script (`code.gs`, `setup.gs`) harus disalin ke project Apps Script dan dideploy ulang sebagai versi baru.
 
-## MAN3 Portal B2B Authentication & Management
-- [x] Audit Next.js architecture, existing Apps Script/JSON storage, auth APIs, and legacy B2B order form.
-- [x] Documented Supabase Auth/PostgreSQL/RLS decision in [`MAN3_PORTAL_ARCHITECTURE.md`](./MAN3_PORTAL_ARCHITECTURE.md).
-- [x] Added Supabase schema, RLS policies, transactional order/status/inventory functions, and append-only operational activity records.
-- [x] Added Supabase session-based login, pending partner registration, logout, and recovery/reset flow.
-- [x] Added partner dashboard, profile, partnership, order history/tracking, catalog, and server-priced order submission.
-- [x] Added admin overview, partner approval, order workflow, product/inventory controls, reports, and activity log views.
-- [x] Added opt-in local demo seed script with production/Vercel guard and demo data markers.
-- [x] Replaced the old public mock-order API with an authenticated Supabase order request.
-- [ ] Apply migration to an owned Supabase project, configure email SMTP, and run seed/auth/RLS integration tests.
-- [ ] Configure production Supabase, email provider, and deploy; no external credentials or deployment are available in this workspace.
+## Portal Mitra & Admin (browser-only preview)
+- [x] Login dibuka melalui tombol **Masuk Portal** dan memilih akun demo admin atau mitra.
+- [x] Sesi demo disimpan di localStorage browser; dashboard menggunakan data contoh lokal.
+- [x] Penghubung Supabase, endpoint API portal, dan proses registrasi/reset server dihapus.
+- [x] Halaman operasional non-dashboard menjadi placeholder dan tidak mengirimkan data.
+- [ ] Autentikasi dan penyimpanan operasional production tidak termasuk dalam preview browser-only ini.

@@ -2,7 +2,12 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { PortalIdentity } from "@/lib/supabase/portal-auth";
+import { useEffect, useState } from "react";
+import {
+  logoutFromDemoPortal,
+  readDemoPortalSession,
+} from "@/lib/portal/browser-session";
+import type { PortalRole, PortalSession } from "@/lib/portal/browser-session";
 
 const partnerLinks = [
   ["/mitra/dashboard", "Ringkasan"],
@@ -22,27 +27,42 @@ const adminLinks = [
   ["/admin/settings", "Pengaturan"],
 ];
 
-export default function PortalShell({ user, children }: { user: PortalIdentity; children: React.ReactNode }) {
+export default function PortalShell({ role, children }: { role: PortalRole; children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
-  const isAdmin = user.role === "admin";
-  const links = user.is_demo
-    ? (isAdmin ? adminLinks.slice(0, 1) : partnerLinks.slice(0, 1))
-    : isAdmin ? adminLinks : partnerLinks;
+  const [user, setUser] = useState<PortalSession | null>(null);
+  const [sessionError, setSessionError] = useState("");
+  const isAdmin = role === "admin";
+  const links = isAdmin ? adminLinks : partnerLinks;
 
-  async function logout() {
-    if (user.is_demo) {
+  useEffect(() => {
+    try {
+      const session = readDemoPortalSession();
+      if (!session) {
+        router.replace(`/login?redirect=${encodeURIComponent(pathname)}`);
+        return;
+      }
+      if (session.role !== role) {
+        router.replace(session.role === "admin" ? "/admin/dashboard" : "/mitra/dashboard");
+        return;
+      }
+      setUser(session);
+    } catch {
+      setSessionError("Penyimpanan browser tidak tersedia. Aktifkan local storage lalu muat ulang halaman.");
+    }
+  }, [pathname, role, router]);
+
+  function logout() {
+    try {
+      logoutFromDemoPortal();
       router.replace("/login");
-      return;
+    } catch {
+      setSessionError("Sesi demo tidak dapat dihapus dari penyimpanan browser.");
     }
-    const response = await fetch("/api/portal/auth/logout", { method: "POST" });
-    if (!response.ok) {
-      window.alert("Sesi belum dapat ditutup. Silakan coba kembali.");
-      return;
-    }
-    router.replace("/login");
-    router.refresh();
   }
+
+  if (sessionError) return <p role="alert" className="mx-auto max-w-3xl px-5 py-20 text-sm text-red-800">{sessionError}</p>;
+  if (!user) return <p role="status" className="mx-auto max-w-3xl px-5 py-20 text-sm text-[#66736A]">Memeriksa sesi demo lokal...</p>;
 
   return <div className="min-h-[calc(100vh-9rem)] bg-[#F6F7F3]">
     {isAdmin ? (
@@ -59,12 +79,12 @@ export default function PortalShell({ user, children }: { user: PortalIdentity; 
         </aside>
         <div className="min-w-0 flex-1">
           <header className="flex items-center justify-between border-b border-[#DDE3DD] bg-white px-5 py-4 sm:px-8">
-            <div><p className="text-xs text-[#66736A]">MAN3 Management Dashboard</p><p className="mt-1 text-sm font-semibold text-[#0F3D2E]">Operasional B2B {user.is_demo && <span className="ml-1 border border-[#D7C6A0] px-1.5 py-0.5 text-[10px] text-[#80543A]">AKUN DEMO</span>}</p></div>
+            <div><p className="text-xs text-[#66736A]">MAN3 Management Dashboard</p><p className="mt-1 text-sm font-semibold text-[#0F3D2E]">Portal Admin</p></div>
             <button onClick={logout} className="text-sm text-[#0F3D2E] underline underline-offset-4 md:hidden">Keluar</button>
           </header>
           <main className="px-4 py-6 sm:px-8 sm:py-8">
-            {user.is_demo && <DemoNotice />}
-            {user.is_demo && pathname !== "/admin/dashboard" ? <DemoPlaceholder /> : children}
+            <DemoNotice />
+            {children}
           </main>
         </div>
       </div>
@@ -72,7 +92,7 @@ export default function PortalShell({ user, children }: { user: PortalIdentity; 
       <>
         <header className="border-b border-[#DDE3DD] bg-white">
           <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
-            <div><Link href="/mitra/dashboard" className="font-serif text-xl text-[#0F3D2E]">MAN3 Mitra</Link><p className="mt-1 text-xs text-[#66736A]">{user.full_name} · {user.email} {user.is_demo && <span className="font-semibold text-[#80543A]">· AKUN DEMO</span>}</p></div>
+            <div><Link href="/mitra/dashboard" className="font-serif text-xl text-[#0F3D2E]">MAN3 Mitra</Link><p className="mt-1 text-xs text-[#66736A]">{user.full_name} · {user.email}</p></div>
             <nav aria-label="Navigasi mitra" className="flex gap-5 overflow-x-auto text-sm">
               {links.map(([href, label]) => <Link key={href} href={href} className={`whitespace-nowrap ${pathname === href ? "font-semibold text-[#0F3D2E]" : "text-[#66736A] hover:text-[#0F3D2E]"}`}>{label}</Link>)}
               <button onClick={logout} className="whitespace-nowrap text-[#0F3D2E] underline underline-offset-4">Keluar</button>
@@ -80,8 +100,8 @@ export default function PortalShell({ user, children }: { user: PortalIdentity; 
           </div>
         </header>
         <main className="mx-auto max-w-7xl px-4 py-7 sm:px-6 sm:py-10">
-          {user.is_demo && <DemoNotice />}
-          {user.is_demo && pathname !== "/mitra/dashboard" ? <DemoPlaceholder /> : children}
+          <DemoNotice />
+          {children}
         </main>
       </>
     )}
@@ -89,14 +109,5 @@ export default function PortalShell({ user, children }: { user: PortalIdentity; 
 }
 
 function DemoNotice() {
-  return <p className="mb-6 border border-[#D7C6A0] bg-[#FCF8ED] p-3 text-xs text-[#705A2A]">
-    MODE DEMO — semua informasi di portal ini adalah data contoh. Tidak ada data operasional atau tindakan nyata.
-  </p>;
-}
-
-function DemoPlaceholder() {
-  return <section className="border border-[#DDE3DD] bg-white p-6">
-    <h1 className="font-serif text-2xl text-[#0F3D2E]">Halaman ini tersedia setelah portal dikonfigurasi</h1>
-    <p className="mt-2 text-sm text-[#66736A]">Pratinjau saat ini hanya menampilkan ringkasan dashboard menggunakan data contoh.</p>
-  </section>;
+  return <p className="mb-5 text-xs text-[#66736A]">Pratinjau lokal · perubahan tersimpan di browser ini.</p>;
 }
